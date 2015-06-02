@@ -1,0 +1,31 @@
+{
+  "name": "pair-to-learn",
+  "version": "1.0.0",
+  "description": "Pair to learn",
+  "main": "index.js",
+  "scripts": {
+    "test": "karma start karma.conf.js", 
+    "start": "http-server -a localhost -p 8000 -c-1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:andela-sadelokiki/pairToLearn.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andela-sadelokiki/pairToLearn/issues"
+  },
+  "homepage": "https://github.com/andela-sadelokiki/pairToLearn",
+  "devDependencies": {
+    "bower": "^1.4.1",
+    "jasmine-core": "^2.3.3",
+    "karma": "^0.12.31",
+    "karma-chrome-launcher": "^0.1.10",
+    "karma-jasmine": "^0.3.5",
+    "protractor": "^2.0.0"
+  },
+  "dependencies": {
+    "http-server": "^0.8.0"
+  }
+}
