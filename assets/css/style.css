@@ -6,10 +6,10 @@
  * Made By MaterializeCSS.com
  */
 
-nav ul a,
+/*nav ul a,
 nav .brand-logo {
-  color: #444;
-}
+  color: #fff;
+}*/
 
 p {
   line-height: 2rem;
@@ -19,20 +19,21 @@ p {
   color: #26a69a;
 }
 .parallax{
-  background-image: url(assets/images/landing_bg1.jpg);
+  /*background-image: url(assets/images/landing_bg1.jpg);*/
 }
 
 .parallax-container {
-  min-height: 700px;
+  min-height: 670px;
   line-height: 0;
   height: auto;
   color: rgba(255,255,255,.9);
   background-color: rgba(0, 0, 0, 0.78);
   padding-top: 12em
 }
-  .parallax-container .section {
-    width: 100%;
-  }
+
+.parallax-container .section {
+  width: 100%;
+}
 
 @media only screen and (max-width : 992px) {
   .parallax-container .section {
@@ -59,3 +60,35 @@ footer.page-footer {
   margin: 0;
 }
 
+.btn-custom a {
+  background-color: rgba(0, 5, 11, 0.39) !important;
+  margin-top: 3em;
+  border: 2px solid;
+  border-radius: .5em;
+    width: 18em;
+}
+
+
+.btn-custom a:hover {
+  background-color: white !important;
+  color: teal;
+  border-color: black;
+}
+
+.btn-custom2 a {
+  margin-top: 3em;
+  border-radius: 1em;
+    width: 28em;
+}
+
+.btn-custom2 a:hover {
+  background-color: white !important;
+  color: teal;
+  border-color: black;
+}
+
+.icon-custom {
+  border: 2px solid;
+  border-radius: 1em;
+  padding: 0.2em;
+}
