@@ -9,6 +9,6 @@
     "afterEach": false,
     "module": false,
     "inject": false,
-    'jQuery' : false
+    "jQuery" : false
   }
 }

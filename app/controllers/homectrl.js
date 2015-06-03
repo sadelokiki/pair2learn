@@ -5,6 +5,7 @@ angular.module('pairToLearnApp').controller('HomeCtrl', [function($scope) {
     $(function(){
       $('.parallax').parallax();
       $('.scrollspy').scrollSpy();
+      $('.modal-trigger').leanModal();
     });
   })(jQuery);
 
