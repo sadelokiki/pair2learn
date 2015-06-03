@@ -8,8 +8,8 @@ angular.module('pairToLearnApp').config(['$routeProvider', function($routeProvid
       templateUrl:'app/views/home.view.html',
       controller:'HomeCtrl'
     })
-    .when('/signup',{
-      templateUrl:'app/views/signup.view.html',
+    .when('/success',{
+      templateUrl:'app/views/success.view.html',
       controller:'HomeCtrl'
     })
     .otherwise({

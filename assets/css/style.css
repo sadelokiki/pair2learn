@@ -75,6 +75,19 @@ footer.page-footer {
   border-color: black;
 }
 
+.btn-subscribe a {
+  background-color: rgba(32, 134, 199, 1) !important;
+  border: 2px solid;
+  border-radius: .5em;
+    width: 18em;
+}
+
+.btn-subscribe a:hover {
+  background-color: white !important;
+  color: teal;
+  border-color: black;
+}
+
 .btn-custom2 a {
   margin-top: 3em;
   border-radius: 1em;
@@ -99,4 +112,10 @@ footer.page-footer {
   color: white;
   margin-top: 0em;
   padding-left: 3em;
+}
+
+.guarantee {
+  width: 15%;
+  text-align: center;
+  margin: 2em auto;
 }
