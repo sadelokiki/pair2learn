@@ -9,7 +9,7 @@
         </h5>
       </div>
       <div class="row center btn-custom">
-        <a href="#signUp" id="download-button" class="btn-large waves-effect waves-light modal-trigger">Get Started</a>
+        <a href="#getStarted" id="download-button" class="btn-large waves-effect waves-light modal-trigger">Get Started</a>
       </div>
       <br><br>
 
@@ -75,59 +75,108 @@
       <div class="col s12 center">
         <h3><i class="mdi-communication-live-help teal-text icon-custom"></i></h3>
         <div class="row center btn-custom2">
-          <a href="#signUp" id="download-button" class="btn-large waves-effect waves-light modal-trigger">Get Instant Help from online expert NOW</a>
+          <a href="#getStarted" id="download-button" class="btn-large waves-effect waves-light modal-trigger">Get Instant Help from online expert NOW</a>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Modal Structure -->
-<div id="signUp" class="modal">
-  <div class="modal-header">
-    <h5>Get started</h5>
-  </div>
-  <div class="modal-content">
-    <div class="row center">
-      <div>
-        <a class="waves-effect waves-light btn-facebook"><span class="btn-logo"><img src="assets/images/facebook.svg"></span>Sign in with facebook</a>
-      </div>
-      <div>
-        <a class="waves-effect waves-light btn-google"><span class="btn-logo"><img src="assets/images/google-plus.svg"></span>Sign in with google</a>
-      </div>
+ <div id="getStarted" class="row modal">
+    <div class="col s12">
+      <ul class="tabs modal-header">
+        <li class="tab col l4 s3"><a class="active" href="#signUp">Get started</a></li>
+        <li class="tab col l8 s3"><a  href="#signIn"><span>Already have an account?</span>
+          &nbsp;Sign In</a></li>
+      </ul>
     </div>
-    <div class="line no-marign-bottom"></div>
-    <div class="or row center no-marign-bottom">OR</div>
-    <div class="row center no-marign-bottom">
-      <form class="col l8 s12" style="margin: 0 16%;">
-        <div class="row center no-marign-bottom">
-          <div class="input-field col s6">
-            <input id="firstname" type="text" class="validate">
-            <label for="firstname">First Name</label>
+
+<!-- Sign up structure -->
+    <div id="signUp" >
+      <div class="modal-content">
+        <div class="row center">
+          <div>
+            <a class="waves-effect waves-light btn-facebook"><span class="btn-logo"><img src="assets/images/facebook.svg"></span>Sign in with facebook</a>
           </div>
-          <div class="input-field col s6">
-            <input id="lastname" type="text" class="validate">
-            <label for="lastname">Last Name</label>
+          <div>
+            <a class="waves-effect waves-light btn-google"><span class="btn-logo"><img src="assets/images/google-plus.svg"></span>Sign in with google</a>
           </div>
         </div>
+        <div class="line no-marign-bottom"></div>
+        <div class="or row center no-marign-bottom">OR</div>
         <div class="row center no-marign-bottom">
-          <div class="input-field col s12">
-            <input id="email" type="email" class="validate">
-            <label for="email">Email Address</label>
+          <form class="col l8 s12" style="margin: 0 16%;">
+            <div class="row center no-marign-bottom">
+              <div class="input-field col s6">
+                <input id="firstname" type="text" class="validate">
+                <label for="firstname">First Name</label>
+              </div>
+              <div class="input-field col s6">
+                <input id="lastname" type="text" class="validate">
+                <label for="lastname">Last Name</label>
+              </div>
+            </div>
+            <div class="row center no-marign-bottom">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email">Email Address</label>
+              </div>
+            </div>
+            <div class="row center no-marign-bottom">
+              <div class="input-field col s12">
+                <input id="password" type="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+            </div> 
+             <div class="row center no-marign-bottom">
+              <div class="input-field col s12">
+                <input id="signup" type="submit" value="Sign Up" class="waves-effect waves-light btn-facebook">
+              </div>
+            </div> 
+          </form>
+        </div>
+       <!--  <div class="row center signin">
+          <span>Already have an account?</span>
+          &nbsp;
+          <a href="#signIn">Sign in</a>
+        </div> -->
+      </div>
+    </div>
+
+    <!-- Sign in structure -->
+    <div id="signIn">
+      <div class="modal-content">
+        <div class="row center">
+          <div>
+            <a class="waves-effect waves-light btn-facebook"><span class="btn-logo"><img src="assets/images/facebook.svg"></span>Sign in with facebook</a>
+          </div>
+          <div>
+            <a class="waves-effect waves-light btn-google"><span class="btn-logo"><img src="assets/images/google-plus.svg"></span>Sign in with google</a>
           </div>
         </div>
+        <div class="line no-marign-bottom"></div>
+        <div class="or row center no-marign-bottom">OR</div>
         <div class="row center no-marign-bottom">
-          <div class="input-field col s12">
-            <input id="password" type="password" class="validate">
-            <label for="password">Password</label>
-          </div>
-        </div> 
-         <div class="row center no-marign-bottom">
-          <div class="input-field col s12">
-            <input id="signuop" type="submit" value="Sign Up" class="waves-effect waves-light btn-facebook">
-          </div>
-        </div> 
-      </form>
+          <form class="col l8 s12" style="margin: 0 16%;">
+            <div class="row center no-marign-bottom">
+              <div class="input-field col s12">
+                <input id="email" type="email" class="validate">
+                <label for="email">Email Address</label>
+              </div>
+            </div>
+            <div class="row center no-marign-bottom">
+              <div class="input-field col s12">
+                <input id="password" type="password" class="validate">
+                <label for="password">Password</label>
+              </div>
+            </div> 
+             <div class="row center no-marign-bottom">
+              <div class="input-field col s12">
+                <input id="signin" type="submit" value="Sign In" class="waves-effect waves-light btn-facebook">
+              </div>
+            </div> 
+          </form>
+        </div>
+      </div>
     </div>
-  </div>
 </div>
