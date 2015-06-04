@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:andela-sadelokiki/pairToLearn.git"
+    "url": "git@github.com:andela-sadelokiki/pair2learn.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/andela-sadelokiki/pairToLearn/issues"
   },
-  "homepage": "https://github.com/andela-sadelokiki/pairToLearn",
+  "homepage": "https://github.com/andela-sadelokiki/pair2learn",
   "devDependencies": {
     "bower": "^1.4.1",
     "jasmine-core": "^2.3.3",
