@@ -112,6 +112,18 @@ footer.page-footer {
   color: white;
   margin-top: 0em;
   padding-left: 3em;
+  width: 100% !important;
+  margin-bottom: 1.5em;
+}
+
+.modal-header a {
+  color: white !important;
+  text-transform: capitalize;
+}
+
+.tabs .indicator {
+  background-color:  rgb(219, 219, 219) !important;
+  height: 4px !important;
 }
 
 .guarantee {
@@ -200,4 +212,13 @@ footer.page-footer {
 
 .no-marign-bottom {
   margin-bottom: 0px !important;
+}
+
+.signin {
+  margin-top: 0.5em;
+  color: white;
+}
+
+.signin a {
+  color:;
 }
