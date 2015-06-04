@@ -177,9 +177,27 @@ footer.page-footer {
   background-image: url('http://www.ideasnw.com/images/background-city.jpg') !important;
   background-size: cover !important;
   width: 63% !important;
+  max-height: 90% !important;
 }
 
 .modal-content {
   background-color: rgba(58, 56, 56, 0.86) !important;
 }
+
+.or {
+  width: 7em;
+  background-color: rgba(152, 151, 151, 1);
+  margin-top: -0.9em;
+}
+
+.line {
+  border-bottom: 2px solid rgba(255, 255, 255, 0.42);
+}
+
+.center-custom {
+  margin: 0 auto;
+}
+
+.no-marign-bottom {
+  margin-bottom: 0px !important;
 }
