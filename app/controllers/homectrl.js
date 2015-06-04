@@ -6,7 +6,7 @@ angular.module('pairToLearnApp').controller('HomeCtrl', [function($scope) {
       $('.parallax').parallax();
       $('.scrollspy').scrollSpy();
       $('.modal-trigger').leanModal();
+      $('ul.tabs').tabs();
     });
   })(jQuery);
-
 }]);
