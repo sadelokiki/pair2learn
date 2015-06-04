@@ -108,7 +108,7 @@ footer.page-footer {
 
 .modal-header {
   padding: .5em;
-  background-color: rgb(19, 83, 77);
+  background-color: rgb(94, 94, 94);
   color: white;
   margin-top: 0em;
   padding-left: 3em;
@@ -118,4 +118,68 @@ footer.page-footer {
   width: 15%;
   text-align: center;
   margin: 2em auto;
+}
+
+.btn-facebook {
+  background-color: rgba(59, 89, 152, 0);
+  height: 3em;
+  width: 26em;
+  padding: 0.8em;
+  vertical-align: middle;
+  color: white;
+  border-radius: .5em;
+  border: 2px solid black;
+}
+
+.btn-facebook:hover {
+  background-color: #3B5998;
+  height: 3em;
+  width: 26em;
+  padding: 0.8em;
+  vertical-align: middle;
+  color: white;
+  border-radius: .5em;
+  border: 0px solid black;
+}
+
+.btn-google {
+  background-color: rgba(59, 89, 152, 0);
+  height: 3em;
+  width: 26em;
+  padding: 0.8em;
+  vertical-align: middle;
+  color: white;
+  border-radius: .5em;
+  border: 2px solid black;
+  margin: 1em;
+}
+
+.btn-google:hover {
+  background-color: #DF4A32;
+  height: 3em;
+  width: 26em;
+  padding: 0.8em;
+  vertical-align: middle;
+  color: white;
+  border-radius: .5em;
+  border: 0px solid black;
+}
+
+.btn-logo {
+  float: left;
+  padding-left: 0.2em;
+  margin-top: -0.3em;
+  font-size: 2em;
+  font-weight: bolder;
+}
+
+.modal {
+  background-image: url('http://www.ideasnw.com/images/background-city.jpg') !important;
+  background-size: cover !important;
+  width: 63% !important;
+}
+
+.modal-content {
+  background-color: rgba(58, 56, 56, 0.86) !important;
+}
 }
