@@ -222,3 +222,20 @@ footer.page-footer {
 .signin a {
   color:;
 }
+
+.side-nav.fixed {
+  margin-top: 4.4em;
+}
+
+
+@media only screen and (max-width : 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
+
+.offset-custom {
+  margin-left: 20em !important;
+  margin-top: 1em;
+  /*padding: 0px .5em !important;*/
+}
