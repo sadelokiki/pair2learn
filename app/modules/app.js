@@ -16,11 +16,14 @@ angular.module('pairToLearnApp').config(['$routeProvider', function($routeProvid
       templateUrl:'app/views/confirm.view.html',
       controller:'HomeCtrl'
     })
-    .when('/user',{
+    .when('/user/susan',{
       templateUrl:'app/views/Userpage.view.html',
       controller:'HomeCtrl'
+    }) 
+    .when('/php/experts',{
+      templateUrl:'app/views/Expertpage.view.html',
+      controller:'HomeCtrl'
     })
-
     .otherwise({
       redirectTo: '/home'
     });
