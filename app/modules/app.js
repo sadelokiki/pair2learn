@@ -16,6 +16,11 @@ angular.module('pairToLearnApp').config(['$routeProvider', function($routeProvid
       templateUrl:'app/views/confirm.view.html',
       controller:'HomeCtrl'
     })
+    .when('/user',{
+      templateUrl:'app/views/Userpage.view.html',
+      controller:'HomeCtrl'
+    })
+
     .otherwise({
       redirectTo: '/home'
     });
