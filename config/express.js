@@ -16,5 +16,6 @@ module.exports = function() {
   app.use(bodyParser.urlencoded({ 
     extended: false 
   }));
+  app.use(express.static('./public/'));
   return app;
 }
