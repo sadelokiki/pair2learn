@@ -1,10 +1,10 @@
 {
-  "name": "andejobs-frontend",
+  "name": "pair-to-learn",
   "version": "0.0.0",
   "authors": [
     "Susan <susan.adelokiki@andela.co>"
   ],
-  "description": "front end for Andejobs app",
+  "description": "Pair with experts to learn anything",
   "main": "index.js",
   "license": "MIT",
   "ignore": [
