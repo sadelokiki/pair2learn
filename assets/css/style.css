@@ -233,9 +233,12 @@ footer.page-footer {
     padding-left: 0;
   }
 }
-
 .offset-custom {
   margin-left: 20em !important;
   margin-top: 1em;
   /*padding: 0px .5em !important;*/
+}
+
+.card .card-image img {
+  height: 261px !important;
 }
