@@ -17,5 +17,9 @@ module.exports = function() {
     extended: false 
   }));
   app.use(express.static('./public/'));
+  app.use(passport.initialize());
+  app.use(passport.session()); 
+  require("../app/routes/users.route")(app);
+
   return app;
-}
+};

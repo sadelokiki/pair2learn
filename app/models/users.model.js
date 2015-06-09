@@ -5,11 +5,11 @@ var mongoose = require("mongoose"),
     Schema = mongoose.Schema;    
 
 var userSchema = new Schema({
-  firstName: {
+  firstname: {
     type: String,
     required: "Please, enter your first name"
   },
-  lastName: {
+  lastname: {
     type: String,
     required: "Please, enter your last name"
   },
