@@ -9,11 +9,19 @@ exports.authCallBack = function(strategy) {
         return next(err);
       }
       if(!user) {
-        return res.redirect('/#/login')
+        res.redirect('/#/login')
       }
       else {
-        return res.redirect('/#/user/' + user._id);
+        console.log('thhe', user)
+        res.redirect('/#/user/' + user._id);
       }
     })(req, res, next);
   };
 };
+
+
+
+// {
+//       successRedirect: '/#/user/',
+//       failureRedirect: '/#/login' 
+//     }
