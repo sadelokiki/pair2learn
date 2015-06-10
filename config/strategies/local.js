@@ -30,8 +30,8 @@ module.exports = function(passport) {
           return done(err);
         }
         if(user) {
-          console.log(user)
-          return done(null, false, {message: "User registered, please sign in"});
+          console.log('existing', user)
+          return done(null, false);
         }
         else {
           var newUser = new Users();
@@ -46,7 +46,7 @@ module.exports = function(passport) {
               throw err;
             }
             console.log(newUser)
-            return done(null, user);
+            return done(null, newUser);
           });
         }
       });
@@ -71,11 +71,11 @@ module.exports = function(passport) {
             return done(null, user);
           }
           else {
-            return done(null, false, {message: "Please, enter a valid password"});
+            return done(null, false);
           }
         }
         else {
-          return done(null, false, {message: "Please, sign up"});
+          return done(null, false);
         }
       });
     });

@@ -261,3 +261,7 @@ footer.page-footer {
 .card .card-image img {
   height: 261px !important;
 }
+
+div[ng-message] {
+  color: rgb(190, 29, 29);
+}
