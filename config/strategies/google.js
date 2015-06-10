@@ -38,7 +38,7 @@ module.exports = function(passport) {
           newUser.lastname =  profile._json.name.familyName;
           newUser.picture =  profile._json.image.url;
           newUser.email = profile._json.emails[0].value;
-          newUser.hashPassword('djhdvjkfgjjbfkjkbdbjkdhgdfhjkjhgdfjkgfdjk');
+          newUser.hashPassword('google-temp-password-hjdfjdhhj34jjfg//dfFF');
           newUser.save(function(err) {
             if(err) {
               throw err;
