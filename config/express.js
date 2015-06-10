@@ -3,6 +3,7 @@
 var express = require("express"),
     morgan  = require("morgan"),
     bodyParser = require("body-parser"),
+    expressSession = require("express-session"),
     passport = require("passport");
 
 module.exports = function() {
@@ -12,14 +13,20 @@ module.exports = function() {
     app.use(morgan('dev'));
   }
 
-  app.use(bodyParser.json());
   app.use(bodyParser.urlencoded({ 
-    extended: false 
+    extended: true 
   }));
+  app.use(bodyParser.json());
   app.use(express.static('./public/'));
   app.use(passport.initialize());
   app.use(passport.session()); 
-  require("../app/routes/users.route")(app);
+
+  require('./passport')(passport);
+
+  var routes = require("../app/routes/users.route")(app, passport);
+  
+
+  //  app.use('/', require('./routes')(passport));
 
   return app;
 };

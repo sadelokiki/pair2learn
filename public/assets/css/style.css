@@ -192,8 +192,36 @@ footer.page-footer {
   max-height: 90% !important;
 }
 
+.SigninSignup {
+  background-image: url('http://www.ideasnw.com/images/background-city.jpg') !important;
+  background-size: cover !important;
+  width: 63% !important;
+  max-height: 90% !important;
+  margin: 30px auto;
+  border-radius: 20px;
+}
+
+.SigninSignup input {
+  color: white;
+}
+
 .modal-content {
   background-color: rgba(58, 56, 56, 0.86) !important;
+}
+
+.signin {
+  margin-top: 1.5em;
+  color: white;
+}
+
+.signin a {
+  color: ;
+}
+
+.shade {
+  background-color: rgba(58, 56, 56, 0.86) !important;
+  padding: 4em 1em;
+  border-radius: 20px;
 }
 
 .or {
@@ -212,15 +240,6 @@ footer.page-footer {
 
 .no-marign-bottom {
   margin-bottom: 0px !important;
-}
-
-.signin {
-  margin-top: 0.5em;
-  color: white;
-}
-
-.signin a {
-  color:;
 }
 
 .side-nav.fixed {
