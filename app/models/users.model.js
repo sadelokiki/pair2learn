@@ -24,7 +24,7 @@ var userSchema = new Schema({
   picture: {
     type: String
   },
-  phoneNumber: {
+  phonenumber: {
     type: String
   },
   crafts: []
