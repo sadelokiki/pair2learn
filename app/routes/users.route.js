@@ -11,6 +11,7 @@ module.exports = function(app, passport) {
     .post(ctrl.authCallBack('local-signup'));
   router.route('/login')
     .post(ctrl.authCallBack('local-login'));
+    
   //google
   router.route('/auth/google')
     .get(passport.authenticate('google', {
