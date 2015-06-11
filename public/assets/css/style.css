@@ -45,13 +45,6 @@ p {
   }
 }
 
-@media only screen and (max-width : 600px) {
-  #index-banner .section {
-    top: 0;
-  }
-}
-
-
 .icon-block {
   padding: 0 15px;
 }
@@ -136,7 +129,7 @@ footer.page-footer {
   background-color: rgba(59, 89, 152, 0);
   height: 3em;
   width: 26em;
-  padding: 0.8em;
+  padding: 1.4em 0.2em;
   vertical-align: middle;
   color: white;
   border-radius: .5em;
@@ -147,7 +140,7 @@ footer.page-footer {
   background-color: #3B5998;
   height: 3em;
   width: 26em;
-  padding: 0.8em;
+  padding: 1.4em 0.2em;
   vertical-align: middle;
   color: white;
   border-radius: .5em;
@@ -158,19 +151,19 @@ footer.page-footer {
   background-color: rgba(59, 89, 152, 0);
   height: 3em;
   width: 26em;
-  padding: 0.8em;
+  padding: 1.4em 0.2em;
   vertical-align: middle;
   color: white;
   border-radius: .5em;
   border: 2px solid black;
-  margin: 1em;
+  margin-top: 1em;
 }
 
 .btn-google:hover {
   background-color: #DF4A32;
   height: 3em;
   width: 26em;
-  padding: 0.8em;
+  padding: 1.4em 0.2em;
   vertical-align: middle;
   color: white;
   border-radius: .5em;
@@ -197,7 +190,7 @@ footer.page-footer {
   background-size: cover !important;
   width: 63% !important;
   max-height: 90% !important;
-  margin: 30px auto;
+  margin: 10px auto;
   border-radius: 20px;
 }
 
@@ -209,7 +202,7 @@ footer.page-footer {
   background-color: rgba(58, 56, 56, 0.86) !important;
 }
 
-.signin {
+.signinAlt {
   margin-top: 1.5em;
   color: white;
 }
@@ -225,7 +218,8 @@ footer.page-footer {
 }
 
 .or {
-  width: 7em;
+  width: 4em;
+  padding: .8em;
   background-color: rgba(152, 151, 151, 1);
   margin-top: -0.9em;
 }
@@ -246,6 +240,24 @@ footer.page-footer {
   margin-top: 4.4em;
 }
 
+.shade form {
+  margin: 0 16%;
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+
+  .SigninSignup {
+    width: 98% !important;
+    max-height: 90% !important;
+  }
+
+  .shade form {
+    margin: 0;
+  }
+}
 
 @media only screen and (max-width : 992px) {
   header, main, footer {
@@ -264,4 +276,12 @@ footer.page-footer {
 
 div[ng-message] {
   color: rgb(190, 29, 29);
+}
+
+.userParallax {
+  padding-top: 0em !important;
+}
+
+.signup {
+  padding: 1.0em 0.2em !important;
 }
