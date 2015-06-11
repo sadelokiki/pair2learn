@@ -18,10 +18,3 @@ exports.authCallBack = function(strategy) {
     })(req, res, next);
   };
 };
-
-
-
-// {
-//       successRedirect: '/#/user/',
-//       failureRedirect: '/#/login' 
-//     }
