@@ -13,22 +13,22 @@
       <div class="line no-marign-bottom"></div>
       <div class="or row center no-marign-bottom">OR</div>
       <div class="row center no-marign-bottom">
-        <form class="col l8 s12" style="margin: 0 16%;">
+        <form name="signupForm" class="col l8 s12" action="/login" method="post" style="margin: 0 16%;">
           <div class="row center no-marign-bottom">
             <div class="input-field col s12">
-              <input id="email" type="email" class="validate">
+              <input id="email" name="email" type="email" class="validate">
               <label for="email">Email Address</label>
             </div>
           </div>
           <div class="row center no-marign-bottom">
             <div class="input-field col s12">
-              <input id="password" type="password" class="validate">
+              <input id="password" type="password" name="password" class="validate">
               <label for="password">Password</label>
             </div>
           </div> 
            <div class="row center no-marign-bottom">
             <div class="input-field col s12">
-              <input id="signin" type="submit" value="Sign In" class="waves-effect waves-light btn-facebook signup">
+              <input id="signin" type="submit" ng-disabled="signupForm.$invalid" value="Sign In" class="waves-effect waves-light btn-facebook signup">
             </div>
           </div> 
         </form>

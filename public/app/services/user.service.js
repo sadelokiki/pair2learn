@@ -6,12 +6,14 @@ angular.module('pairToLearnApp')
     var User = {
       signUp: function(data) {
         return $http.post(baseUrl + '/signup', data).then(function(data){
+          console.log(data);
           return data;
         });
       },
-
       signIn: function(data) {
-        $http.post(baseUrl + '/login', data);
+        return $http.post(baseUrl + '/login', data).then(function(data) {
+          return data;
+        });
       }
     };
     return User;
