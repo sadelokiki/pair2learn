@@ -8,9 +8,9 @@ var express = require("express"),
 module.exports = function(app, passport) {
   //local
   router.route('/signup')
-    .post(ctrl.authCallBack('local-signup'))
+    .post(ctrl.authCallBack('local-signup'));
   router.route('/login')
-    .post(ctrl.postlogin('local'))
+    .post(ctrl.authCallBack('local'));
   
   //google
   router.route('/auth/google')
@@ -33,4 +33,4 @@ module.exports = function(app, passport) {
   app.use('/', router);
 
   return router;
-}
+};

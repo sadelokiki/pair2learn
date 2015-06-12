@@ -27,7 +27,7 @@ p {
   line-height: 0;
   height: auto;
   color: rgba(255,255,255,.9);
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.9);
   padding-top: 10em
 }
 
@@ -188,7 +188,7 @@ footer.page-footer {
 .SigninSignup {
   background-image: url('http://www.ideasnw.com/images/background-city.jpg') !important;
   background-size: cover !important;
-  width: 63% !important;
+  width: 53% !important;
   max-height: 90% !important;
   margin: 10px auto;
   border-radius: 20px;
@@ -213,8 +213,8 @@ footer.page-footer {
 
 .shade {
   background-color: rgba(58, 56, 56, 0.86) !important;
-  padding: 4em 1em;
-  border-radius: 20px;
+  padding: 3em 1em 1em 1em;
+  border-radius: 16px;
 }
 
 .or {

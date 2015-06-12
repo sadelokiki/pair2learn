@@ -17,7 +17,7 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
       })
       .when('/user/:id', {
         templateUrl: 'app/views/Userpage.view.html',
-        controller: 'HomeCtrl'
+        controller: 'UserCtrl'
       }) 
       .when('/php/experts', {
         templateUrl: 'app/views/Expertpage.view.html',

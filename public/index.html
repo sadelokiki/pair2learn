@@ -5,27 +5,10 @@
       <meta name= "viewport" width="device-width" content = "initial-scale=1"/>
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
       <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-      <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+      <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen, projection"/>
     </head>
     <body>
-      <div class="navbar-fixed">
-        <nav class="blue-grey darken-4" role="navigation">
-          <div class="nav-wrapper container">
-            <a id="logo-container" href="#/" class="brand-logo">p2L</a>
-            <ul class="right hide-on-med-and-down white-text">
-              <li><a ng-show="{{location === '/home'}}" href="#features">Features</a></li>
-              <li><a class="modal-trigger" href="#getStarted">Become an Expert</a></li>
-              <li ng-hide="showWelcome">Welcome</li>
-            </ul>
-
-            <ul id="nav-mobile" class="side-nav">
-              <li><a href="#features">Features</a></li>
-              <li><a class="modal-trigger" href="#getStarted">Become an Expert</a></li>
-            </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
-          </div>
-        </nav>
-      </div>
+      <div ng-include="'app/views/nav.view.html'"></div>
       <div ng-view></div>
       <footer class="page-footer blue-grey darken-4">
         <div class="container">
@@ -62,6 +45,7 @@
       <script type="text/javascript" src="libs/angular-route/angular-route.min.js"></script>
       <script type="text/javascript" src="libs/angular-messages/angular-messages.min.js"></script>
       <script type="text/javascript" src="app/modules/app.js"></script>
+      <script type="text/javascript" src="app/controllers/navigation.ctrl.js"></script>
       <script type="text/javascript" src="app/controllers/home.ctrl.js"></script>
       <script type="text/javascript" src="app/controllers/user.ctrl.js"></script>
       <script type="text/javascript" src="app/services/user.service.js"></script>
