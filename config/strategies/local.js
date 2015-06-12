@@ -30,8 +30,7 @@ module.exports = function(passport) {
           return done(err);
         }
         if(user) {
-          console.log('existing', user)
-          return done(null, false);
+          return done(null, false, {message: "email already taken"});
         }
         else {
           var newUser = new Users();
@@ -45,7 +44,7 @@ module.exports = function(passport) {
             if(err) {
               throw err;
             }
-            console.log(newUser)
+            // console.log(newUser)
             return done(null, newUser);
           });
         }
@@ -53,30 +52,21 @@ module.exports = function(passport) {
     });
   }));
 
-  passport.use("local-login", new LocalStrategy({
+  passport.use('local', new LocalStrategy({
   usernameField: "email",
   passwordField: "password"
   }, 
   function(email, password, done) {
     process.nextTick(function() {
       Users.findOne({'email': email}, function(err, user) {
+        console.log(user);
         if(err) {
           return done(err);
         }
-        if(user) {
-          // user.comparePassword(password, function(err, sss) {
-          //     console.log(err, sss)
-          // })
-          if(user.comparePassword(password)){
-            return done(null, user);
-          }
-          else {
-            return done(null, false);
-          }
-        }
-        else {
+        if(!user) {
           return done(null, false);
         }
+        return done(null, user);
       });
     });
   }));

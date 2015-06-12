@@ -37,6 +37,7 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
     }])
   .run(['$rootScope', '$location', function($rootScope, $location) {
     $rootScope.location = $location.path();
+    $rootScope.showWelcome = true;
   }]);
 
 

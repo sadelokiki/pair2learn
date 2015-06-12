@@ -8,10 +8,10 @@ var express = require("express"),
 module.exports = function(app, passport) {
   //local
   router.route('/signup')
-    .post(ctrl.authCallBack('local-signup'));
+    .post(ctrl.authCallBack('local-signup'))
   router.route('/login')
-    .post(ctrl.authCallBack('local-login'));
-    
+    .post(ctrl.postlogin('local'))
+  
   //google
   router.route('/auth/google')
     .get(passport.authenticate('google', {
