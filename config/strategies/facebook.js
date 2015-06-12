@@ -39,7 +39,7 @@ module.exports = function(passport) {
           newUser.lastname =  profile._json.last_name;
           //newUser.picture =  profile._json.image.url;
           newUser.email = profile._json.email;
-          newUser.hashPassword('temp-facebook-password-dfjkdfgjkudgjkf37//57jfj');
+          newUser.hashPassword('temp-facebook-password-dfjkdfgjfdghalhj');
           newUser.save(function(err) {
             if(err) {
               throw err;
