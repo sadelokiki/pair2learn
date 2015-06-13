@@ -18,8 +18,7 @@ var userSchema = new Schema({
     required: "Please, enter your email"
   },
   password: {
-    type: String,
-    required: "Please, enter your password"
+    type: String
   },
   picture: {
     type: String
@@ -32,11 +31,11 @@ var userSchema = new Schema({
 
 userSchema.methods.hashPassword = function(password) {
   this.password = bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-}
+};
 
 userSchema.methods.comparePassword = function(password) {
   return bcrypt.compareSync(password, this.password);
-}
+};
 
 mongoose.model('Users', userSchema);
 
