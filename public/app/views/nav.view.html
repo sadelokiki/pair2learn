@@ -13,19 +13,19 @@
         <li><a ng-hide="hideFeatures" href="#features">Features</a></li>
         <li><a ng-hide="isLoggedIn" href="#/signup">Pair with an Expert</a></li>
         <li><a ng-hide="isLoggedIn" href="#/login">Login</a></li>
-	     	<li>
-	     		<a ng-show="isLoggedIn" class="center" ng-show="isLoggedIn">
+        <div ng-show="isLoggedIn" style="display: flex;">
+		     	<li>
 	     			<span>Welcome Chitech{{user.firstname}}</span>
-	     		</a>
-	     	</li>
-		   	<li>
-		   		<img src="assets/images/images.jpeg" alt="" class="nav-user circle responsive-img">
-		   	</li>
-		   	<li>
-		   		<a class="dropdown-button" href="#!" data-activates="user-menu" ng-show="isLoggedIn">
-		   			<i class="mdi-navigation-more-vert"></i>
-		   		</a>
-		   	</li>
+		     	</li>
+			   	<li>
+			   		<img src="assets/images/images.jpeg" alt="" class="nav-user circle responsive-img">
+			   	</li>
+			   	<li>
+			   		<a class="dropdown-button" href="#!" data-activates="user-menu">
+			   			<i class="mdi-navigation-more-vert"></i>
+			   		</a>
+			   	</li>
+		   	</div>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
