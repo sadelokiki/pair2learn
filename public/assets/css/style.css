@@ -133,7 +133,7 @@ footer.page-footer {
   vertical-align: middle;
   color: white;
   border-radius: .5em;
-  border: 2px solid black;
+  border: 2px solid rgb(131, 131, 131);
 }
 
 .btn-facebook:hover {
@@ -155,7 +155,7 @@ footer.page-footer {
   vertical-align: middle;
   color: white;
   border-radius: .5em;
-  border: 2px solid black;
+  border: 2px solid rgb(131, 131, 131);
   margin-top: 1em;
 }
 
@@ -167,7 +167,7 @@ footer.page-footer {
   vertical-align: middle;
   color: white;
   border-radius: .5em;
-  border: 0px solid black;
+  border: 0px solid rgb(131, 131, 131);
 }
 
 .btn-logo {
@@ -196,6 +196,9 @@ footer.page-footer {
 
 .SigninSignup input {
   color: white;
+  padding-top: 1em;
+  height: 2.5em;
+  font-size: .9em;
 }
 
 .modal-content {
@@ -207,9 +210,6 @@ footer.page-footer {
   color: white;
 }
 
-.signin a {
-  color: ;
-}
 
 .shade {
   background-color: rgba(58, 56, 56, 0.86) !important;
@@ -222,6 +222,7 @@ footer.page-footer {
   padding: .8em;
   background-color: rgba(152, 151, 151, 1);
   margin-top: -0.9em;
+  border-radius: 2px;
 }
 
 .line {
@@ -268,6 +269,22 @@ footer.page-footer {
   .shade form {
     margin: 0;
   }
+
+  .btn-facebook {
+    width: 100%;
+  }
+
+  .btn-facebook:hover {
+    width: 100%;
+  }
+
+  .btn-google {
+    width: 100%;
+  }
+
+  .btn-google:hover {
+    width: 100%;
+  }
 }
 
 @media only screen and (max-width : 992px) {
@@ -294,7 +311,7 @@ div[ng-message] {
 }
 
 .signup {
-  padding: 1.0em 0.2em !important;
+  padding: 0em 0em !important;
 }
 
 .nav-user {
