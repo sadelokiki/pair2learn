@@ -11,6 +11,13 @@ module.exports = function(app, passport) {
     .post(ctrl.authCallBack('local-signup'));
   router.route('/login')
     .post(ctrl.authCallBack('local'));
+  router.route('/logout')
+    .post(function(req, res, next) {
+      req.logOut();
+      res.redirect('/#/home')
+      res.send(200);
+    });
+
   
   //google
   router.route('/auth/google')
