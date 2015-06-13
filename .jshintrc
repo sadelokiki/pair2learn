@@ -11,6 +11,7 @@
     "inject": false,
     "jQuery" : false,
     "require": false,
-    "exports": false
+    "exports": false,
+    "console": false
   }
 }
