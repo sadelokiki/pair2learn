@@ -1,16 +1,58 @@
 <div class="navbar-fixed">
-  <nav class="blue-grey darken-4" role="navigation">
+  <!-- Dropdown Structure -->
+	<ul id="user-menu" class="dropdown-content blue-text">
+	  <li><a href="#!">My Profile</a></li>
+	  <li><a href="#!">Edit Profile</a></li>
+	  <li class="divider"></li>
+	  <li><a href="#!">Log Out</a></li>
+	</ul>
+  <nav class="blue-grey darken-4" role="navigation" ng-controller="NavCtrl">
     <div class="nav-wrapper container">
       <a id="logo-container" href="#/" class="brand-logo">p2L</a>
       <ul class="right hide-on-med-and-down white-text">
-        <li><a ng-show="{{location === '/home'}}" href="#features">Features</a></li>
-        <li><a class="modal-trigger" href="#getStarted">Become an Expert</a></li>
-        <li ng-hide="showWelcome">Welcome</li>
+        <li><a ng-hide="hideFeatures" href="#features">Features</a></li>
+        <li><a ng-hide="isLoggedIn" href="#/signup">Pair with an Expert</a></li>
+        <li><a ng-hide="isLoggedIn" href="#/login">Login</a></li>
+	     	<li>
+	     		<a ng-show="isLoggedIn" class="center" ng-show="isLoggedIn">
+	     			<span>Welcome Chitech{{user.firstname}}</span>
+	     		</a>
+	     	</li>
+		   	<li>
+		   		<img src="assets/images/images.jpeg" alt="" class="nav-user circle responsive-img">
+		   	</li>
+		   	<li>
+		   		<a class="dropdown-button" href="#!" data-activates="user-menu" ng-show="isLoggedIn">
+		   			<i class="mdi-navigation-more-vert"></i>
+		   		</a>
+		   	</li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
-        <li><a href="#features">Features</a></li>
-        <li><a class="modal-trigger" href="#getStarted">Become an Expert</a></li>
+        <li><a ng-hide="hideFeatures" href="#features">Features</a></li>
+        <li><a ng-hide="isLoggedIn" href="#/signup">Pair with an Expert</a></li>
+        <li><a ng-hide="isLoggedIn" href="#/login">Login</a></li>
+		   	<div ng-show="isLoggedIn">
+	     	<li>
+	     		<a class="center" ng-show="isLoggedIn">
+	     			<span>chitech</span>
+	     		</a>
+	     	</li>
+		   	<li>
+		   		<center><img src="assets/images/images.jpeg" alt="" class="nav-user circle responsive-img"></center>
+		   	</li>
+		   	<div class="divider"></div>
+	     	<li><a href="#!">My Profile</a></li>
+			  <li><a href="#!">Edit Profile</a></li>
+		   	<div class="divider"></div>
+		    <li><a href="#!">View all crafts</a></li> 
+		    <li><a href="#!">Crafts learnt</a></li>
+		    <li><a href="#!">Connections</a></li>
+		    <li><a href="#!">Favorites</a></li>
+			  <li class="divider"></li>
+			  <li><a href="#!">Log Out</a></li>
+			  <li class="divider"></li>
+			  </div>
       </ul>
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     </div>
