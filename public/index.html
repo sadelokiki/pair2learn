@@ -8,35 +8,11 @@
       <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen, projection"/>
     </head>
     <body>
+
       <div ng-include="'app/views/nav.view.html'"></div>
       <div ng-view></div>
-      <footer class="page-footer blue-grey darken-4">
-        <div class="container">
-          <div class="row offset-l1">
-            <div class="col l6 s12 offset-l1">
-              <h5 class="white-text">About P2L</h5>
-              <p class="grey-text text-lighten-1">We are a team of Andela fellows working towards solving a real problem that we perceived in the society. P2L helps bridge the learning curve and makes materials and professional guidance available to the populace. </p>
-            </div>
-
-            <div class="col offset-l2 l3 s12 left-align">
-              <h5 class="white-text">Quick Links</h5>
-              <ul>
-                <li><a class="white-text" href="#/">Getting Started</a></li>
-                <li><a class="white-text" href="#/">Become an Expert</a></li>
-             <!--    <li><a class="white-text" href="#/">Sign up</a></li> -->
-                <li><a class="white-text" href="#/">Pricing</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div class="footer-copyright center-align">
-          <div class="container" >
-          Developed by <a class="brown-text text-lighten-3" href="#">P2L team</a>
-          </div>
-        </div>
-      </footer>
-
+      <div ng-include="'app/views/footer.view.html'"></div>
+    
       <!--  Scripts-->
       <script src="libs/jquery/jquery.js"></script>
       <script src="libs/materialize/materialize.js"></script>
@@ -46,6 +22,7 @@
       <script type="text/javascript" src="libs/angular-messages/angular-messages.min.js"></script>
       <script type="text/javascript" src="app/modules/app.js"></script>
       <script type="text/javascript" src="app/controllers/navigation.ctrl.js"></script>
+      <script type="text/javascript" src="app/controllers/sign.ctrl.js"></script>
       <script type="text/javascript" src="app/controllers/home.ctrl.js"></script>
       <script type="text/javascript" src="app/controllers/user.ctrl.js"></script>
       <script type="text/javascript" src="app/services/user.service.js"></script>
