@@ -3,20 +3,20 @@
  * Use this file to override Materialize files so you can update
  * the core Materialize files in the future
  *
- * Made By MaterializeCSS.com
+ * Made By chitech
  */
 
-/*nav ul a,
+nav ul a,
 nav .brand-logo {
   color: #fff;
-}*/
+}
 
 p {
   line-height: 2rem;
 }
 
 .button-collapse {
-  color: #26a69a;
+  color: #D3D3D3;
 }
 .parallax{
   /*background-image: url(assets/images/landing_bg1.jpg);*/
@@ -236,12 +236,23 @@ footer.page-footer {
   margin-bottom: 0px !important;
 }
 
-.side-nav.fixed {
+.side-nav {
   margin-top: 4.4em;
+  height: 100% !important;
+}
+
+.side-nav.fixed {
+  margin-top: 4.0em;
 }
 
 .shade form {
   margin: 0 16%;
+}
+
+.offset-custom {
+  margin-left: 20em !important;
+  margin-top: 1em;
+  /*padding: 0px .5em !important;*/
 }
 
 @media only screen and (max-width : 600px) {
@@ -263,15 +274,15 @@ footer.page-footer {
   header, main, footer {
     padding-left: 0;
   }
-}
-.offset-custom {
-  margin-left: 20em !important;
-  margin-top: 1em;
-  /*padding: 0px .5em !important;*/
+
+  .offset-custom {
+    margin-left: auto !important;
+  }
 }
 
+
 .card .card-image img {
-  height: 261px !important;
+  height: 20% !important;
 }
 
 div[ng-message] {
@@ -284,4 +295,24 @@ div[ng-message] {
 
 .signup {
   padding: 1.0em 0.2em !important;
+}
+
+.nav-user {
+  width: 3em !important;
+  margin-top: 0.5em;
+  margin-left: 1em;
+}
+
+.quickAccess {
+  padding: 1em !important;
+  text-align: center;
+  background-color: rgb(38, 50, 56);
+  color: white;
+  display: block;
+}
+
+.dropdown-content li > a {
+  font-size: 0.8rem;
+  color: #263238;
+  padding: .5rem .5rem;
 }
