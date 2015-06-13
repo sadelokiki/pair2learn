@@ -25,19 +25,19 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
       })
       .when('/login', {
         templateUrl: 'app/views/login.view.html',
-        controller: 'UserCtrl'
+        controller: 'SignCtrl'
       })
       .when('/signup', {
         templateUrl: 'app/views/signup.view.html',
-        controller: 'UserCtrl'
+        controller: 'SignCtrl'
       })
       .otherwise({
         redirectTo: '/home'
       });
     }])
   .run(['$rootScope', '$location', function($rootScope, $location) {
-    $rootScope.location = $location.path();
-    $rootScope.showWelcome = true;
+    $rootScope.hideFeatures = true;
+
   }]);
 
 
