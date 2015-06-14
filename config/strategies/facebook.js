@@ -33,7 +33,7 @@ module.exports = function(passport) {
           newUser.hashPassword('temp-facebook-password-dfjkdfgjfdghalhj');
           newUser.save(function(err) {
             if(err) {
-              throw err;
+              return done(err);
             }
             return done(null, newUser);
           });

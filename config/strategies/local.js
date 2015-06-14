@@ -8,16 +8,6 @@ var mongoose = require("mongoose"),
 
 module.exports = function(passport) {
   
-  passport.serializeUser(function(user, done) {
-    done(null, user.id);
-  });
-
-  passport.deserializeUser(function(id, done) {
-    Users.findById(id, function(err, user) {
-      done(err, user);
-    });
-  });
-
   passport.use("local-signup", new LocalStrategy({
     usernameField: "email",
     passwordField: "password",
@@ -42,9 +32,8 @@ module.exports = function(passport) {
           newUser.hashPassword(password);
           newUser.save(function(err) {
             if(err) {
-              throw err;
+              return done(err);
             }
-            // console.log(newUser)
             return done(null, newUser);
           });
         }
@@ -59,7 +48,6 @@ module.exports = function(passport) {
   function(email, password, done) {
     process.nextTick(function() {
       Users.findOne({'email': email}, function(err, user) {
-        console.log(user);
         if(err) {
           return done(err);
         }
@@ -70,4 +58,4 @@ module.exports = function(passport) {
       });
     });
   }));
-}
+};
