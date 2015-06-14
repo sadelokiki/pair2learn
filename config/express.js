@@ -17,6 +17,7 @@ module.exports = function() {
     extended: true 
   }));
   app.use(bodyParser.json());
+  app.use(expressSession({secret: 'chitech'}));
   app.use(passport.initialize());
   app.use(passport.session()); 
   
