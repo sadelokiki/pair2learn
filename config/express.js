@@ -17,9 +17,10 @@ module.exports = function() {
     extended: true 
   }));
   app.use(bodyParser.json());
-  app.use(express.static('./public/'));
   app.use(passport.initialize());
   app.use(passport.session()); 
+  
+  app.use(express.static('./public/'));
 
   require('./passport')(passport);
 
