@@ -7,15 +7,6 @@ var mongoose = require("mongoose"),
     config = require('../config');
 
 module.exports = function(passport) {
-  passport.serializeUser(function(user, done) {
-    done(null, user.id);
-  });
-
-  passport.deserializeUser(function(id, done) {
-    Users.findById(id, function(err, user) {
-      done(err, user);
-    });
-  });
 
   passport.use(new FacebookStrategy({
     clientID:  config.facebook.clientID,
@@ -42,7 +33,7 @@ module.exports = function(passport) {
           newUser.hashPassword('temp-facebook-password-dfjkdfgjfdghalhj');
           newUser.save(function(err) {
             if(err) {
-              throw err;
+              return done(err);
             }
             return done(null, newUser);
           });
