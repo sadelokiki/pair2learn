@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pairToLearnApp')
-  .controller('UserCtrl', ['$rootScope', '$scope', '$location', function($rootScope, $scope, $location) {
+  .controller('UserCtrl', ['$rootScope', '$scope', '$location', function($rootScope, $UserService, $scope, $location) {
    
     (function($){
       $(function(){

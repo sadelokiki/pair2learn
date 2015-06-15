@@ -1,0 +1,60 @@
+<div id="index-banner" class="parallax-container userParallax">
+  <div class="section no-pad-bot">
+      <div id="signUp" class="SigninSignup">
+        <div class="shade">
+        <div class="row center no-marign-bottom">
+  <form name="editprofileForm" class="col l12 s12 form" action="/editprofile" method="post">
+    <div class="row center no-marign-bottom">
+      <div class="input-field col s6">
+        <input name="firstname" id="firstname" required type="text" class="validate">
+        <label for="firstname">First Name</label>
+          <div ng-messages="editprofileForm.firstname.$error">
+            <div align="left" ng-message="required">*</div>
+          </div>
+      </div>
+      <div class="input-field col s6">
+        <input name="lastname" id="lastname" type="text"  required class="validate">
+        <label for="lastname">Last Name</label>
+          <div ng-messages="editprofileForm.firstname.$error">
+        </div>
+      </div>
+    </div>
+    <div class="row center no-marign-bottom">
+      <div class="input-field col s12">
+        <input name="email" id="email" type="email" required class="validate">
+        <label for="email">Email Address</label>
+         <div ng-messages="editprofileForm.email.$error">
+          <div ng-message="email">Type in a valid email address</div>
+        </div>
+      </div>
+    </div>
+    <div class="row center no-marign-bottom">
+      <div class="input-field col s12">
+        <input name="password" id="password" type="password" required class="validate">
+        <label for="password">Password</label>
+          <div ng-messages="editprofileForm.password.$error">
+          </div>
+      </div>
+    </div> 
+     <div class="row center no-marign-bottom">
+      <div class="input-field col s12">
+        <input name="phonenumber" id="phonenumber" type="number" required class="validate">
+        <label for="password">Phone Number</label>
+          <div ng-messages="editprofileForm.password.$error">
+          </div>
+      </div>
+    </div> 
+    <div class="row center no-marign-bottom">
+      <div class="input-field col s12">
+        <input id="signup" type="submit" ng-disabled="editprofileForm.$invalid" value="Edit Profile" class="waves-effect waves-light btn-facebook signup">
+      </div>
+    </div> 
+  </form>
+</div>
+</div>
+      </div>
+    <div class="parallax">
+      <img src="assets/images/landing_bg.jpg">
+    </div>
+  </div>
+</div>

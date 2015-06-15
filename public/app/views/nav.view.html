@@ -1,8 +1,8 @@
 <div class="navbar-fixed">
   <!-- Dropdown Structure -->
 	<ul id="user-menu" class="dropdown-content blue-text">
-	  <li><a href="#!">My Profile</a></li>
-	  <li><a href="#!">Edit Profile</a></li>
+	  <li><a href="!">My Profile</a></li>
+	  <li><a href="#/editprofile">Edit Profile</a></li>
 	  <li class="divider"></li>
 	  <li><a href="#!">Log Out</a></li>
 	</ul>
@@ -15,7 +15,11 @@
         <li><a ng-hide="isLoggedIn" href="#/login">Login</a></li>
         <div ng-show="isLoggedIn" style="display: flex;">
 		     	<li>
+<<<<<<< HEAD
 	     			<span>Welcome Chitech{{firstname}}</span>
+=======
+	     			<span>Welcome Chitech{{req.user.firstname}}</span>
+>>>>>>> Log in and Edit profile features
 		     	</li>
 			   	<li>
 			   		<img src="assets/images/images.jpeg" alt="" class="nav-user circle responsive-img">

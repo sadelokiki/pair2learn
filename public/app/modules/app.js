@@ -31,6 +31,14 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
         templateUrl: 'app/views/signup.view.html',
         controller: 'SignCtrl'
       })
+      .when('/logout', {
+        templateUrl:'app/views/home.view.html',
+        controller: 'UserCtrl'
+      })
+      .when('/editprofile', {
+        templateUrl:'app/views/Editprofile.view.html',
+        controller: 'HomeCtrl'
+      })
       .otherwise({
         redirectTo: '/home'
       });

@@ -17,6 +17,19 @@ module.exports = function(app, passport) {
       res.redirect('/#/home')
       res.send(200);
     });
+  router.route('/logout')
+    .delete(function(req, res) {
+      if (req.session.authenticated) {
+        req.session.destroy(function() {
+        });
+      } 
+      else {
+        res.send('cant remove public session', 500); // public sessions don't containt sensible information so we leave them
+    }
+  });
+  router.route('/editprofile')
+    .post(ctrl.authCallBack('local-update'));
+
 
   
   //google

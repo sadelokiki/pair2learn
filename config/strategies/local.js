@@ -29,9 +29,11 @@ module.exports = function(passport) {
         if(err) {
           return done(err);
         }
+
         if(user) {
           return done(null, false, {message: "email already taken"});
         }
+
         else {
           var newUser = new Users();
           newUser.firstname = req.body.firstname;
@@ -70,4 +72,53 @@ module.exports = function(passport) {
       });
     });
   }));
+
+passport.use('local-update', new LocalStrategy({
+    usernameField : 'email',
+    passwordField: "password",
+    passReqToCallback : true
+},
+function(req, email, done) {
+  console.log(req)
+   process.nextTick(function() {
+    Users.findOne({ 'email' :  email }, function(err, user) {
+      if (err) {
+        return done(err);
+      }
+      if (!user) {
+          return done(null, false, {message: "email already taken"});
+      } 
+      else {
+        var updateUser = new Users();
+          updateUser.email    =  email;
+          updateUser.hashPassword(password);
+          updateUser.save(function(err) {
+            if (err) {
+              return next(err)
+            }
+            console.log("Before relogin: "+req.session.passport.user.changedField)
+
+            req.login(user, function(err) {
+                if (err) return next(err)
+
+                console.log("After relogin: "+req.session.passport.user.changedField)
+                res.send(200)
+            });
+        });
+      }
+
+  });    
+
+});
+
+}));
+
 }
+
+
+
+
+
+
+
+

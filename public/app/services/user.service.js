@@ -14,6 +14,11 @@ angular.module('pairToLearnApp')
         return $http.post(baseUrl + '/login', data).then(function(data) {
           return data;
         });
+      },
+      update: function(data) {
+        return $http.put(baseUrl + '/users/edit', data).then(function(data) {
+          return data;
+        });
       }
     };
     return User;
