@@ -6,10 +6,10 @@
   <form name="editprofileForm" class="col l12 s12 form" action="/editprofile" method="post">
     <div class="row center no-marign-bottom">
       <div class="input-field col s6">
-        <input name="firstname" id="firstname" required type="text" class="validate">
+        <input name="firstname" id="firstname" placeholder="User.firstname" required type="text" class="validate">
         <label for="firstname">First Name</label>
           <div ng-messages="editprofileForm.firstname.$error">
-            <div align="left" ng-message="required">*</div>
+            <input ng-model="User.firstname" type="text">
           </div>
       </div>
       <div class="input-field col s6">
