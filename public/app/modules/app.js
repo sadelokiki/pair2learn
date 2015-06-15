@@ -43,7 +43,7 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
                 var querytoken = $location.search().token;
                 $location.search('token', null);
                 if(!$window.sessionStorage.token && querytoken){
-                    alert('you are signin');
+                    Materialize.toast('You are sigined in!', 4000);
                     $window.sessionStorage.token = querytoken;
                 }
                 if ($window.sessionStorage.token ||  querytoken) {
