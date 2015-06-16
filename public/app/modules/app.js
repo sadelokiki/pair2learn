@@ -43,17 +43,17 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
                 var querytoken = $location.search().token;
                 $location.search('token', null);
                 if(!$window.sessionStorage.token && querytoken){
-                    Materialize.toast('You are sigined in!', 4000);
-                    $window.sessionStorage.token = querytoken;
+                  Materialize.toast('You are sigined in!', 4000);
+                  $window.sessionStorage.token = querytoken;
                 }
-                if ($window.sessionStorage.token ||  querytoken) {
-                    config.headers.Authorization = $window.sessionStorage.token || querytoken;
+                if ($window.sessionStorage.token || querytoken) {
+                  config.headers.Authorization = $window.sessionStorage.token || querytoken;
                 }
-                return config;
+                  return config;
               },
 
             'responseError': function(rejection) {
-                console.log('response error', rejection)
+                console.log('response error', rejection);
                if(rejection.status === 401 || rejection.status === 403) {
                   $window.location.href = '#/signin';
                 }
@@ -63,9 +63,20 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
       }]);
   }])
   
-  .run(['$rootScope', '$location', function($rootScope, $location) {
+  .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window) {
     $rootScope.hideFeatures = true;
-
+    $rootScope.$on("$rootChangeSuccess", function(event) {
+      if ($window.sessionStorage.token) {
+         var parseJwt = function(token) {
+            var base64Url = token.split('.')[1];
+            var base64 = base64Url.replace('-', '+').replace('_', '/');
+            return JSON.parse($window.atob(base64));
+          };
+        var decodedToken = parseJwt($window.sessionStorage.token);
+        console.log(decodedToken);
+        $rootScope.decodedToken = decodedToken;
+      }
+    });
   }]);
 
 
