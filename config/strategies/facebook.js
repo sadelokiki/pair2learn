@@ -28,7 +28,7 @@ module.exports = function(passport) {
           var newUser = new Users();
           newUser.firstname = profile._json.first_name;
           newUser.lastname =  profile._json.last_name;
-          //newUser.picture =  profile._json.image.url;
+          newUser.picture =  profile._json.image.url;
           newUser.email = profile._json.email;
           newUser.hashPassword('temp-facebook-password-dfjkdfgjfdghalhj');
           newUser.save(function(err) {
