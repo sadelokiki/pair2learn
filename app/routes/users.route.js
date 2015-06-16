@@ -49,7 +49,6 @@ module.exports = function(app, passport) {
   router.route('/auth/facebook/callback')
     .get(ctrl.authCallBack('facebook'));
 
-
   app.use('/', router);
 
   return router;

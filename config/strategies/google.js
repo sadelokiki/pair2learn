@@ -7,16 +7,7 @@ var mongoose = require("mongoose"),
     config = require('../config');
 
 module.exports = function(passport) {
-  passport.serializeUser(function(user, done) {
-    done(null, user.id);
-  });
-
-  passport.deserializeUser(function(id, done) {
-    Users.findById(id, function(err, user) {
-      done(err, user);
-    });
-  });
-
+ 
  passport.use(new GoogleStrategy({
     clientID: config.google.consumerKey,
     clientSecret: config.google.consumerSecret,
@@ -41,7 +32,7 @@ module.exports = function(passport) {
           newUser.hashPassword('google-temp-password-hjdfjdhhj34jjfg//dfFF');
           newUser.save(function(err) {
             if(err) {
-              throw err;
+              return done(err);
             }
             return done(null, newUser);
           });

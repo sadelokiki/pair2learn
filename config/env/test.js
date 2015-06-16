@@ -9,5 +9,6 @@ module.exports = {
   facebook: {
     clientID: '1451643985131503',
     clientSecret: 'ab912e0bc9bf867f39e1c25ab0d1aac4'
-  }
-}
+  },
+  jwtSecret: 'mySecret'
+};

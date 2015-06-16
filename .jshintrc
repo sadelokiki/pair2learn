@@ -12,6 +12,7 @@
     "jQuery" : false,
     "require": false,
     "exports": false,
-    "console": false
+    "console": false,
+    "process": false
   }
 }

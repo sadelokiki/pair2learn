@@ -8,16 +8,6 @@ var mongoose = require("mongoose"),
 
 module.exports = function(passport) {
   
-  passport.serializeUser(function(user, done) {
-    done(null, user.id);
-  });
-
-  passport.deserializeUser(function(id, done) {
-    Users.findById(id, function(err, user) {
-      done(err, user);
-    });
-  });
-
   passport.use("local-signup", new LocalStrategy({
     usernameField: "email",
     passwordField: "password",
@@ -44,9 +34,8 @@ module.exports = function(passport) {
           newUser.hashPassword(password);
           newUser.save(function(err) {
             if(err) {
-              throw err;
+              return done(err);
             }
-            // console.log(newUser)
             return done(null, newUser);
           });
         }
@@ -61,7 +50,6 @@ module.exports = function(passport) {
   function(email, password, done) {
     process.nextTick(function() {
       Users.findOne({'email': email}, function(err, user) {
-        console.log(user);
         if(err) {
           return done(err);
         }
@@ -72,53 +60,4 @@ module.exports = function(passport) {
       });
     });
   }));
-
-passport.use('local-update', new LocalStrategy({
-    usernameField : 'email',
-    passwordField: "password",
-    passReqToCallback : true
-},
-function(req, email, done) {
-  console.log(req)
-   process.nextTick(function() {
-    Users.findOne({ 'email' :  email }, function(err, user) {
-      if (err) {
-        return done(err);
-      }
-      if (!user) {
-          return done(null, false, {message: "email already taken"});
-      } 
-      else {
-        var updateUser = new Users();
-          updateUser.email    =  email;
-          updateUser.hashPassword(password);
-          updateUser.save(function(err) {
-            if (err) {
-              return next(err)
-            }
-            console.log("Before relogin: "+req.session.passport.user.changedField)
-
-            req.login(user, function(err) {
-                if (err) return next(err)
-
-                console.log("After relogin: "+req.session.passport.user.changedField)
-                res.send(200)
-            });
-        });
-      }
-
-  });    
-
-});
-
-}));
-
 }
-
-
-
-
-
-
-
-

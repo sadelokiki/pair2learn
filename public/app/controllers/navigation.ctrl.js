@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('pairToLearnApp')
-  .controller('NavCtrl', ['$rootScope', '$scope', '$location', function($rootScope, $scope, $location) {
-    
+  .controller('NavCtrl', ['$rootScope', '$scope', '$location', '$window', '$timeout',  
+    function($rootScope, $scope, $location,  $window, $timeout) {
     (function($){
       $(function(){
          $('.dropdown-button')
@@ -16,7 +16,6 @@ angular.module('pairToLearnApp')
           }
         ); 
       });
-
       $('.button-collapse')
         .sideNav({
           menuWidth: 180, // Default is 240
@@ -24,7 +23,27 @@ angular.module('pairToLearnApp')
           closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
         }
       );
-     
     })(jQuery);
+
+    $rootScope.logout = function() {
+      $rootScope.hideOutProg = false;
+      $window.sessionStorage.clear();
+      $timeout(function(){
+        $rootScope.hideOutProg = true;
+        $location.url("/home");
+      }, 1500);
+    };
+    
+    $rootScope.$on("$routeChangeSuccess", function(event) {
+      if ($window.sessionStorage.token) {
+         var parseJwt = function(token) {
+            var base64Url = token.split('.')[1];
+            var base64 = base64Url.replace('-', '+').replace('_', '/');
+            return JSON.parse($window.atob(base64));
+          };
+        var decodedToken = parseJwt($window.sessionStorage.token);
+        $rootScope.decodedToken = decodedToken;
+      }
+    }); 
     
   }]);

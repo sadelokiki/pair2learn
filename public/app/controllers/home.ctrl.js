@@ -10,4 +10,5 @@ angular.module('pairToLearnApp')
     })(jQuery);
 
     $rootScope.hideFeatures = false;
+    $rootScope.isLoggedIn = false;
   }]);
