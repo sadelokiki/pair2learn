@@ -340,7 +340,11 @@ div[ng-message] {
   }
 
   .toast {
-    background-color: green;
+    background-color: rgb(48, 153, 25);
+    width: 213px;
+    height: 150px;
+    font-size: xx-large;
+    text-align: center;
   }
 }
 
