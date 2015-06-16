@@ -72,6 +72,7 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
             var base64 = base64Url.replace('-', '+').replace('_', '/');
             return JSON.parse($window.atob(base64));
           };
+
         var decodedToken = parseJwt($window.sessionStorage.token);
         $rootScope.decodedToken = decodedToken;
       }
