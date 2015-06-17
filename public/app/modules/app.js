@@ -1,7 +1,7 @@
 'use strict';
 
 var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
-  app.config(['$routeProvider', '$httpProvider', function($routeProvider,  $httpProvider){
+  app.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider,  $httpProvider, $locationProvider){
 
     $routeProvider
       .when('/home', {
@@ -18,7 +18,10 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
       })
       .when('/user/:id', {
         templateUrl: 'app/views/Userpage.view.html',
-        controller: 'UserCtrl'
+        controller: 'UserCtrl',
+        data: {
+          requiresLogin: true
+        }
       }) 
       .when('/php/experts', {
         templateUrl: 'app/views/Expertpage.view.html',
@@ -44,6 +47,8 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
         redirectTo: '/home'
       });
 
+    // $locationProvider.html5Mode(true);// Clean Url
+
     $httpProvider.interceptors.push(['$q', '$location', '$window', '$rootScope',
         function($q, $location, $window, $rootScope) {
           return {
@@ -63,7 +68,7 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
             'responseError': function(rejection) {
                 console.log('response error', rejection);
                if(rejection.status === 401 || rejection.status === 403) {
-                  $window.location.href = '#/signin';
+                  $location.url('/login');
                 }
                 return $q.reject(rejection);
             }
@@ -72,19 +77,15 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
   }])
   
   .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window) {
-    $rootScope.hideFeatures = true;
-    $rootScope.$on("$rootChangeSuccess", function(event) {
-      if ($window.sessionStorage.token) {
-         var parseJwt = function(token) {
-            var base64Url = token.split('.')[1];
-            var base64 = base64Url.replace('-', '+').replace('_', '/');
-            return JSON.parse($window.atob(base64));
-          };
 
-        var decodedToken = parseJwt($window.sessionStorage.token);
-        $rootScope.decodedToken = decodedToken;
+    $rootScope.$on("$routeChangeStart", function(event, to) {
+      if(to.data && to.data.requiresLogin) {
+        if(!($window.sessionStorage.token || $location.search().token)) {
+          event.preventDefault();
+          $location.url('/login');
+        }
       }
-    });
+    }); 
   }]);
 
 
