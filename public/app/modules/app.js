@@ -39,7 +39,7 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
         templateUrl:'app/views/home.view.html',
         controller: 'UserCtrl'
       })
-      .when('/user/edit', {
+      .when('/edit/user', {
         templateUrl:'app/views/Editprofile.view.html',
         controller: 'NavCtrl'
       })
