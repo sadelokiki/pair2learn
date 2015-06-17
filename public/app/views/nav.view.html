@@ -1,6 +1,7 @@
 <div class="navbar-fixed">
   <!-- Dropdown Structure -->
 	<ul id="user-menu" class="dropdown-content blue-text">
+	  <li><a ng-href="#/user/{{decodedToken.user._id}}">View Crafts</a></li>
 	  <li><a ng-href="#/user/{{decodedToken.user._id}}">My Profile</a></li>
 	  <li><a ng-href="#/edit/user">Edit Profile</a></li>
 	  <li class="divider"></li>
