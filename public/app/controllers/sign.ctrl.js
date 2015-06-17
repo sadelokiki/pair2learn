@@ -7,6 +7,4 @@ angular.module('pairToLearnApp')
         $('.parallax').parallax();
       });
     })(jQuery);
-
-    $rootScope.hideFeatures = true;
   }]);
