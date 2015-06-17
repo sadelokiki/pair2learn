@@ -347,3 +347,7 @@ div[ng-message] {
   }
 }
 
+.collapsible-body p {
+  margin: 0 0 0 4rem;
+  padding: .2rem;
+}
