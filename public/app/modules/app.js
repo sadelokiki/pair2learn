@@ -45,7 +45,7 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
       })
       .when('/edit/user/:id', {
         templateUrl:'app/views/Editprofile.view.html',
-        controller: 'UserCtrl',
+        controller: 'NavCtrl',
         data: {
           requiresLogin: true
         }

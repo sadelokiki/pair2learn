@@ -91,7 +91,10 @@ exports.editProfile = function(req, res){
       if(err){
         return res.status(400).json(err);
       }
-      return res.status(200).json(user);
+      return res.status(200).json({
+            token: generateJWT(user),
+            user: user
+          });
     });
   });
 };
