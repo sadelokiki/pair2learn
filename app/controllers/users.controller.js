@@ -1,8 +1,12 @@
 "use strict";
 
+require('../models/users.model.js');
 var passport = require("passport"),
     jwt = require('jsonwebtoken'),
+    mongoose = require("mongoose"),
+    Users = mongoose.model('Users'),
     secret = require('../../config/config');
+    
 
 var generateJWT = function(user) {
   var today = new Date();
@@ -33,3 +37,64 @@ exports.authCallBack = function(strategy) {
     })(req, res, next);
   };
 };
+
+exports.findUser = function(req, res){
+  Users.find({firstname:req.params.firstname}, function(err, user){
+    if(err){
+      return res.json(err);
+    }
+    return res.json(user);
+  });
+};
+
+/**
+ * @desc new methods for '/users' route
+ * findOne { function }
+ * findAll { function }
+ */
+
+exports.findOne = function (req, res) {
+  var user_id = req.params.id;
+  Users.find({_id: user_id}, function(err, user) {
+    if(err){
+      res.send(err);
+    }
+    res.send(user);
+  })
+};
+
+exports.findAll = function(req, res) {
+  Users.find({}, function (err, users){
+    if(err){
+      res.send({ error: { code: 9000, message: 'An error occured, sowie', error: err } });
+    }
+    res.send(users);
+  });
+};
+
+// End of custom find methods
+
+
+exports.editProfile = function(req, res){
+  var user_id = req.params.id;
+  Users.findById({_id: user_id}, function(err, user) {
+    if(err) {
+      res.send({ error: { code: 9000, message: 'user not found', error: err } });
+    }
+    if(req.body.firstname) user.firstname = req.body.firstname;
+    if(req.body.lastname) user.lastname = req.body.lastname;
+    if(req.body.email) user.email = req.body.email;
+    if(req.body.phonenumber) user.phonenumber = req.body.phonenumber;
+    if(req.body.password) user.password = req.body.password;
+
+    user.save(function(err, user) {
+      if(err) {
+        res.send({ error: { code: 9000, message: 'user not found', error: err } });
+      }
+      res.send(user);
+    });
+  });
+}
+
+
+

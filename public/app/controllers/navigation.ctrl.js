@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('pairToLearnApp')
-  .controller('NavCtrl', ['$rootScope', '$scope', '$location', '$window', '$timeout',  
-    function($rootScope, $scope, $location,  $window, $timeout) {
+  .controller('NavCtrl', ['UserService','$rootScope', '$scope', '$location', '$window', '$timeout',  
+    function(UserService,$rootScope, $scope, $location,  $window, $timeout) {
     (function($){
       $(function(){
          $('.dropdown-button')
@@ -45,5 +45,13 @@ angular.module('pairToLearnApp')
         $rootScope.decodedToken = decodedToken;
       }
     }); 
+
+    $scope.editProfile = function() {
+      UserService.update($scope.decodedToken.user._id, $scope.decodedToken.user).then(function(res) {
+        console.log("profile updated");
+        $location.url("/home");
+        console.log(res);
+      });
+    };
     
   }]);

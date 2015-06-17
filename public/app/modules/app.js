@@ -38,7 +38,7 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
       })
       .when('/editprofile', {
         templateUrl:'app/views/Editprofile.view.html',
-        controller: 'HomeCtrl'
+        controller: 'NavCtrl'
       })
       .otherwise({
         redirectTo: '/home'
