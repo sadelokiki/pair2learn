@@ -43,6 +43,18 @@ angular.module('pairToLearnApp')
           };
         var decodedToken = parseJwt($window.sessionStorage.token);
         $rootScope.decodedToken = decodedToken;
+        $rootScope.isLoggedIn = true;
+      }
+      else {
+        $rootScope.isLoggedIn = false;
+      }
+
+      //show features link only on homepage
+      if ($location.path() === '/home') {  
+        $rootScope.hideFeatures = false;
+      }
+      else {
+        $rootScope.hideFeatures = true;
       }
     }); 
 
