@@ -25,15 +25,6 @@ angular.module('pairToLearnApp')
       );
     })(jQuery);
 
-    $rootScope.logout = function() {
-      $rootScope.hideOutProg = false;
-      $window.sessionStorage.clear();
-      $timeout(function(){
-        $rootScope.hideOutProg = true;
-        $location.url("/home");
-      }, 1500);
-    };
-    
     $rootScope.$on("$routeChangeSuccess", function(event) {
       if ($window.sessionStorage.token) {
          var parseJwt = function(token) {
@@ -45,6 +36,7 @@ angular.module('pairToLearnApp')
         $rootScope.decodedToken = decodedToken;
         $rootScope.isLoggedIn = true;
       }
+    
       else {
         $rootScope.isLoggedIn = false;
       }
@@ -58,6 +50,15 @@ angular.module('pairToLearnApp')
       }
     }); 
 
+    $rootScope.logout = function() {
+      $rootScope.hideOutProg = false;
+      $window.sessionStorage.clear();
+      $timeout(function(){
+        $rootScope.hideOutProg = true;
+         Materialize.toast('You are signed out!', 4000);
+        $location.url("/home");
+      }, 1500);
+    };
     $scope.editProfile = function() {
       UserService.update($scope.decodedToken.user._id, $scope.decodedToken.user).then(function(res) {
         console.log("profile updated");
