@@ -31,7 +31,8 @@ module.exports = function(app, passport) {
 
   //Route to get all users in the db.
   router.route('/users')
-    .get(ctrl.findAll);
+    .get(ctrl.findAll)
+    .post(ctrl.getImage, ctrl.editImage)
 
   router.route('/users/:id')
     .get(ctrl.findOne)

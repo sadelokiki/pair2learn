@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pairToLearnApp')
-  .controller('UserCtrl', ['$rootScope', '$scope', '$location', 'UserService', function($rootScope, UserService, $scope, $location) {
+  .controller('UserCtrl', ['$rootScope', '$scope', '$location', 'UserService','Upload', function($rootScope, UserService, $scope, $location,Upload) {
    
     (function($){
       $(function(){
@@ -13,4 +13,4 @@ angular.module('pairToLearnApp')
       });
     })(jQuery);
 
-  }]);
+    var decodedToken = $rootScope.decodedToken;
