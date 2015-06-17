@@ -23,6 +23,13 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
           requiresLogin: true
         }
       }) 
+      .when('/user/:id/profile', {
+        templateUrl: 'app/views/profile.view.html',
+        controller: 'UserCtrl',
+        data: {
+          requiresLogin: true
+        }
+      }) 
       .when('/php/experts', {
         templateUrl: 'app/views/Expertpage.view.html',
         controller: 'HomeCtrl'
@@ -35,9 +42,12 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
         templateUrl: 'app/views/signup.view.html',
         controller: 'SignCtrl'
       })
-      .when('/edit/user', {
+      .when('/edit/user/:id', {
         templateUrl:'app/views/Editprofile.view.html',
-        controller: 'UserCtrl'
+        controller: 'UserCtrl',
+        data: {
+          requiresLogin: true
+        }
       })
       .otherwise({
         redirectTo: '/home'
