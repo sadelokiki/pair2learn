@@ -1,13 +1,7 @@
 'use strict';
 
-<<<<<<< HEAD
-var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
-  app.config(['$routeProvider', '$httpProvider', '$locationProvider', 
-    function($routeProvider,  $httpProvider, $locationProvider){
-=======
 var app = angular.module('pairToLearnApp',['ngRoute','ngMessages', 'ngFileUpload']);
   app.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider,  $httpProvider, $locationProvider){
->>>>>>> Image upload
 
     $routeProvider
       .when('/home', {
