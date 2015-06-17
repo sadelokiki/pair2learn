@@ -1,6 +1,5 @@
 <div id="slide-out" class="side-nav fixed">
-    <span class="quickAccess">Quick Access</strong></span>
-
+  <span class="quickAccess">Quick Access</strong></span>
   <ul class="collapsible" data-collapsible="accordion">
     <li>
       <div class="collapsible-header"><a href="#!">View all crafts</a></div>
@@ -8,8 +7,12 @@
     <div class="divider"></div>
     <li>
       <div class="collapsible-header"><a>My crafts</a></div>
-      <div class="collapsible-body"><p><a href="#">Completed crafts</a></p></div>
-      <div class="collapsible-body"><p><a href="#">Ongoing crafts</a></p></div>
+      <div class="collapsible-body">
+        <p><a href="#">Completed crafts</a></p>
+      </div>
+      <div class="collapsible-body">
+        <p><a href="#">Ongoing crafts</a></p>
+      </div>
     </li>
     <div class="divider"></div>
     <li>
@@ -30,21 +33,53 @@
     <div class="divider"></div>
   </ul>
 </div>
-
 <div class="parallax-container valign-wrapper" style="min-height: 200px !important;padding-top: 2em !important;">
   <div class="section no-pad-bot">
     <div class="row center container">
-       <h4 class="col s12 l10 light offset-l2">
-          Ochu Kingsley Chigozie.
+      <h4 class="col s12 l10 light offset-l2">
+         {{decodedToken.user.firstname}}&nbsp;{{decodedToken.user.lastname}}
         </h4>
-        <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="assets/images/images.jpeg">
-      </div>
     </div>
-</div>
+  </div>
   <div class="parallax"><img src="assets/images/joshdrewpairing.jpg" alt="Unsplashed background img 2"></div>
 </div>
-
-<div class="row container offset-custom">
-
-</div>
+<form='profileForm' enctype="multipart/form-data">
+  <div class="row container offset-custom">
+    <div class="col l4 s12 center">
+      <a ng-href="#/edit/user/{{decodedToken.user._id}}" class="secondary-content"><i class="mdi-action-grade"></i></a>
+      <img width="250" ng-hide="decodedToken.user.picture" ng-src="assets/images/photo.jpg" alt="" class="  circle responsive-img">
+      <img width="250" ng-show="decodedToken.user.picture" ng-src="{{decodedToken.user.picture}}" alt="" class=" circle responsive-img">
+      <label>Upload your profile picture. It can be a sample of your work</label>
+      <div>
+        <input type="file" ngf-select="true" ng-model="image" ngf-change="fileSelected($files, $event)" />
+      </div>
+      <a ng-click="addProfilePic(image)" id="submitimage" class="btn-large waves-effect waves-light" ng-controller="UserCtrl">Submit {{doStuff}}</a>
+    </div>
+    <div class="col l5 s12 offset-l1">
+      <ul class="collection">
+        <li class="collection-item avatar">
+          <i class="mdi-action-account-circle circle green"></i>
+          <span class="title">First Name:</span>
+          <p>
+            {{decodedToken.user.firstname}}
+          </p>
+        </li>
+        <li class="collection-item avatar">
+          <i class="mdi-action-account-circle circle green"></i>
+          <span class="title">Last Name:</span>
+          <p>
+            {{decodedToken.user.lastname}}
+          </p>
+        </li>
+        <li class="collection-item avatar">
+          <i class="mdi-communication-call circle red"></i>
+          <span class="title">Phone:</span>
+          <p>
+            {{decodedToken.user.phonenumber}}
+          </p>
+        </li>
+      </ul>
+      <a ng-href="#/edit/user/{{decodedToken.user._id}}" id="download-button" class="btn-large waves-effect waves-light">Edit Profile</a>
+    </div>
+  </div>
+  </form>
