@@ -351,3 +351,16 @@ div[ng-message] {
   margin: 0 0 0 4rem;
   padding: .2rem;
 }
+
+.profile-pic {
+  margin: 0 auto;
+}
+
+.collection {
+  border: none;
+  border-left: 2px solid #e0e0e0;
+}
+
+.collection .collection-item {
+   border-bottom: none
+}

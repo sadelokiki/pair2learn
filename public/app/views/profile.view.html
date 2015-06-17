@@ -35,7 +35,7 @@
   <div class="section no-pad-bot">
     <div class="row center container">
        <h4 class="col s12 l10 light offset-l2">
-          Ochu Kingsley Chigozie.
+         {{decodedToken.user.firstname}}&nbsp;{{decodedToken.user.lastname}}
         </h4>
     </div>
   </div>
@@ -43,5 +43,35 @@
 </div>
 
 <div class="row container offset-custom">
-
+  <div class="col l4 s12 center">
+    <a ng-href="#/edit/user/{{decodedToken.user._id}}" class="secondary-content"><i class="mdi-action-grade"></i></a>     
+    <img  width="250" ng-hide="decodedToken.user.picture" ng-src="assets/images/placeholder-avatar.png" alt="" class="  circle responsive-img">
+    <img width="250" ng-show="decodedToken.user.picture" ng-src="{{decodedToken.user.picture}}" alt="" class=" circle responsive-img">
+  </div>
+  <div class="col l5 s12 offset-l1">
+    <ul class="collection">
+      <li class="collection-item avatar">
+        <i class="mdi-action-account-circle circle green"></i>
+        <span class="title">First Name:</span>
+        <p>
+          {{decodedToken.user.firstname}}
+        </p>
+      </li>
+      <li class="collection-item avatar">
+        <i class="mdi-action-account-circle circle green"></i>
+        <span class="title">Last Name:</span>
+        <p>
+          {{decodedToken.user.lastname}}
+        </p>   
+      </li>
+      <li class="collection-item avatar">
+        <i class="mdi-communication-call circle red"></i>
+        <span class="title">Phone:</span>
+        <p>
+         {{decodedToken.user.phonenumber}}
+        </p>
+      </li>
+    </ul> 
+     <a ng-href="#/edit/user/{{decodedToken.user._id}}" id="download-button" class="btn-large waves-effect waves-light">Edit Profile</a      
+  </div>
 </div>
