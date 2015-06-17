@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
+var app = angular.module('pairToLearnApp',['ngRoute','ngMessages', 'ngFileUpload']);
   app.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider,  $httpProvider, $locationProvider){
 
     $routeProvider
