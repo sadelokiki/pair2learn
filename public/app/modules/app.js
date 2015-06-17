@@ -35,13 +35,9 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
         templateUrl: 'app/views/signup.view.html',
         controller: 'SignCtrl'
       })
-      .when('/logout', {
-        templateUrl:'app/views/home.view.html',
-        controller: 'UserCtrl'
-      })
       .when('/edit/user', {
         templateUrl:'app/views/Editprofile.view.html',
-        controller: 'NavCtrl'
+        controller: 'UserCtrl'
       })
       .otherwise({
         redirectTo: '/home'
@@ -56,7 +52,7 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
                 var querytoken = $location.search().token;
                 $location.search('token', null);
                 if(!$window.sessionStorage.token && querytoken){
-                  Materialize.toast('You are sigined in!', 4000);
+                  Materialize.toast('You are signed in!', 4000);
                   $window.sessionStorage.token = querytoken;
                 }
                 if ($window.sessionStorage.token || querytoken) {
