@@ -29,24 +29,16 @@ module.exports = function(app, passport) {
   router.route('/auth/facebook/callback')
     .get(ctrl.authCallBack('facebook'));
 
-
-  
   //Route to get all users in the db.
   router.route('/users')
-    .get(function(req, res) {
-      ctrl.findAll(req, res);
-    })
+    .get(ctrl.findAll);
 
   router.route('/users/:id')
-    .get(function(req, res) {
-      ctrl.findOne(req, res);
-    })
-    .put(ctrl.editProfile)
+    .get(ctrl.findOne)
+    .put(ctrl.editProfile);
   // End of custom route
 
   app.use('/', router);
-
-
 
   return router;
 };

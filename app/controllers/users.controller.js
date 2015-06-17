@@ -81,20 +81,20 @@ exports.editProfile = function(req, res){
     if(err) {
       res.send({ error: { code: 9000, message: 'user not found', error: err } });
     }
-    if(req.body.firstname) user.firstname = req.body.firstname;
-    if(req.body.lastname) user.lastname = req.body.lastname;
-    if(req.body.email) user.email = req.body.email;
-    if(req.body.phonenumber) user.phonenumber = req.body.phonenumber;
-    if(req.body.password) user.password = req.body.password;
+    user.firstname = req.body.firstname;
+    user.lastname = req.body.lastname;
+    user.email = req.body.email;
+    user.phonenumber = req.body.phonenumber;
+    user.password = req.body.password;
 
-    user.save(function(err, user) {
-      if(err) {
-        res.send({ error: { code: 9000, message: 'user not found', error: err } });
+    user.save(function (err, user){
+      if(err){
+        return res.status(400).json(err);
       }
-      res.send(user);
+      return res.status(200).json(user);
     });
   });
-}
+};
 
 
 
