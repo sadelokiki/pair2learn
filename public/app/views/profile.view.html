@@ -31,7 +31,7 @@
   </ul>
 </div>
 
-<div class="parallax-container valign-wrapper" style="min-height: 200px !important;padding-top: 2em !important;">
+<div class="parallax-container valign-wrapper" style="min-height: 100px !important;padding-top: 2em !important;">
   <div class="section no-pad-bot">
     <div class="row center container">
        <h4 class="col s12 l10 light offset-l2">
@@ -63,6 +63,13 @@
         <p>
           {{decodedToken.user.lastname}}
         </p>   
+      </li>
+      <li class="collection-item avatar">
+        <i class="mdi-content-mail circle red"></i>
+        <span class="title">Email:</span>
+        <p>
+         {{decodedToken.user.email}}
+        </p>
       </li>
       <li class="collection-item avatar">
         <i class="mdi-communication-call circle red"></i>
