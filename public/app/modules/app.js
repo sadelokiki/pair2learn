@@ -78,7 +78,7 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
       if(to.data && to.data.requiresLogin) {
         if(!($window.sessionStorage.token || $location.search().token)) {
           event.preventDefault();
-          $location.url('/login');
+          $location.url('/login');//redirect to login if user is not authenitcated
         }
       }
     }); 
