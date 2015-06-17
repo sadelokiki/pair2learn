@@ -46,7 +46,8 @@ angular.module('pairToLearnApp')
         }
       });
 
-      $scope.addProfilePic = function(profpic) {
+      $rootScope.addProfilePic = function(profpic) {
+        console.log(profpic)
         var localhost = "http://localhost:3000/users";
         // decodedToken.user.picture = decodedToken.user.picture[0];
         var upload = Upload.upload({
