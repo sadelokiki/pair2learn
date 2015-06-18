@@ -61,7 +61,6 @@ footer.page-footer {
     width: 18em;
 }
 
-
 .btn-custom a:hover {
   background-color: white !important;
   color: teal;
@@ -363,4 +362,19 @@ div[ng-message] {
 
 .collection .collection-item {
    border-bottom: none
+}
+
+.firepad {
+  width: 700px;
+  height: 450px !important;
+}
+
+/* Note: CodeMirror applies its own styles which can be customized in the same way.
+   To apply a background to the entire editor, we need to also apply it to CodeMirror. */
+.CodeMirror {
+  background-color: #f62;
+}
+
+.powered-by-firepad {
+  display: none !important;
 }
