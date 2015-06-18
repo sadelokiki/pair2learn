@@ -1,6 +1,6 @@
 "use strict";
 
-require("../../app/models/users.model");
+require("../../app/models/users.server.model");
 var mongoose = require("mongoose"),
     GoogleStrategy = require('passport-google-oauth').OAuth2Strategy,
     Users = mongoose.model('Users'),

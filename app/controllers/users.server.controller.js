@@ -1,6 +1,6 @@
 "use strict";
 
-require('../models/users.model.js');
+require('../models/users.server.model.js');
 var passport = require("passport"),
   formidable = require("formidable"),
   cloudinary = require("cloudinary"),

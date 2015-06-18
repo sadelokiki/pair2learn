@@ -2,7 +2,7 @@
 
 var express = require("express"),
     passport = require("passport"),
-    ctrl = require("../controllers/users.controller"),
+    ctrl = require("../controllers/users.server.controller"),
     router = express.Router();
 
 module.exports = function(app, passport) {

@@ -20,7 +20,7 @@ module.exports = function() {
   app.use(express.static('./public/'));
 
   require('./passport')(passport);
-  require("../app/routes/users.route")(app, passport);
+  require("../app/routes/users.server.route")(app, passport);
 
   return app;
 };
