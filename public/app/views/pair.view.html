@@ -47,24 +47,5 @@
 </div>
 
 <div class="row container offset-custom">
-<div id="firepad"></div>
-<div id="firepadcode"></div>
+  <div id="firepad"></div>
 </div>
-<script>
-  var firepadRef = new Firebase('https://pairtolearn.firebaseio.com/');
-  var codeMirror = CodeMirror(document.getElementById('firepad'), 
-      { 
-        lineWrapping: false 
-      });
-  var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror,
-      { 
-        richTextShortcuts: true,
-        richTextToolbar: true, 
-        userId: 'fdhhfd',
-        defaultText: 'Type Live text here'
-      });
-  firepad.on('ready', function() {
-  // Firepad is ready.
-
-  });
-</script>
