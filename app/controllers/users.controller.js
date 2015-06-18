@@ -104,21 +104,25 @@ exports.findAll = function(req, res) {
 // End of custom find methods
 
 exports.editImage = function(req, res) {
-var user_id = req.body._id;
-var new_user = req.body;
-Users.update({_id : user_id},{picture: req.body.picture},function(err, user) {
-  if (err) {
-    console.log(1, err);
-    return res.status(400).json(err);
-  }
-  console.log(2, user);
-  res.status(200).json({
-    token: generateJWT(user),
-    user: new_user
+  var user_id = req.body._id;
+  var new_user = req.body;
+  Users.update({
+    _id: user_id
+  }, {
+    picture: req.body.picture
+  }, function(err, user) {
+    if (err) {
+      console.log(1, err);
+      return res.status(400).json(err);
+    }
+    console.log(2, user);
+    res.status(200).json({
+      token: generateJWT(user),
+      user: new_user
+    });
   });
-});
+};
 
-}
 exports.editProfile = function(req, res) {
   var user_id = req.params.id;
   Users.findById({
@@ -144,9 +148,10 @@ exports.editProfile = function(req, res) {
         return res.status(400).json(err);
       }
       return res.status(200).json({
+
         token: generateJWT(user),
         user: user
-      });
+      }); 
     });
   });
 };
