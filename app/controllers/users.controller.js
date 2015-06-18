@@ -2,9 +2,9 @@
 
 require('../models/users.model.js');
 var passport = require("passport"),
-  jwt = require('jsonwebtoken'),
   formidable = require("formidable"),
   cloudinary = require("cloudinary"),
+  jwt = require('jsonwebtoken'),
   mongoose = require("mongoose"),
   Users = mongoose.model('Users'),
   secret = require('../../config/config');
