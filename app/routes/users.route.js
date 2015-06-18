@@ -1,9 +1,9 @@
 "use strict";
 
 var express = require("express"),
-    passport = require("passport"),
-    ctrl = require("../controllers/users.controller"),
-    router = express.Router();
+  passport = require("passport"),
+  ctrl = require("../controllers/users.controller"),
+  router = express.Router();
 
 module.exports = function(app, passport) {
   //local
@@ -15,7 +15,7 @@ module.exports = function(app, passport) {
   //google
   router.route('/auth/google')
     .get(passport.authenticate('google', {
-      scope : [
+      scope: [
         'https://www.googleapis.com/auth/userinfo.profile',
         'https://www.googleapis.com/auth/userinfo.email'
       ]

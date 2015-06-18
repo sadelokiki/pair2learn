@@ -1,8 +1,8 @@
 "use strict";
 
 var mongoose = require("mongoose"),
-    bcrypt = require("bcrypt-nodejs"),
-    Schema = mongoose.Schema;    
+  bcrypt = require("bcrypt-nodejs"),
+  Schema = mongoose.Schema;
 
 var userSchema = new Schema({
   firstname: {
@@ -38,8 +38,3 @@ userSchema.methods.comparePassword = function(password) {
 };
 
 mongoose.model('Users', userSchema);
-
-
-
-
-

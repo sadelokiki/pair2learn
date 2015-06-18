@@ -151,7 +151,7 @@ exports.editProfile = function(req, res) {
 
         token: generateJWT(user),
         user: user
-      }); 
+      });
     });
   });
 };
