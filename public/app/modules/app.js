@@ -50,6 +50,13 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages']);
           requiresLogin: true
         }
       })
+      .when('/:userId/pair/:craft', {
+        templateUrl:'app/views/pair.view.html',
+        controller: 'PairCtrl',
+        data: {
+          requiresLogin: true
+        }
+      })
       .otherwise({
         redirectTo: '/home'
       });
