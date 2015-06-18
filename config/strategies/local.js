@@ -1,7 +1,7 @@
 "use strict";
 
 
-require("../../app/models/users.model");
+require("../../app/models/users.server.model");
 var mongoose = require("mongoose"),
     LocalStrategy = require("passport-local").Strategy,
     Users = mongoose.model('Users');
