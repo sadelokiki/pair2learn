@@ -397,7 +397,7 @@ div[ng-message] {
   border: 0px solid black;
 }
 
-input#icon_prefix #description{
+#icon_prefix {
   color: black;
 }
 

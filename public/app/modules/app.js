@@ -18,7 +18,7 @@ var app = angular.module('pairToLearnApp',['ngRoute','ngMessages', 'ngFileUpload
       })
       .when('/user/:id', {
         templateUrl: 'app/views/Userpage.view.html',
-        controller: 'UserCtrl',
+        controller: 'CraftCtrl',
         data: {
           requiresLogin: true
         }

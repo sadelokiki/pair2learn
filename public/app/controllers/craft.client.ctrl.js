@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module('pairToLearnApp')
-  .controller('CraftCtrl', ['CraftService', '$scope', '$location' ,function(CraftService, $scope,$location) {
+  .controller('CraftCtrl', ['CraftService', '$scope', '$location', '$timeout', function(CraftService, $scope, $location, $timeout) {
     (function($) {
       $(function() {
         $('.parallax').parallax();
@@ -16,16 +16,15 @@ angular.module('pairToLearnApp')
       });
     };
 
-    $scope.allCrafts = []
-    CraftService.get(function(success) {
-      console.log(success);
-      $timeout(function() {
-        $scope.allCrafts = success;
+    $scope.viewCrafts = function() {
+      CraftService.getAll().then(function(res) {
+        console.log(res);
+        $scope.allCrafts = res.data;
         console.log($scope.allCrafts);
         return $scope.allCrafts;
-      }, 500);
-    }, function(err) {
-      return err;
-    });
+      });
+    };
+
     
+
   }])
