@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('pairToLearnApp')
-  .controller('NavCtrl', ['UserService', '$rootScope', '$scope', '$location', '$window', '$timeout','Upload',
-    function(UserService, $rootScope, $scope, $location, $window, $timeout,Upload) {
+  .controller('NavCtrl', ['UserService', '$rootScope', '$scope', '$location', '$window', '$timeout', 'Upload',
+    function(UserService, $rootScope, $scope, $location, $window, $timeout, Upload) {
       (function($) {
         $(function() {
           $('.dropdown-button')
@@ -59,8 +59,8 @@ angular.module('pairToLearnApp')
           .success(function(data) {
             // $scope.showProfile();
             console.log(data);
-             $window.sessionStorage.token = data.token;
-             $location.url("/user/" + data.user._id + '/profile');
+            $window.sessionStorage.token = data.token;
+            $location.url("/user/" + data.user._id + '/profile');
           });
 
       };

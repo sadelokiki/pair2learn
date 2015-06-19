@@ -18,7 +18,8 @@ p {
 .button-collapse {
   color: #D3D3D3;
 }
-.parallax{
+
+.parallax {
   /*background-image: url(assets/images/landing_bg1.jpg);*/
 }
 
@@ -26,7 +27,7 @@ p {
   min-height: 670px;
   line-height: 0;
   height: auto;
-  color: rgba(255,255,255,.9);
+  color: rgba(255, 255, 255, .9);
   background-color: rgba(0, 0, 0, 0.9);
   padding-top: 10em
 }
@@ -35,7 +36,7 @@ p {
   width: 100%;
 }
 
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
   .parallax-container .section {
     position: absolute;
     top: 40%;
@@ -58,7 +59,7 @@ footer.page-footer {
   margin-top: 3em;
   border: 2px solid;
   border-radius: .5em;
-    width: 18em;
+  width: 18em;
 }
 
 .btn-custom a:hover {
@@ -71,7 +72,7 @@ footer.page-footer {
   background-color: rgba(32, 134, 199, 1) !important;
   border: 2px solid;
   border-radius: .5em;
-    width: 18em;
+  width: 18em;
 }
 
 .btn-subscribe a:hover {
@@ -83,7 +84,7 @@ footer.page-footer {
 .btn-custom2 a {
   margin-top: 3em;
   border-radius: 1em;
-    width: 28em;
+  width: 28em;
 }
 
 .btn-custom2 a:hover {
@@ -114,7 +115,7 @@ footer.page-footer {
 }
 
 .tabs .indicator {
-  background-color:  rgb(219, 219, 219) !important;
+  background-color: rgb(219, 219, 219) !important;
   height: 4px !important;
 }
 
@@ -209,7 +210,6 @@ footer.page-footer {
   color: white;
 }
 
-
 .shade {
   background-color: rgba(58, 56, 56, 0.86) !important;
   padding: 3em 1em 1em 1em;
@@ -291,42 +291,37 @@ div[ng-message] {
   padding: .5rem .5rem;
 }
 
-@media only screen and (max-width : 600px) {
+@media only screen and (max-width: 600px) {
   #index-banner .section {
     top: 0;
   }
-
   .SigninSignup {
     width: 98% !important;
     max-height: 90% !important;
   }
-
   .shade form {
     margin: 0;
   }
-
   .btn-facebook {
     width: 100%;
   }
-
   .btn-facebook:hover {
     width: 100%;
   }
-
   .btn-google {
     width: 100%;
   }
-
   .btn-google:hover {
     width: 100%;
   }
 }
 
-@media only screen and (max-width : 992px) {
-  header, main, footer {
+@media only screen and (max-width: 992px) {
+  header,
+  main,
+  footer {
     padding-left: 0;
   }
-
   .offset-custom {
     margin-left: auto !important;
   }
@@ -336,7 +331,6 @@ div[ng-message] {
   #toast-container {
     top: 15%;
   }
-
   .toast {
     background-color: rgb(48, 153, 25);
     width: 213px;
@@ -361,7 +355,7 @@ div[ng-message] {
 }
 
 .collection .collection-item {
-   border-bottom: none
+  border-bottom: none
 }
 
 .firepad {
@@ -376,4 +370,45 @@ div[ng-message] {
 
 .powered-by-firepad {
   display: none !important;
+}
+
+.adminpage {
+  background-color: white;
+  background-size: cover !important;
+  width: 53% !important;
+  max-height: 90% !important;
+  margin: 10px auto;
+  border-radius: 20px;
+}
+
+.newCraft {
+  color: black;
+  text-align: center !important;
+}
+
+.btn-createCraft {
+  background-color: #3B5998;
+  height: 3em;
+  width: 26em;
+  padding: 0.4em 0.2em;
+  vertical-align: middle;
+  color: white;
+  border-radius: .5em;
+  border: 0px solid black;
+}
+
+input#icon_prefix #description{
+  color: black;
+}
+
+.ng-touched{
+  color: black;
+}
+
+.input-field .prefix {
+  color: black;
+}
+
+.no-marign-bottom {
+  margin-bottom: 17px !important;
 }

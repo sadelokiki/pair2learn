@@ -2,8 +2,8 @@
 
 angular.module('pairToLearnApp')
   .controller('HomeCtrl', ['$rootScope', '$scope', '$location', function($rootScope, $scope, $location) {
-    (function($){
-      $(function(){
+    (function($) {
+      $(function() {
         $('.parallax').parallax();
         $('.scrollspy').scrollSpy();
       });

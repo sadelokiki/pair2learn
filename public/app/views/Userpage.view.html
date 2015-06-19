@@ -46,22 +46,22 @@
 </div>
 
 <div class="row container offset-custom">
-  <div class="col s12 l4">
-    <div class="card">
+  <div class="col s12 l4" ng-repeat="item in allCrafts">
+    <div class="card" >
       <div class="card-image waves-effect waves-block waves-light">
         <img class="activator" src="assets/images/volley_ball.jpg">
       </div>
       <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Play volleyball<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#/php/experts">Start learning now!</a></p>
+        <span class="card-title activator grey-text text-darken-4">item.craft.title<i class="mdi-navigation-more-vert right"></i></span>
+        <p><a href="#/php/experts">item.craft.description</a></p>
       </div>
       <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">learn PHP<i class="mdi-navigation-close right"></i></span>
-        <p>Here is some more information about this product that is only revealed once clicked on.</p>
+        <span class="card-title grey-text text-darken-4">item.craft.title<i class="mdi-navigation-close right"></i></span>
+        <p>item.craft.description</p>
       </div>
     </div>
   </div>
-  <div class="col s12 l4">
+  <!-- <div class="col s12 l4">
     <div class="card">
       <div class="card-image waves-effect waves-block waves-light">
         <img class="activator" src="assets/images/learn_php.jpg">
@@ -75,8 +75,8 @@
         <p>Here is some more information about this product that is only revealed once clicked on.</p>
       </div>
     </div>
-  </div>
-    <div class="col s12 l4">
+  </div> -->
+   <!--  <div class="col s12 l4">
     <div class="card">
       <div class="card-image waves-effect waves-block waves-light">
         <img class="activator" src="assets/images/learn_swimming.jpg">
@@ -91,9 +91,9 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
-<div class="row container offset-custom">
+<!-- div class="row container offset-custom">
   <div class="col s12 l4">
     <div class="card">
       <div class="card-image waves-effect waves-block waves-light">
@@ -108,8 +108,8 @@
         <p>Here is some more information about this product that is only revealed once clicked on.</p>
       </div>
     </div>
-  </div>
-  <div class="col s12 l4">
+  </div> -->
+ <!--  <div class="col s12 l4">
     <div class="card">
       <div class="card-image waves-effect waves-block waves-light">
         <img class="activator" src="assets/images/learn_php.jpg">
@@ -123,20 +123,7 @@
         <p>Here is some more information about this product that is only revealed once clicked on.</p>
       </div>
     </div>
-  </div>
-    <div class="col s12 l4">
-    <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="assets/images/learn_swimming.jpg">
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Learn how to swim<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#/php/experts">Start learning now!</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Learn how to swim<i class="mdi-navigation-close right"></i></span>
-        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-      </div>
-    </div>
-  </div>
+  </div> -->
+    <!--  -->
 </div>
+
