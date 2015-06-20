@@ -13,14 +13,19 @@ angular.module('pairToLearnApp')
       if(!craft) {
         return;
       }
-      var user_id = $rootScope.decodedToken.user._id;
-      craft.createdBy = user_id;
+      if(!$scope.craft.picture){
+        return;
+      }
+      var user = $rootScope.decodedToken.user.firstname + " " + $rootScope.decodedToken.user.lastname;
+      craft.createdBy = user;
       $rootScope.showProg = true;
       CraftService.createCraft(craft.picture, craft).then(function(data) {
         Materialize.toast('Craft created successfully!', 4000);
         console.log(data);
         $rootScope.showProg = false;
         $location.url("/user/" + data._id);
+      }, function(err){
+        $rootScope.showProg = false;
       });
     };
 
