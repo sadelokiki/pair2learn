@@ -37,23 +37,21 @@
     <div class="divider"></div>
   </ul>
 </div>
-
-
 <div class="parallax-container valign-wrapper" style="min-height: 100px !important;padding-top: 2em !important;">
   <div class="section no-pad-bot">
     <div class="row center container">
-       <h4 class="col s12 l10 light offset-l2">
+      <h4 class="col s12 l10 light offset-l2">
          {{decodedToken.user.firstname}}&nbsp;{{decodedToken.user.lastname}}
         </h4>
     </div>
-</div>
+  </div>
   <div class="parallax"><img src="assets/images/joshdrewpairing.jpg" alt="Unsplashed background img 2"></div>
 </div>
 <form='profileForm' enctype="multipart/form-data">
   <div class="row container offset-custom">
     <div class="col l4 s12 center">
       <a ng-href="#/edit/user/{{decodedToken.user._id}}" class="secondary-content"><i class="mdi-action-grade"></i></a>
-      <img width="250" ng-hide="decodedToken.user.picture" ng-src="assets/images/photo.jpg" alt="" class="  circle responsive-img">
+      <img width="250" ng-hide="decodedToken.user.picture" ng-src="assets/images/placeholder-avatar.png" alt="" class="  circle responsive-img">
       <img width="250" ng-show="decodedToken.user.picture" ng-src="{{decodedToken.user.picture}}" alt="" class=" circle responsive-img">
       <label>Upload your profile picture. It can be a sample of your work</label>
       <div>
@@ -89,4 +87,3 @@
     </div>
   </div>
   </form>
-

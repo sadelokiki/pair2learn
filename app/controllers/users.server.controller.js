@@ -37,9 +37,9 @@ exports.getImage = function(req, res, next) {
     cloudinary.uploader.upload(files.file.path, function(result) {
       req.body.picture = result.url;
       next();
-    })
-  })
-}
+    });
+  });
+};
 
 exports.authCallBack = function(strategy) {
   return function(req, res, next) {
@@ -142,6 +142,7 @@ exports.editProfile = function(req, res) {
     newuser.lastname = req.body.lastname;
     newuser.email = req.body.email;
     newuser.phonenumber = req.body.phonenumber;
+    newuser.picture = req.body.picture
     newuser.password = req.body.password;
     newuser.save(function(err, user) {
       if (err) {

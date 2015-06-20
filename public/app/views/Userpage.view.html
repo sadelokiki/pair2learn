@@ -1,6 +1,5 @@
 <div id="slide-out" class="side-nav fixed">
-    <span class="quickAccess">Quick Access</strong></span>
-
+  <span class="quickAccess">Quick Access</strong></span>
   <ul class="collapsible" data-collapsible="accordion">
     <li>
       <div class="collapsible-header"><a href="#!">View all crafts</a></div>
@@ -8,8 +7,12 @@
     <div class="divider"></div>
     <li>
       <div class="collapsible-header"><a>My crafts</a></div>
-      <div class="collapsible-body"><p><a href="#">Completed crafts</a></p></div>
-      <div class="collapsible-body"><p><a href="#">Ongoing crafts</a></p></div>
+      <div class="collapsible-body">
+        <p><a href="#">Completed crafts</a></p>
+      </div>
+      <div class="collapsible-body">
+        <p><a href="#">Ongoing crafts</a></p>
+      </div>
     </li>
     <div class="divider"></div>
     <li>
@@ -37,92 +40,28 @@
 <div class="parallax-container valign-wrapper" style="min-height: 200px !important;padding-top: 2em !important;">
   <div class="section no-pad-bot">
     <div class="row center container">
-       <h5 class="col s12 l10 light offset-l2">
+      <h5 class="col s12 l10 light offset-l2">
           Learn anything...
-        </h5>
+        </h5> 
     </div>
   </div>
   <div class="parallax"><img src="assets/images/joshdrewpairing.jpg" alt="Unsplashed background img 2"></div>
 </div>
-
 <div class="row container offset-custom">
   <div class="col s12 l4" ng-repeat="item in allCrafts">
-    <div class="card" >
+    <div class="card">
       <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="assets/images/volley_ball.jpg">
+        <img class="activator" src="{{item.picture}}">
       </div>
       <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">item.craft.title<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#/php/experts">item.craft.description</a></p>
+        <span class="card-title activator grey-text text-darken-4">{{item.title}}<i class="mdi-navigation-more-vert right"></i></span>
+        <p><a href="#/php/experts">{{item.description}}</a></p>
       </div>
       <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">item.craft.title<i class="mdi-navigation-close right"></i></span>
-        <p>item.craft.description</p>
+        <span class="card-title grey-text text-darken-4">{{item.craft.title}}<i class="mdi-navigation-close right"></i></span>
+        <p>{{item.craft.description}}</p>
       </div>
     </div>
   </div>
-  <!-- <div class="col s12 l4">
-    <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="assets/images/learn_php.jpg">
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">learn PHP<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#/php/experts">Start learning now!</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">learn PHP<i class="mdi-navigation-close right"></i></span>
-        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-      </div>
-    </div>
-  </div> -->
-   <!--  <div class="col s12 l4">
-    <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="assets/images/learn_swimming.jpg">
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Learn how to swim<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#/php/experts">Start learning now!</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Learn how to swim<i class="mdi-navigation-close right"></i></span>
-        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- div class="row container offset-custom">
-  <div class="col s12 l4">
-    <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="assets/images/volley_ball.jpg">
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Learn to make moin-moin<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#/php/experts">Start learning now!</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Learn to make moin-moin<i class="mdi-navigation-close right"></i></span>
-        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-      </div>
-    </div>
-  </div> -->
- <!--  <div class="col s12 l4">
-    <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="assets/images/learn_php.jpg">
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">learn makeup<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#/php/experts">Start learning now!</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">learn PHP<i class="mdi-navigation-close right"></i></span>
-        <p>Here is some more information about this product that is only revealed once clicked on.</p>
-      </div>
-    </div>
-  </div> -->
-    <!--  -->
+  
 </div>

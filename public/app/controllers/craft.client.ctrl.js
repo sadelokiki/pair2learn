@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module('pairToLearnApp')
-  .controller('CraftCtrl', ['CraftService', '$scope', '$location', '$timeout', function(CraftService, $scope, $location, $timeout) {
+  .controller('CraftCtrl', ['CraftService', '$scope', '$location', '$timeout', '$rootScope', 'Upload','$window', function(CraftService, $scope, $location, $timeout, $rootScope, Upload, $window) {    
     (function($) {
       $(function() {
         $('.parallax').parallax();
@@ -9,22 +9,27 @@ angular.module('pairToLearnApp')
       });
     })(jQuery);
 
-    $scope.createCraft = function() {
-      CraftService.post($scope.craft).then(function(res) {
-        Materialize.toast('Craft successfully added!', 2000);
-        $location.url("/home");
-      });
-    };
+    $scope.createCraft = function(craft) {
+      var user_id = $rootScope.decodedToken.user._id
+      craft.createdBy = user_id;
+      var localhost = "http://localhost:3000/crafts";
+      var upload = Upload.upload({
+          url: localhost,
+          method: "POST",
+          file: craft.picture,
+          fields: craft
+        })
+        .success(function(data) {
+          console.log(data);
+          $location.url("/user/" + data._id);
+        });
+      }
 
-    $scope.viewCrafts = function() {
-      CraftService.getAll().then(function(res) {
-        console.log(res);
-        $scope.allCrafts = res.data;
-        console.log($scope.allCrafts);
-        return $scope.allCrafts;
-      });
-    };
+    CraftService.getAll().then(function(data) {
+      console.log(data);
+      $scope.allCrafts = data;
+      console.log($scope.allCrafts);
+      return $scope.allCrafts;
+    });
 
-    
-
-  }])
+}])

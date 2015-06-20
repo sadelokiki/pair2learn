@@ -6,11 +6,13 @@ var express = require("express"),
 
 module.exports = function(app) {
   router.route('/crafts')
-    .post(ctrl.postCraft)
     .get(ctrl.findCrafts)
+    .post(ctrl.postImage, ctrl.postCraft)
 
   router.route('/crafts/:id')
     .get(ctrl.findOneCraft)
+    .put(ctrl.editCraft);
+
 
   app.use('/', router);
   return router;

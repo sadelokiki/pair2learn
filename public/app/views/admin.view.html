@@ -18,14 +18,17 @@
                 <i class="medium mdi-action-description prefix"></i>
                 <input name="description" id="icon_prefix" type="text" ng-model="craft.description" class="validate">
                 <label for="icon_prefix">Description</label>
-              </div> 
+              </div>
             </div>
             <div>
-              <input type="file" ngf-select="true" ng-model="image" ngf-change="fileSelected($files, $event)" />
+              <input type="file" ngf-select="true" accept="image/*" ng-model="craft.picture" ngf-change="fileSelected($files, $event)" />
+            </div>
+            <div class= "upload">
+            <label>Upload a picture of this craft</label>
             </div>
             <div class="row center no-marign-bottom">
               <div class="input-field col s12">
-                <input id="create" type="submit" ng-disabled="adminForm.$invalid" ng-click="createCraft()" value="Create" class="waves-effect waves-light btn-createCraft">
+                <input id="create" type="submit" ng-disabled="adminForm.$invalid" ng-click="createCraft(craft)" value="Create" class="waves-effect waves-light btn-createCraft">
               </div>
             </div>
         </div>

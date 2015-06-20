@@ -412,3 +412,11 @@ div[ng-message] {
 .no-marign-bottom {
   margin-bottom: 17px !important;
 }
+
+.ng-dirty {
+  color: black;
+}
+
+.upload {
+  padding-top: 20px;
+}

@@ -59,7 +59,7 @@ angular.module('pairToLearnApp')
           .success(function(data) {
             // $scope.showProfile();
             console.log(data);
-            $window.sessionStorage.token = data.token;
+            // $window.sessionStorage.token = data.token;
             $location.url("/user/" + data.user._id + '/profile');
           });
 

@@ -2,7 +2,29 @@
 
 require('../models/crafts.server.model.js');
 var mongoose = require("mongoose"),
+  formidable = require("formidable"),
+  cloudinary = require("cloudinary"),
   Crafts = mongoose.model('Crafts');
+
+cloudinary.config({
+  cloud_name: 'dtpf1mle2',
+  api_key: '548953239178178',
+  api_secret: 'JLqmFBkh_rDjvSNJs8rBDm4MSbI'
+});
+
+exports.postImage = function(req, res, next) {
+  var forms = new formidable.IncomingForm();
+  forms.parse(req, function(err, fields, files) {
+    req.body = fields;
+    cloudinary.uploader.upload(files.file.path, function(result) {
+      req.body.picture = result.url;
+      next();
+    }, {
+      width: 300,
+      height: 300
+    });
+  });
+};
 
 exports.postCraft = function(req, res) {
   Crafts.create(req.body, function(err, craft) {
@@ -33,3 +55,32 @@ exports.findOneCraft = function(req, res) {
     res.send(craft);
   });
 };
+
+exports.editCraft = function(req, res) {
+  var craft_id = req.params.id;
+  Crafts.findById({
+    _id: craft_id
+  }, function(err, craft) {
+    if (err) {
+      res.send({
+        error: {
+          code: 9000,
+          message: 'user not found',
+          error: err
+        }
+      });
+    }
+    var newcraft = new Crafts();
+    newcraft.title = req.body.title;
+    newcraft.desription = req.body.desription;
+    newcraft.picture = req.body.picture;
+    newcraft.save(function(err, craft) {
+      if (err) {
+        return res.status(400).json(err)
+      }
+      return res.status(200).json({
+        craft: craft
+      });
+    });
+  });
+}
