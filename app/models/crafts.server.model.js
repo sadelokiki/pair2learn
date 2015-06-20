@@ -12,6 +12,9 @@ var craftSchema = new Schema({
     type: String,
     required: "Please, enter the description"
   },
+  category: {
+    type: String
+  },
   picture: {
     type: String
   },
