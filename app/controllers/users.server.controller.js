@@ -37,6 +37,10 @@ exports.getImage = function(req, res, next) {
     cloudinary.uploader.upload(files.file.path, function(result) {
       req.body.picture = result.url;
       next();
+    },
+    {
+      width: 300,
+      height: 300
     });
   });
 };

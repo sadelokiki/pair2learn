@@ -60,6 +60,9 @@ angular.module('pairToLearnApp')
           console.log(data);
           $rootScope.showProg = false;
           $route.reload();
+        }, 
+        function(err) {
+          $rootScope.showProg = false;
         });
       };
 
