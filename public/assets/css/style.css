@@ -410,8 +410,12 @@ div[ng-message] {
   color: black;
 }
 
+.input-field {
+  padding-top: 1em !important; 
+}
+
 .no-marign-bottom {
-  margin-bottom: 17px !important;
+  margin-bottom: 10px !important;
 }
 
 .ng-dirty {
@@ -419,5 +423,9 @@ div[ng-message] {
 }
 
 .upload {
-  padding-top: 20px;
+  padding-top: 10px;
+}
+
+textarea {
+  font: initial !important;
 }
