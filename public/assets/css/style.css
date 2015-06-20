@@ -196,8 +196,8 @@ footer.page-footer {
 
 .SigninSignup input {
   color: white;
-  padding-top: 1em;
-  height: 2.5em;
+  padding-top: .5em;
+  height: 1.5em;
   font-size: .9em;
 }
 
@@ -251,7 +251,7 @@ footer.page-footer {
 
 .offset-custom {
   margin-left: 20em !important;
-  margin-top: 1em;
+  margin-top: 3em;
   /*padding: 0px .5em !important;*/
 }
 
@@ -269,6 +269,7 @@ div[ng-message] {
 
 .signup {
   padding: 0em 0em !important;
+  height: 3em !important;
 }
 
 .nav-user {
@@ -419,10 +420,6 @@ div[ng-message] {
 .input-field {
   padding-top: 1em !important; 
   margin-top: 0em !important;
-}
-
-.no-marign-bottom {
-  margin-bottom: 10px !important;
 }
 
 .ng-dirty {
