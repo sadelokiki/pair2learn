@@ -57,17 +57,6 @@ exports.authCallBack = function(strategy) {
   };
 };
 
-exports.findUser = function(req, res) {
-  Users.find({
-    firstname: req.params.firstname
-  }, function(err, user) {
-    if (err) {
-      return res.json(err);
-    }
-    return res.json(user);
-  });
-};
-
 /**
  * @desc new methods for '/users' route
  * findOne { function }
@@ -76,14 +65,14 @@ exports.findUser = function(req, res) {
 
 exports.findOne = function(req, res) {
   var user_id = req.params.id;
-  Users.find({
+  Users.findOne(req, res)({
     _id: user_id
   }, function(err, user) {
     if (err) {
       res.send(err);
     }
     res.send(user);
-  })
+  });
 };
 
 exports.findAll = function(req, res) {
@@ -100,7 +89,6 @@ exports.findAll = function(req, res) {
     res.send(users);
   });
 };
-
 // End of custom find methods
 
 exports.editImage = function(req, res) {
@@ -117,7 +105,7 @@ exports.editImage = function(req, res) {
     }
     console.log(2, user);
     res.status(200).json({
-      token: generateJWT(user),
+      token: generateJWT(new_user),
       user: new_user
     });
   });
@@ -129,13 +117,7 @@ exports.editProfile = function(req, res) {
     _id: user_id
   }, function(err, user) {
     if (err) {
-      res.send({
-        error: {
-          code: 9000,
-          message: 'user not found',
-          error: err
-        }
-      });
+      return res.status(400).json(err);
     }
     var newuser = new Users();
     newuser.firstname = req.body.firstname;
@@ -149,7 +131,6 @@ exports.editProfile = function(req, res) {
         return res.status(400).json(err);
       }
       return res.status(200).json({
-
         token: generateJWT(user),
         user: user
       });
