@@ -15,6 +15,9 @@ var craftSchema = new Schema({
   category: {
     type: String
   },
+  createdBy: {
+    type: String
+  },
   picture: {
     type: String
   },
