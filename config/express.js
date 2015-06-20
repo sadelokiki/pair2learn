@@ -18,6 +18,12 @@ module.exports = function() {
   app.use(bodyParser.json());
   app.use(passport.initialize());
   app.use(express.static('./public/'));
+  app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', "Origin, Accept, Content-Type, Access-Control-Allow-Headers, x_access_admin, Authorization, X-Requested-With");
+    res.header('Access-Control-Allow-Methods', "POST, PUT, DELETE, GET");
+    next();
+  });
 
   require('./passport')(passport);
   require("../app/routes/crafts.server.route")(app);
