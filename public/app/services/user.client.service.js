@@ -1,8 +1,7 @@
 "use strict";
 
 angular.module('pairToLearnApp')
-  .factory('UserService', ['$http', 'Upload', function($http, Upload) {
-    var baseUrl = "http://localhost:3000";
+  .factory('UserService', ['$http', 'Upload', 'baseUrl', function($http, Upload, baseUrl) {
     var User = {
     };
     User.updateProfile = function(id, params) {

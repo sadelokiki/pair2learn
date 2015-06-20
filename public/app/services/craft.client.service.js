@@ -1,8 +1,7 @@
 "use strict";
 
 angular.module('pairToLearnApp')
-  .factory('CraftService', ['$http', 'Upload', function($http, Upload) {
-    var baseUrl = "http://localhost:3000";
+  .factory('CraftService', ['$http', 'Upload', 'baseUrl', function($http, Upload, baseUrl) {
     var crafts = {};
 
     crafts.createCraft = function(file, craft) {
