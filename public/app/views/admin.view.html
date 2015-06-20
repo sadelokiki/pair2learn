@@ -1,6 +1,6 @@
 <div id="index-banner" class="parallax-container userParallax">
   <div class="section no-pad-bot">
-    <div id="admin" class="adminpage" style="margin-top: 1em;">
+    <div id="admin" class="adminpage">
       <div>
         <div class="row no-marign-bottom">
           <form name="adminForm" class="col s12" ng-submit="createCraft(craft)">
@@ -27,22 +27,33 @@
                 <label for="icon_prefix">Category</label>
               </div>
             </div>
+            <div class="row">
+              <div class="input-field col l6 s6">
+                <i class="medium mdi-action-description prefix"></i>
+                <input name="smartererlink" id="icon_prefix" type="text" ng-model="craft.smartererlink">
+                <label for="icon_prefix">Smarterer Link</label>
+              </div>
+              <div class="input-field col l6 s6">
+               <i class="medium mdi-action-description prefix"></i>
+                <input name="smartererimgname" id="icon_preffix" type="text" ng-model="craft.smartererimagelink">
+                <label for="icon_preffix">Smarterer Image link</label>
+              </div>
+            </div>
             <div class="row l12 center">
               <input type="file" ngf-select="true" accept="image/*" ng-model="craft.picture" ngf-change="fileSelected($files, $event)" class="validate">
               <label>Upload a picture of this craft</label>
             </div>
-            <div class="row center no-marign-bottom">
+            <div class="row center no-margin-bottom">
               <div class="input-field col s12">
                 <input id="create" type="submit" ng-disabled="adminForm.$invalid" value="Create" class="waves-effect waves-light btn-createCraft">
               </div>
             </div>
-            <div class="progress" ng-show="showProg">
-                <div class="indeterminate"></div>
-            </div>  
+          </form>
+          <div class="progress" ng-show="showProg">
+              <div class="indeterminate"></div>
+          </div>  
         </div>
-        </form>
       </div>
     </div>
   </div>
-</div>
 </div>
