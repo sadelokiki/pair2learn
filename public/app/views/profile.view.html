@@ -47,43 +47,53 @@
   </div>
   <div class="parallax"><img src="assets/images/joshdrewpairing.jpg" alt="Unsplashed background img 2"></div>
 </div>
-<form='profileForm' enctype="multipart/form-data">
-  <div class="row container offset-custom">
-    <div class="col l4 s12 center">
+<div class="row container offset-custom">
+  <div class="progress" ng-show="showProg">
+      <div class="indeterminate"></div>
+  </div>     
+  <div class="col l4 s12 center">
+    <form name='profileForm' enctype="multipart/form-data">
       <a ng-href="#/edit/user/{{decodedToken.user._id}}" class="secondary-content"><i class="mdi-action-grade"></i></a>
       <img width="250" ng-hide="decodedToken.user.picture" ng-src="assets/images/placeholder-avatar.png" alt="" class="  circle responsive-img">
       <img width="250" ng-show="decodedToken.user.picture" ng-src="{{decodedToken.user.picture}}" alt="" class=" circle responsive-img">
       <label>Upload your profile picture. It can be a sample of your work</label>
-      <div>
-        <input type="file" ngf-select="true" ng-model="image" ngf-change="fileSelected($files, $event)" />
+      <div class="row center">
+        <input style="width: 200px" type="file" ngf-select="true" ng-model="image" ngf-change="fileSelected($files, $event)" />
+        <a ng-disabled="profileForm.$invalid" ng-click="addProfilePic(image)" id="submitimage" class="btn waves-effect waves-light green"
+        style="
+          height: 20px;
+          font-size: 10px;
+          line-height: 18px;
+          width: 70px;
+          padding: 2px;
+        "ng-controller="UserCtrl">upload</a>
       </div>
-      <a ng-click="addProfilePic(image)" id="submitimage" class="btn-large waves-effect waves-light" ng-controller="UserCtrl">Submit</a>
-    </div>
-    <div class="col l5 s12 offset-l1">
-      <ul class="collection">
-        <li class="collection-item avatar">
-          <i class="mdi-action-account-circle circle green"></i>
-          <span class="title">First Name:</span>
-          <p>
-            {{decodedToken.user.firstname}}
-          </p>
-        </li>
-        <li class="collection-item avatar">
-          <i class="mdi-action-account-circle circle green"></i>
-          <span class="title">Last Name:</span>
-          <p>
-            {{decodedToken.user.lastname}}
-          </p>
-        </li>
-        <li class="collection-item avatar">
-          <i class="mdi-communication-call circle red"></i>
-          <span class="title">Phone:</span>
-          <p>
-            {{decodedToken.user.phonenumber}}
-          </p>
-        </li>
-      </ul>
-      <a ng-href="#/edit/user/{{decodedToken.user._id}}" id="download-button" class="btn-large waves-effect waves-light">Edit Profile</a>
-    </div>
+    </form>
   </div>
-  </form>
+  <div class="col l5 s12 offset-l1">
+    <ul class="collection">
+      <li class="collection-item avatar">
+        <i class="mdi-action-account-circle circle green"></i>
+        <span class="title">First Name:</span>
+        <p>
+          {{decodedToken.user.firstname}}
+        </p>
+      </li>
+      <li class="collection-item avatar">
+        <i class="mdi-action-account-circle circle green"></i>
+        <span class="title">Last Name:</span>
+        <p>
+          {{decodedToken.user.lastname}}
+        </p>
+      </li>
+      <li class="collection-item avatar">
+        <i class="mdi-communication-call circle red"></i>
+        <span class="title">Phone:</span>
+        <p>
+          {{decodedToken.user.phonenumber}}
+        </p>
+      </li>
+    </ul>
+    <a ng-href="#/edit/user/{{decodedToken.user._id}}" id="download-button" class="btn-large waves-effect waves-light">Edit Profile</a>
+  </div>
+</div>

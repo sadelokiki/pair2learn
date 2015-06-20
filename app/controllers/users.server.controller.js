@@ -7,12 +7,12 @@ var passport = require("passport"),
   jwt = require('jsonwebtoken'),
   mongoose = require("mongoose"),
   Users = mongoose.model('Users'),
-  secret = require('../../config/config');
+  config = require('../../config/config');
 
 cloudinary.config({
-  cloud_name: 'dtpf1mle2',
-  api_key: '548953239178178',
-  api_secret: 'JLqmFBkh_rDjvSNJs8rBDm4MSbI'
+  cloud_name: config.cloudinary.cloud_name,
+  api_key: config.cloudinary.api_key,
+  api_secret: config.cloudinary.api_secret
 });
 
 
@@ -24,7 +24,7 @@ var generateJWT = function(user) {
       user: user,
       exp: parseInt(exp.getTime() / 1000),
     },
-    secret.jwtSecret
+    config.jwtSecret
   );
   return token;
 };
@@ -57,12 +57,6 @@ exports.authCallBack = function(strategy) {
   };
 };
 
-/**
- * @desc new methods for '/users' route
- * findOne { function }
- * findAll { function }
- */
-
 exports.findOne = function(req, res) {
   var user_id = req.params.id;
   Users.findOne(req, res)({
@@ -78,13 +72,7 @@ exports.findOne = function(req, res) {
 exports.findAll = function(req, res) {
   Users.find({}, function(err, users) {
     if (err) {
-      res.send({
-        error: {
-          code: 9000,
-          message: 'An error occured, sowie',
-          error: err
-        }
-      });
+      return res.status(400).json(err);
     }
     res.send(users);
   });
@@ -96,14 +84,14 @@ exports.editImage = function(req, res) {
   var new_user = req.body;
   Users.update({
     _id: user_id
-  }, {
+  }, 
+  {
     picture: req.body.picture
-  }, function(err, user) {
+  }, 
+  function(err, user) {
     if (err) {
-      console.log(1, err);
       return res.status(400).json(err);
     }
-    console.log(2, user);
     res.status(200).json({
       token: generateJWT(new_user),
       user: new_user
@@ -113,27 +101,15 @@ exports.editImage = function(req, res) {
 
 exports.editProfile = function(req, res) {
   var user_id = req.params.id;
-  Users.findById({
+  Users.update({
     _id: user_id
-  }, function(err, user) {
+  }, req.body, function(err, data) {
     if (err) {
       return res.status(400).json(err);
     }
-    var newuser = new Users();
-    newuser.firstname = req.body.firstname;
-    newuser.lastname = req.body.lastname;
-    newuser.email = req.body.email;
-    newuser.phonenumber = req.body.phonenumber;
-    newuser.picture = req.body.picture
-    newuser.password = req.body.password;
-    newuser.save(function(err, user) {
-      if (err) {
-        return res.status(400).json(err);
-      }
-      return res.status(200).json({
-        token: generateJWT(user),
-        user: user
-      });
+    return res.status(200).json({
+      token: generateJWT(req.body),
+      user: req.body
     });
   });
 };
