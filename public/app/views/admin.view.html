@@ -1,6 +1,6 @@
 <div id="index-banner" class="parallax-container userParallax">
   <div class="section no-pad-bot">
-    <div id="admin" class="adminpage">
+    <div id="admin" class="adminpage" style="margin-top: 4em;">
       <div>
         <div class="row no-marign-bottom">
           <form name="adminForm" class="col s12">
@@ -20,17 +20,25 @@
                 <label for="icon_prefix">Description</label>
               </div>
             </div>
-            <div>
-              <input type="file" ngf-select="true" accept="image/*" ng-model="craft.picture" ngf-change="fileSelected($files, $event)" />
+            <div class="row">
+              <div class="input-field col s12">
+                <i class="medium mdi-action-description prefix"></i>
+                <input name="category" id="icon_prefix" type="text" ng-model="craft.category" class="validate">
+                <label for="icon_prefix">Category</label>
+              </div>
             </div>
-            <div class= "upload">
-            <label>Upload a picture of this craft</label>
+            <div class="row l12 center">
+              <input type="file" ngf-select="true" accept="image/*" ng-model="craft.picture" ngf-change="fileSelected($files, $event)" />
+              <label>Upload a picture of this craft</label>
             </div>
             <div class="row center no-marign-bottom">
               <div class="input-field col s12">
                 <input id="create" type="submit" ng-disabled="adminForm.$invalid" ng-click="createCraft(craft)" value="Create" class="waves-effect waves-light btn-createCraft">
               </div>
             </div>
+            <div class="progress" ng-show="showProg">
+                <div class="indeterminate"></div>
+            </div>  
         </div>
         </form>
       </div>

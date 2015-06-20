@@ -56,7 +56,7 @@
       <a ng-href="#/edit/user/{{decodedToken.user._id}}" class="secondary-content"><i class="mdi-action-grade"></i></a>
       <img width="250" ng-hide="decodedToken.user.picture" ng-src="assets/images/placeholder-avatar.png" alt="" class="  circle responsive-img">
       <img width="250" ng-show="decodedToken.user.picture" ng-src="{{decodedToken.user.picture}}" alt="" class=" circle responsive-img">
-      <label>Upload your profile picture. It can be a sample of your work</label>
+      <label>Upload your profile picture.</label>
       <div class="row center">
         <input style="width: 200px" type="file" ngf-select="true" ng-model="image" ngf-change="fileSelected($files, $event)" />
         <a ng-disabled="profileForm.$invalid" ng-click="addProfilePic(image)" id="submitimage" class="btn waves-effect waves-light green"
@@ -70,7 +70,7 @@
       </div>
     </form>
   </div>
-  <div class="col l5 s12 offset-l1">
+  <div class="col l4 s12 offset-l3">
     <ul class="collection">
       <li class="collection-item avatar">
         <i class="mdi-action-account-circle circle green"></i>
@@ -94,6 +94,10 @@
         </p>
       </li>
     </ul>
-    <a ng-href="#/edit/user/{{decodedToken.user._id}}" id="download-button" class="btn-large waves-effect waves-light">Edit Profile</a>
   </div>
+</div>
+<div class="row center">
+  <a ng-href="#/edit/user/{{decodedToken.user._id}}" id="download-button" class="btn waves-effect waves-light">Edit Profile</a>
+  <a ng-href="#" id="download-button" class="btn waves-effect waves-light">Apply as to an Expert</a>
+  <a ng-href="#/admin" id="download-button" class="btn waves-effect waves-light">Add a craft</a>
 </div>
