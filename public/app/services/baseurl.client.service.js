@@ -1,4 +1,4 @@
 "use strict";
 
 angular.module('pairToLearnApp')
-  .value('baseUrl', "http://localhost:3000");
+  .value('baseUrl', "http://pairtolearn.herokuapp.com");
