@@ -352,6 +352,7 @@ div[ng-message] {
 .collection {
   border: none;
   border-left: 2px solid #e0e0e0;
+  border-right: 2px solid #e0e0e0;
 }
 
 .collection .collection-item {
@@ -381,6 +382,10 @@ div[ng-message] {
   border-radius: 20px;
 }
 
+.adminpage .row {
+  margin-bottom: 0px !important;
+}
+
 .newCraft {
   color: black;
   text-align: center !important;
@@ -396,6 +401,7 @@ div[ng-message] {
   color: white;
   border-radius: .5em;
   border: 0px solid black;
+  margin-bottom: 1em;
 }
 
 #icon_prefix {
@@ -412,6 +418,7 @@ div[ng-message] {
 
 .input-field {
   padding-top: 1em !important; 
+  margin-top: 0em !important;
 }
 
 .no-marign-bottom {
@@ -428,4 +435,8 @@ div[ng-message] {
 
 textarea {
   font: initial !important;
+}
+
+.collection .collection-item:nth-child(even) {
+  background-color: rgba(244, 244, 244, 0.72);;
 }
