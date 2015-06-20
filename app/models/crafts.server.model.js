@@ -14,6 +14,12 @@ var craftSchema = new Schema({
   },
   category: {
     type: String
+  }, 
+  smartererlink: {
+    type: String
+  }, 
+  smartererimagelink: {
+    type: String
   },
   createdBy: {
     type: String
