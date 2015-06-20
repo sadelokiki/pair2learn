@@ -23,7 +23,7 @@ module.exports = function(app, passport) {
   router.route('/auth/google/callback')
     .get(ctrl.authCallBack('google'));
 
-  //facebook
+  //facebook  , { scope: ['user_status', 'user_checkins', 'public_profile', 'email'] }
   router.route('/auth/facebook')
     .get(passport.authenticate('facebook'));
   router.route('/auth/facebook/callback')
