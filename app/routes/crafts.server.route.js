@@ -11,7 +11,8 @@ module.exports = function(app) {
 
   router.route('/crafts/:id')
     .get(ctrl.findOneCraft)
-    .put(ctrl.editCraft);
+    .put(ctrl.editCraft)
+    .delete(ctrl.deleteOneCraft);
 
 
   app.use('/', router);

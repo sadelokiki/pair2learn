@@ -58,9 +58,9 @@ exports.findOneCraft = function(req, res) {
 
 exports.editCraft = function(req, res) {
   var craft_id = req.params.id;
-  Crafts.findById({
+  Crafts.update({
     _id: craft_id
-  }, function(err, craft) {
+  }, req.body, function(err, data) {
     if (err) {
       res.send({
         error: {
@@ -70,17 +70,22 @@ exports.editCraft = function(req, res) {
         }
       });
     }
-    var newcraft = new Crafts();
-    newcraft.title = req.body.title;
-    newcraft.desription = req.body.desription;
-    newcraft.picture = req.body.picture;
-    newcraft.save(function(err, craft) {
-      if (err) {
-        return res.status(400).json(err)
-      }
-      return res.status(200).json({
-        craft: craft
-      });
+    return res.status(200).json({
+      // token: generateJWT(user),
+      data: data
     });
   });
-}
+};
+
+exports.deleteOneCraft = function(req, res) {
+  var craft_id = req.params.id;
+  Crafts.remove({
+    _id: craft_id
+  }, function(err, craft) {
+    if (err) {
+      return res.status(400).json(err);
+    }
+    res.status(200).json(craft);
+  });
+};
+

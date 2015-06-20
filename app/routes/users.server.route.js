@@ -36,7 +36,8 @@ module.exports = function(app, passport) {
 
   router.route('/users/:id')
     .get(ctrl.findOne)
-    .put(ctrl.editProfile);
+    .put(ctrl.editProfile)
+    .delete(ctrl.deleteOneUser);
   // End of custom route
 
   app.use('/', router);

@@ -125,9 +125,9 @@ exports.editImage = function(req, res) {
 
 exports.editProfile = function(req, res) {
   var user_id = req.params.id;
-  Users.findById({
+  Users.update({
     _id: user_id
-  }, function(err, user) {
+  }, req.body, function(err, data) {
     if (err) {
       res.send({
         error: {
@@ -137,22 +137,21 @@ exports.editProfile = function(req, res) {
         }
       });
     }
-    var newuser = new Users();
-    newuser.firstname = req.body.firstname;
-    newuser.lastname = req.body.lastname;
-    newuser.email = req.body.email;
-    newuser.phonenumber = req.body.phonenumber;
-    newuser.picture = req.body.picture
-    newuser.password = req.body.password;
-    newuser.save(function(err, user) {
-      if (err) {
-        return res.status(400).json(err);
-      }
-      return res.status(200).json({
-
-        token: generateJWT(user),
-        user: user
-      });
+    return res.status(200).json({
+      token: generateJWT(user),
+      data: data
     });
+  });
+};
+
+exports.deleteOneUser = function(req, res) {
+  var user_id = req.params.id;
+  Users.remove({
+    _id: user_id
+  }, function(err, user) {
+    if (err) {
+      return res.status(400).json(err);
+    }
+    res.status(200).json(user);
   });
 };
