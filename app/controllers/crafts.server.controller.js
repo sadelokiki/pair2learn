@@ -4,12 +4,13 @@ require('../models/crafts.server.model.js');
 var mongoose = require("mongoose"),
   formidable = require("formidable"),
   cloudinary = require("cloudinary"),
-  Crafts = mongoose.model('Crafts');
+  Crafts = mongoose.model('Crafts'),
+  config = require('../../config/config');
 
 cloudinary.config({
-  cloud_name: 'dtpf1mle2',
-  api_key: '548953239178178',
-  api_secret: 'JLqmFBkh_rDjvSNJs8rBDm4MSbI'
+  cloud_name: config.cloudinary.cloud_name,
+  api_key: config.cloudinary.api_key,
+  api_secret: config.cloudinary.api_secret
 });
 
 exports.postImage = function(req, res, next) {
@@ -28,59 +29,44 @@ exports.postImage = function(req, res, next) {
 
 exports.postCraft = function(req, res) {
   Crafts.create(req.body, function(err, craft) {
-    if (err) {
-      res.send(err);
+    if(err){
+      return res.status(400).json(err);
     }
-    res.json(craft)
-  })
+    return res.status(200).json(craft);
+  });
 };
 
 exports.findCrafts = function(req, res) {
   Crafts.find({}, function(err, crafts) {
-    if (err) {
-      res.send(err);
+    if(err){
+      return res.status(400).json(err);
     }
-    res.json(crafts);
+    return res.status(200).json(crafts);
   });
 };
 
 exports.findOneCraft = function(req, res) {
-  var craft_id = req.params.id
+  var craft_id = req.params.id;
   Crafts.find({
     _id: craft_id
   }, function(err, craft) {
-    if (err) {
-      res.send(err);
+    if(err){
+      return res.status(400).json(err);
     }
-    res.send(craft);
+    return res.status(200).json(craft);
   });
 };
 
 exports.editCraft = function(req, res) {
   var craft_id = req.params.id;
-  Crafts.findById({
+  Crafts.update({
     _id: craft_id
-  }, function(err, craft) {
-    if (err) {
-      res.send({
-        error: {
-          code: 9000,
-          message: 'user not found',
-          error: err
-        }
-      });
+  }, 
+  req.body, 
+  function(err, craft) {
+    if(err){
+      return res.status(400).json(err);
     }
-    var newcraft = new Crafts();
-    newcraft.title = req.body.title;
-    newcraft.desription = req.body.desription;
-    newcraft.picture = req.body.picture;
-    newcraft.save(function(err, craft) {
-      if (err) {
-        return res.status(400).json(err)
-      }
-      return res.status(200).json({
-        craft: craft
-      });
-    });
+    return res.status(200).json(craft);
   });
-}
+};
