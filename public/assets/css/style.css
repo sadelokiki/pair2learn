@@ -384,6 +384,7 @@ div[ng-message] {
 .newCraft {
   color: black;
   text-align: center !important;
+  padding: .5em;
 }
 
 .btn-createCraft {
