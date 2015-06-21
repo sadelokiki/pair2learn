@@ -37,8 +37,7 @@ exports.getImage = function(req, res, next) {
     cloudinary.uploader.upload(files.file.path, function(result) {
       req.body.picture = result.url;
       next();
-    },
-    {
+    }, {
       width: 300,
       height: 300
     });
@@ -63,13 +62,13 @@ exports.authCallBack = function(strategy) {
 
 exports.findOne = function(req, res) {
   var user_id = req.params.id;
-  Users.findOne(req, res)({
+  Users.findOne({
     _id: user_id
   }, function(err, user) {
     if (err) {
-      res.send(err);
+      return res.status(400).json(err);
     }
-    res.send(user);
+    return res.status(200).json(user);
   });
 };
 
@@ -87,20 +86,19 @@ exports.editImage = function(req, res) {
   var user_id = req.body._id;
   var new_user = req.body;
   Users.update({
-    _id: user_id
-  }, 
-  {
-    picture: req.body.picture
-  }, 
-  function(err, user) {
-    if (err) {
-      return res.status(400).json(err);
-    }
-    res.status(200).json({
-      token: generateJWT(new_user),
-      user: new_user
+      _id: user_id
+    }, {
+      picture: req.body.picture
+    },
+    function(err, user) {
+      if (err) {
+        return res.status(400).json(err);
+      }
+      res.status(200).json({
+        token: generateJWT(new_user),
+        user: new_user
+      });
     });
-  });
 };
 
 exports.editProfile = function(req, res) {
