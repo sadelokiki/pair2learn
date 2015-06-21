@@ -14,10 +14,10 @@ var craftSchema = new Schema({
   },
   category: {
     type: String
-  }, 
+  },
   smartererlink: {
     type: String
-  }, 
+  },
   smartererimagelink: {
     type: String
   },
@@ -27,8 +27,21 @@ var craftSchema = new Schema({
   picture: {
     type: String
   },
-  experts: [],
+  experts: [{
+    type: Schema.ObjectId,
+    ref: 'Users'
+  }],
   applicants: []
 });
+
+craftSchema.methods.applyAs = function(userId, cb) {
+  var experts = this.experts;
+  if (experts.indexOf(userId) < 0) {
+    this.experts.push(userId);
+    this.save(cb);
+  } else {
+    return cb;
+  }
+};
 
 mongoose.model('Crafts', craftSchema);
