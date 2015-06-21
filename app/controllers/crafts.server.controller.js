@@ -29,7 +29,7 @@ exports.postImage = function(req, res, next) {
 
 exports.postCraft = function(req, res) {
   Crafts.create(req.body, function(err, craft) {
-    if(err){
+    if (err) {
       return res.status(400).json(err);
     }
     return res.status(200).json(craft);
@@ -38,35 +38,65 @@ exports.postCraft = function(req, res) {
 
 exports.findCrafts = function(req, res) {
   Crafts.find({}, function(err, crafts) {
-    if(err){
+    if (err) {
       return res.status(400).json(err);
     }
     return res.status(200).json(crafts);
   });
 };
 
-exports.findOneCraft = function(req, res) {
-  var craft_id = req.params.id;
-  Crafts.find({
-    _id: craft_id
-  }, function(err, craft) {
-    if(err){
-      return res.status(400).json(err);
-    }
-    return res.status(200).json(craft);
-  });
+exports.findOneCraft = function(req, res, next) {
+  Crafts.findOne(req.params.id)
+    .populate('experts')
+    .exec(function(err, craft) {
+      if (err) {
+        return res.status(400).json(err);
+      }
+      res.status(200).json(craft);
+    });
 };
 
 exports.editCraft = function(req, res) {
   var craft_id = req.params.id;
   Crafts.update({
-    _id: craft_id
-  }, 
-  req.body, 
-  function(err, craft) {
-    if(err){
-      return res.status(400).json(err);
-    }
-    return res.status(200).json(craft);
-  });
+      _id: craft_id
+    },
+    req.body,
+    function(err, craft) {
+      if (err) {
+        return res.status(400).json(err);
+      }
+      return res.status(200).json(craft);
+    });
+};
+
+exports.applyAsExpert = function(req, res, next) {
+  Crafts.findOne({
+      '_id': req.params.id
+    },
+    function(err, craft) {
+      if (err) {
+        return res.json(err);
+      }
+      craft.applyAs(req.body.userId,
+        function(err, crafts) {
+          if (err) {
+            return res.status(400).json(err);
+          }
+          return res.status(200).json(req.body.userId);
+        });
+    });
+};
+
+exports.viewUserExpertCrafts = function(req, res, next) {
+  Crafts.find({
+      'experts': req.params.id
+    })
+    .exec(function(err, crafts) {
+      if (err) {
+        return res.json(err);
+      }
+      return res.json(crafts);
+
+    });
 };
