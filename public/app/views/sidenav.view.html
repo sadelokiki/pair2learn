@@ -15,7 +15,8 @@
   </li>
   <div class="divider"></div>
   <li>
-    <div class="collapsible-header"><a href="#!">My Wallet</a></div>
+    <div class="collapsible-header"><a href="#/wallet/user/{{decodedToken.user._id}}
+">My Wallet</a></div>
   </li>
   <div class="divider"></div>
   <li>
@@ -30,17 +31,13 @@
     <div class="collapsible-header"><a href="#!">Wish List</a></div>
   </li>
   <div class="divider"></div>
-  <li>
-    <div class="collapsible-header"><a ng-href="#/{{decodedToken.user._id}}/pair/craft">Live Pair</a></div>
-  </li>
-  <div class="divider"></div>
 </ul>
 <script type="text/javascript">
-  (function($) {
-      $(function() {
-        $('.collapsible').collapsible({
-          accordion: true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-        });
-      });
-    })(jQuery);
+(function($) {
+  $(function() {
+    $('.collapsible').collapsible({
+      accordion: true // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
+})(jQuery);
 </script>
