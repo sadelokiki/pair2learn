@@ -1,5 +1,5 @@
 <div id="slide-out" class="side-nav fixed">
- <div ng-include="'app/views/sidenav.view.html'"></div>
+  <div ng-include="'app/views/sidenav.view.html'"></div>
 </div>
 <!-- <div class="parallax-container valign-wrapper" style="min-height: 100px !important;padding-top: 2em !important;">
   <div class="section no-pad-bot">
@@ -13,10 +13,10 @@
 </div> -->
 <div class="row container offset-custom">
   <div class="progress" ng-show="showProg">
-      <div class="indeterminate"></div>
-  </div>     
+    <div class="indeterminate"></div>
+  </div>
   <div class="col l4 s12 center">
-  <!-- now working fine -->
+    <!-- now working fine -->
     <form name='profileForm' enctype="multipart/form-data">
       <a ng-href="#/edit/user/{{decodedToken.user._id}}" class="secondary-content"><i class="mdi-action-grade"></i></a>
       <img width="250" ng-hide="decodedToken.user.picture" ng-src="assets/images/placeholder-avatar.png" alt="" class="  circle responsive-img">
@@ -24,19 +24,18 @@
       <label>Upload your profile picture.</label>
       <div class="row center">
         <input style="width: 200px" type="file" ngf-select="true" ng-model="image" ngf-change="fileSelected($files, $event)" />
-        <a ng-disabled="profileForm.$invalid" ng-click="addProfilePic(image)" id="submitimage" class="btn waves-effect waves-light green"
-        style="
+        <a ng-disabled="profileForm.$invalid" ng-click="addProfilePic(image)" id="submitimage" class="btn waves-effect waves-light green" style="
           height: 20px;
           font-size: 10px;
           line-height: 18px;
           width: 70px;
           padding: 2px;
-        "ng-controller="UserCtrl">upload</a>
+        " ng-controller="UserCtrl">upload</a>
       </div>
     </form>
   </div>
   <div class="col l4 s12">
-    <ul class="collection">
+    <ul class="collection collect">
       <li class="collection-item avatar">
         <i class="mdi-action-account-circle circle green"></i>
         <span class="title">First Name:</span>
@@ -68,11 +67,12 @@
     </ul>
   </div>
   <div class="col l4 s12">
-    <ul class>
-    <div class="center" style="font-weight: bolder;">I am an Expert of:</div>
-      <li class="collection-item avatar">
-        <i class="mdi-action-account-circle circle green"></i>
-        <span class="title">crafts</span>
+    <ul class="collection with-header expertlist">
+      <li class="collection-header center">
+        <h5>Expert</h5>
+      </li>
+      <li class="collection-item" ng-repeat="craft in expertCrafts">
+        <div>{{craft.title}}<a ng-href="#/{{craft.title | slug}}/{{craft._id}}/experts" class="secondary-content"><i class="mdi-content-send"></i></a></div>
       </li>
     </ul>
   </div>
