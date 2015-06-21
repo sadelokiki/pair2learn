@@ -2,23 +2,27 @@
 
 angular.module('pairToLearnApp')
   .factory('UserService', ['$http', 'Upload', 'baseUrl', function($http, Upload, baseUrl) {
-    var User = {
-    };
+    var User = {};
     User.updateProfile = function(id, params) {
-      return $http.put(baseUrl + '/users/' + id, params).then(function(data) {
-         return data;
+      return $http.put(baseUrl + '/users/' + id, params).then(function(res) {
+        return res;
+      });
+    };
+    User.getOneUser = function(id) {
+      return $http.get(baseUrl + '/users/' + id).then(function(res) {
+        return res.data;
       });
     };
     User.uploadPic = function(file, fields) {
       return Upload.upload({
-            url: baseUrl + '/users',
-            method: "POST",
-            file: file,
-            fields: fields
-          })
-          .then(function(res) {
-            return res.data;
-          });
+          url: baseUrl + '/users',
+          method: "POST",
+          file: file,
+          fields: fields
+        })
+        .then(function(res) {
+          return res.data;
+        });
     };
     return User;
   }]);
