@@ -50,28 +50,28 @@ angular.module('pairToLearnApp')
 
       $rootScope.addProfilePic = function(profpic) {
         console.log(profpic);
-        if(!profpic){
+        if (!profpic) {
           return;
         }
         $rootScope.showProg = true;
         UserService.uploadPic(profpic, $scope.decodedToken.user).then(function(data) {
-          Materialize.toast('Picture updated successfully!', 4000);
-          $window.sessionStorage.token = data.token;
-          console.log(data);
-          $rootScope.showProg = false;
-          $route.reload();
-        }, 
-        function(err) {
-          $rootScope.showProg = false;
-        });
+            Materialize.toast('Picture updated successfully!', 4000);
+            $window.sessionStorage.token = data.token;
+            console.log(data);
+            $rootScope.showProg = false;
+            $route.reload();
+          },
+          function(err) {
+            $rootScope.showProg = false;
+          });
       };
 
       $rootScope.logout = function() {
         $window.sessionStorage.clear();
         $timeout(function() {
           $rootScope.hideOutProg = true;
+          $window.location.href = "#/home";
           Materialize.toast('You are signed out!', 2000);
-          $location.path("/home");
         }, 1500);
       };
 
