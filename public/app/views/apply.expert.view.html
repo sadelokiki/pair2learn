@@ -17,10 +17,17 @@
       <li class="collection-item avatar" style="height: 8em" ng-repeat="item in allCrafts">
         <img ng-src="{{item.picture}}" alt="" class="circle">
         <span class="title">{{item.title}}</span>
-        <p>{{item.description | limitTo: 30}}
+        <p>{{item.description | limitTo: 80}}
         </p>
-        <a ng-show="item.smartererlink" ng-href="//{{item.smartererlink}}" class="smarterer_test_link secondary-content"><img height="90" ng-src="//{{item.smartererimagelink}}" alt="" /></i></a>
-        <a ng-hide="item.smartererlink" href="//smarterer.com/tests/technical-aptitude/run?wuid=ngjhngm1yt" class="smarterer_test_link secondary-content"><img height="90" src="//smarterer.com/images/test-widget/adu/rect/technical-aptitude.png" alt="" /></i></a>
+        <button class="btn waves-effect waves-light" ng-click="applyAsExpert(item._id)">Apply</button>
+        <div class="row secondary-content s12">
+          <a ng-show="item.smartererlink" ng-href="//{{item.smartererlink}}" class="smarterer_test_link ">
+            <img height="90" ng-src="//{{item.smartererimagelink}}" alt="" />
+          </a>
+          <a ng-hide="item.smartererlink" href="//smarterer.com/tests/technical-aptitude/run?wuid=ngjhngm1yt" class="smarterer_test_link">
+            <img height="90" src="//smarterer.com/images/test-widget/adu/rect/technical-aptitude.png" alt="" />
+          </a>
+        </div>
       </li>
     </ul>
   </div>
