@@ -26,7 +26,10 @@ var userSchema = new Schema({
   phonenumber: {
     type: String
   },
-  crafts: []
+  hours: {
+    type: String,
+    default: 0
+  }
 });
 
 userSchema.methods.hashPassword = function(password) {
