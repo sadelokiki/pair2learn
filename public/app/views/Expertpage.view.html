@@ -1,106 +1,30 @@
 <div id="slide-out" class="side-nav fixed">
   <div ng-include="'app/views/sidenav.view.html'"></div>
 </div>
-<div class="parallax-container valign-wrapper" style="min-height: 250px !important;padding-top: 2em !important;">
+<div class="parallax-container valign-wrapper" style="min-height: 50px !important;padding-top: 2em !important;">
   <div class="section no-pad-bot">
     <div class="row center container">
       <h5 class="col s12 l10 light offset-l2">
-          Meet the PHP experts...
+          Meet the {{oneCraft.title}} experts...
         </h5>
     </div>
   </div>
   <div class="parallax"><img src="assets/images/joshdrewpairing.jpg" alt="Unsplashed background img 2"></div>
 </div>
-<div class="row container offset-custom">
-  <div class="col s12 l4">
-    <div class="card">
+<div class="row container center offset-custom">
+  <div class="col s12 l4 center">
+    <div class="card center" ng-repeat="expert in oneCraft
+.experts">
       <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="assets/images/photo.jpg">
+        <img class="activator" ng-src="{{expert.picture}}">
       </div>
       <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Susan Adelokiki<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#">Connect..</a></p>
+        <span class="card-title activator grey-text text-darken-4">{{expert.firstname}}&nbsp;{{expert.lastname}}<i class="mdi-navigation-more-vert right"></i></span>
+        <p><a href="#/wallet/user/{{decodedToken.user._id}}" ng-click="saveCraftExpert(oneCraft._id, expert._id)">Connect..</a></p>
       </div>
       <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Susan Adelokiki<i class="mdi-navigation-close right"></i></span>
-        <p>Co-founder of p2L, a PHP expert with over 12 weeks experience. She loves movies and fitness</p>
-      </div>
-    </div>
-  </div>
-  <div class="col s12 l4">
-    <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="assets/images/images.jpeg">
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Kingsley Ochu<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#">Connect..</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Kingsley Ochu<i class="mdi-navigation-close right"></i></span>
-        <p>Co-founder of p2L, a PHP expert with over 8 years experience with a passion for programming and business</p>
-      </div>
-    </div>
-  </div>
-  <div class="col s12 l4">
-    <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="assets/images/AAEAAQAAAAAAAANoAAAAJDhjMDRiZDAzLTk4MGQtNDUxNS1hZDk3LTFkOWNkMGY2Zjg1ZQ.jpg">
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Stephen Sunday<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#">Connect..</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Stephen Sunday<i class="mdi-navigation-close right"></i></span>
-        <p>Co-founder of Tango, PHP expert with over 7 days experience, he is attracted to smart girls</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div class="row container offset-custom">
-  <div class="col s12 l4">
-    <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="assets/images/photo%20%281%29.jpg">
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Toyosi Famkinde<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#">Connect..</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Toyosi Famakinde<i class="mdi-navigation-close right"></i></span>
-        <p>Co-founder of ShoPAL, PHP expert with over 3 years experience with a passion for programming and kids</p>
-      </div>
-    </div>
-  </div>
-  <div class="col s12 l4">
-    <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="assets/images/download%20%281%29.jpeg">
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Jibola Sogbein<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#">Connect..</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Jibola Sogbein<i class="mdi-navigation-close right"></i></span>
-        <p>Co-founder of Tango, PHP expert with over 7 days experience, he loves to rap in Yoruba!</p>
-      </div>
-    </div>
-  </div>
-  <div class="col s12 l4">
-    <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="assets/images/375631_10201378221206971_286262378_n.jpg">
-      </div>
-      <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">Ashikodi Emeka<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#">Connect..</a></p>
-      </div>
-      <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">Ashikodi Emeka<i class="mdi-navigation-close right"></i></span>
-        <p>Co-founder of ShoPAL, PHP expert with over 7 days experience, he loves algorithms</p>
+        <span class="card-title grey-text text-darken-4">{{expert.firstname}}&nbsp;{{expert.lastname}}<i class="mdi-navigation-close right"></i></span>
+        <p>{{expert.email}}</p>
       </div>
     </div>
   </div>
