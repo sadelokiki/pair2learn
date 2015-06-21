@@ -1,0 +1,74 @@
+<div id="slide-out" class="side-nav fixed">
+  <div ng-include="'app/views/sidenav.view.html'"></div>
+</div>
+<!-- <div class="parallax-container valign-wrapper" style="min-height: 100px !important;padding-top: 2em !important;">
+  <div class="section no-pad-bot">
+    <div class="row center container">
+      <h4 class="col s12 l10 light offset-l2">
+         {{decodedToken.user.firstname}}&nbsp;{{decodedToken.user.lastname}}
+        </h4>
+    </div>
+  </div>
+  <div class="parallax"><img src="assets/images/joshdrewpairing.jpg" alt="Unsplashed background img 2"></div>
+</div> -->
+<div class="row container offset-custom" style="margin: 4em auto;">
+  <div class="col l6 s12 center">
+    <!-- now working fine -->
+    <div class="center" ng-show="hours">
+      <h1 class="wallet-hours">
+        <span ng-class="(hours < 1) ? 'red-text' : 'green-text'">{{hours}}</span>
+      </h1>
+      <h3>
+        <span style=" color: rebeccapurple;">P2L</span>&nbsp;hours
+      </h3>
+      <h4 style="color: darkolivegreen;">remaining</h4>
+    </div>
+    <div class="divider"></div>
+    <div class="row center" ng-show="hours >= 0" style="margin-top: 1em;">
+      <a href="#/user/pair/expert/{{expertId}}/{{craftId}}" class="btn waves-effect waves-light">Continue with Expert</a>
+    </div>
+    <div class="row center red-text" ng-hide="hours > 0" style="margin-top: 1em;">
+      <h5>Insuffucient credit<br>Buy P2l hours to continue</h5>
+    </div>
+  </div>
+  <div class="col l6 s12 wallet-form">
+    <div class="row center">
+      <h5>
+        Place Order for P2L hours
+      </h5>
+      <span><strike
+>N</strike>200/hr</span>
+    </div>
+    <form method='POST' action='https://voguepay.com/pay/' ng-init="hour = 0">
+      <input type='hidden' name='v_merchant_id' value='demo' />
+      <input type='hidden' name='merchant_ref' value='demo' />
+      <input type='hidden' name='memo' value='Pair to Learn Hours Purchase' />
+      <input type='hidden' name='notify_url' value='http://www.mydomain.com/notification.php' />
+      <input type='hidden' name='success_url' value='http://localhost:3000/wallet/success' />
+      <input type='hidden' name='fail_url' value='http://localhost:3000/wallet/fail' />
+      <input type='hidden' name='developer_code' value='pq7778ehh9YbZ' />
+      <input type='hidden' name='store_id' value='25' />
+      <div class="row">
+        <div class="input-field col s12">
+          <label for="hours">Enter the number of Hours you want buy</label>
+          <input id="hours" type="text" ng-model="hour" class="validate" required>
+        </div>
+      </div>
+      <input name='total' id="amount" type="hidden" value="{{hour * 200}}">
+      <div class="row">
+        <div class="input-field col s12">
+          <label for="amount">Amount in Naira</label>
+          <p><strike>N</strike>{{200 * hour}}</p>
+          <div class="divider"></div>
+        </div>
+      </div>
+      <div class="row center">
+        <input type='submit' ng-disabled="hour === 0 || hour === '0' || hour === '' " class="btn waves-effect waves-light blue" value="Buy Now" alt='Buy Now' />
+      </div>
+    </form>
+    <div class="row center">
+      <img height="50" src="assets/images/prepardcards.png">
+      <img height="70" src="assets/images/guarantee.png">
+    </div>
+  </div>
+</div>
