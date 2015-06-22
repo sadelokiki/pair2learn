@@ -27,8 +27,8 @@
     <div class="row center" ng-show="hours > 0" style="margin-top: 1em;">
       <a href="#/user/pair/expert/{{expertId}}/{{craftId}}" class="btn waves-effect waves-light">Continue with Expert</a>
     </div>
-    <div class="row center red-text" ng-hide="hours > 0" style="margin-top: 1em;">
-      <h5>Insufficient credit<br>Buy P2l hours to continue</h5>
+    <div class="row center red-text" ng-hide="hours ? hours : -1 > 0" style="margin-top: 1em;">
+      <h5>Insuffucient credit<br>Buy P2l hours to continue</h5>
     </div>
   </div>
   <div class="col l6 s12 wallet-form">
