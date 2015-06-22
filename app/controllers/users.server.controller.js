@@ -115,3 +115,15 @@ exports.editProfile = function(req, res) {
     });
   });
 };
+
+exports.deleteOneUser = function(req, res) {
+  var user_id = req.params.id;
+  Users.remove({
+    _id: user_id
+  }, function(err, user) {
+    if (err) {
+      return res.status(400).json(err);
+    }
+    res.status(200).json(user);
+  });
+};

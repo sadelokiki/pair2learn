@@ -100,3 +100,17 @@ exports.viewUserExpertCrafts = function(req, res, next) {
 
     });
 };
+
+
+exports.deleteOneCraft = function(req, res) {
+  var craft_id = req.params.id;
+  Crafts.remove({
+    _id: craft_id
+  }, function(err, craft) {
+    if (err) {
+      return res.status(400).json(err);
+    }
+    res.status(200).json(craft);
+  });
+};
+

@@ -14,7 +14,8 @@ module.exports = function(app) {
 
   router.route('/crafts/:id')
     .get(ctrl.findOneCraft)
-    .put(ctrl.postImage, ctrl.editCraft);
+    .put(ctrl.postImage, ctrl.editCraft)
+    .delete(ctrl.deleteOneCraft);
 
   router.route('/apply/crafts/:id')
     .put(ctrl.applyAsExpert);
