@@ -28,7 +28,7 @@ var userSchema = new Schema({
   },
   hours: {
     type: String,
-    default: 0
+    default: 1
   }
 });
 
