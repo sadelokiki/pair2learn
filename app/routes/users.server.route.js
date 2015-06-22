@@ -41,7 +41,7 @@ module.exports = function(app, passport) {
   //wallet
   router.route('/wallet/success')
     .post(function(req, res, next) {
-      console.log(req.body.transaction_id);
+      console.log(req);
       return res.redirect('/#/wallet/success?trans_id=' + req.body.transaction_id);
     });
   router.route('/wallet/fail')

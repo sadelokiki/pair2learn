@@ -41,7 +41,10 @@
             </a>
           </li>
           <li>
-            <center><img src="assets/images/images.jpeg" alt="" class="nav-user circle responsive-img"></center>
+            <center>
+              <img ng-hide="decodedToken.user.picture" ng-src="http://insight.venturebeat.com/sites/all/modules/features/vb_intel_analysts/assets/images/analyst-placeholder-avatar.png" alt="" class="nav-user circle responsive-img">
+              <img ng-show="decodedToken.user.picture" ng-src="{{decodedToken.user.picture}}" alt="" class="nav-user circle responsive-img">
+            </center>
           </li>
           <div class="divider"></div>
           <li><a ng-href="#/user/{{decodedToken.user._id}}">View Crafts</a></li>

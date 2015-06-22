@@ -1,7 +1,7 @@
 'use strict';
 
-var app = angular.module('pairToLearnApp', ['ngRoute', 'ngMessages', 'ngFileUpload']);
-app.config(['$routeProvider', '$httpProvider', '$locationProvider', function($routeProvider, $httpProvider, $locationProvider) {
+var app = angular.module('pairToLearnApp', ['ngRoute', 'ngMessages', 'ngFileUpload', 'angular-loading-bar']);
+app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingBarProvider', function($routeProvider, $httpProvider, $locationProvider, cfpLoadingBarProvider) {
 
   $routeProvider
     .when('/home', {
@@ -100,6 +100,8 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', function($ro
     });
 
   // $locationProvider.html5Mode(true);// Clean Url
+  //circle loading false
+  cfpLoadingBarProvider.includeSpinner = false;
 
   $httpProvider.interceptors.push(['$q', '$location', '$window', '$rootScope',
     function($q, $location, $window, $rootScope) {

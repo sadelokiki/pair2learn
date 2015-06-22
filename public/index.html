@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=RobotoDraft:300,400,500,700,400italic">
   <link href="assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <link href="assets/css/animate.css" type="text/css" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/firepad-user-list.css" />
+  <link rel='stylesheet' href='libs/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
   <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen, projection" />
   <!-- <base href="/"> -->
   <!-- Firebase -->
@@ -19,17 +21,21 @@
   <!-- Firepad -->
   <link rel="stylesheet" href="https://cdn.firebase.com/libs/firepad/1.1.1/firepad.css" />
   <script src="https://cdn.firebase.com/libs/firepad/1.1.1/firepad.min.js"></script>
+  <!-- Include example userlist script / CSS -->
+  <script src="libs/firepad/user-list.js"></script>
 </head>
 
 <body>
   <div ng-include="'app/views/nav.view.html'"></div>
   <div ng-view></div>
   <div ng-include="'app/views/footer.view.html'"></div>
-  <!--  Scripts-->
+  <!-- Scripts -->
   <script src="libs/jquery/jquery.js"></script>
   <script src="libs/materialize/materialize.js"></script>
   <script src="libs/materialize/init.js"></script>
   <script type="text/javascript" src="libs/angular/angular.js"></script>
+  <!-- loading bar -->
+  <script type='text/javascript' src='libs/angular-loading-bar/build/loading-bar.min.js'></script>
   <script type="text/javascript" src="libs/angular-route/angular-route.min.js"></script>
   <script type="text/javascript" src="libs/ng-file-upload/ng-file-upload.min.js"></script>
   <script type="text/javascript" src="libs/angular-messages/angular-messages.min.js"></script>
