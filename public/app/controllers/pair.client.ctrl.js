@@ -32,20 +32,20 @@ angular.module('pairToLearnApp')
     }
 
     function richText() {
-      //RichText
-      var codeMirror = CodeMirror(document.getElementById('firepad'), {
-        lineWrapping: true
-      });
+        //RichText
+        var codeMirror = CodeMirror(document.getElementById('firepad'), {
+          lineWrapping: true
+        });
 
-      var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-        userId: userId,
-        defaultText: 'Type Live text here',
-        richTextShortcuts: true,
-        richTextToolbar: true
-      });
-    }
-    javaScript();
-    // richText();
+        var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+          userId: userId,
+          defaultText: 'Type Live text here',
+          richTextShortcuts: true,
+          richTextToolbar: true
+        });
+      }
+      //javaScript();
+    richText();
 
 
 
