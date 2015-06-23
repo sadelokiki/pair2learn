@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('pairToLearnApp', ['ngRoute', 'ngMessages', 'ngFileUpload', 'angular-loading-bar']);
+var app = angular.module('pairToLearnApp', ['ngRoute', 'ngMessages', 'ngFileUpload', 'angular-loading-bar','timer']);
 app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingBarProvider', function($routeProvider, $httpProvider, $locationProvider, cfpLoadingBarProvider) {
 
   $routeProvider
