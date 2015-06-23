@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pairToLearnApp')
-  .controller('PairCtrl', ['$rootScope', '$scope', '$location', function($rootScope, $scope, $location) {
+  .controller('PairCtrl', ['$rootScope', '$scope', '$timeout', '$location', '$window','UserService', function($rootScope, $scope, $timeout, $location, $window, UserService) {
     (function($) {
       $(function() {
         $('.parallax').parallax();
@@ -10,22 +10,73 @@ angular.module('pairToLearnApp')
         });
       });
     })(jQuery);
+    // $timeout(function() {
+      UserService.getOneUser($rootScope.decodedToken.user._id).then(function(data) {
+        // $rootScope.hours = data.hours;
+        $scope.counter = data.hours * 60 ;
+      });
+    // }, 1000);
+     // $scope.counter = 20;
+    var mytimeout = null;
+    $scope.onTimeout = function() {
+      if ($scope.counter === 0) {
+        $scope.$broadcast('timer-stopped', 0);
+        $timeout.cancel(mytimeout);
+        return;
+      }
+      $scope.counter--;
+      mytimeout = $timeout($scope.onTimeout, 1000);
+    }
+    $scope.startTimer = function() {
+      mytimeout = $timeout($scope.onTimeout, 1000);
+    }
+    $scope.stopTimer = function() {
+      $scope.$broadcast('timer-stopped', $scope.counter);
+      // $scope.counter= ;
+      $timeout.cancel(mytimeout);
+    }
+    $scope.$on('timer-stopped', function(event, remaining) {
+      if (remaining === 0) {
+        alert('your time ran out!');
+      }
+    });
 
     var firepadRef = new Firebase('https://pairtolearn.firebaseio.com/');
 
-    var codeMirror = CodeMirror(document.getElementById('firepad'), {
-      lineWrapping: false
-    });
+    var userId = $window.sessionStorage.user;
+    var expert = $window.sessionStorage.expert;
+    console.log(userId);
+    //// Create FirepadUserList (with our desired userId).
+    var firepadUserList = FirepadUserList.fromDiv(firepadRef.child('users'),
+      document.getElementById('userlist'), userId, expert);
 
-    var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-      richTextShortcuts: true,
-      richTextToolbar: true,
-      userId: 'fdhhfd',
-      defaultText: 'Type Live text here'
-    });
-    firepad.on('ready', function() {
-      // Firepad is ready.
+    //// Create CodeMirror (with line numbers and the JavaScript mode).
+    function javaScript() {
+      var codeMirror2 = CodeMirror(document.getElementById('firepad'), {
+        lineNumbers: true,
+        mode: 'javascript'
+      });
+      var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror2, {
+        userId: userId
+      });
+    }
 
-    });
+    function richText() {
+        //RichText
+        var codeMirror = CodeMirror(document.getElementById('firepad'), {
+          lineWrapping: true
+        });
+
+        var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+          userId: userId,
+          defaultText: 'Type Live text here',
+          richTextShortcuts: true,
+          richTextToolbar: true
+        });
+      }
+      //javaScript();
+    richText();
+
+
 
   }]);

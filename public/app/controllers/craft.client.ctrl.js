@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module('pairToLearnApp')
-  .controller('CraftCtrl', ['CraftService', '$scope', '$location', '$timeout', '$rootScope', 'Upload','$window', function(CraftService, $scope, $location, $timeout, $rootScope, Upload, $window) {    
+  .controller('CraftCtrl', ['CraftService', '$scope', '$location', '$timeout', '$rootScope', '$window', function(CraftService, $scope, $location, $timeout, $rootScope, $window) {
     (function($) {
       $(function() {
         $('.parallax').parallax();
@@ -10,26 +10,43 @@ angular.module('pairToLearnApp')
     })(jQuery);
 
     $scope.createCraft = function(craft) {
-      var user_id = $rootScope.decodedToken.user._id
-      craft.createdBy = user_id;
-      var localhost = "http://localhost:3000/crafts";
-      var upload = Upload.upload({
-          url: localhost,
-          method: "POST",
-          file: craft.picture,
-          fields: craft
-        })
-        .success(function(data) {
-          console.log(data);
-          $location.url("/user/" + data._id);
-        });
+      if (!craft) {
+        return;
       }
+      if (!$scope.craft.picture) {
+        return;
+      }
+      var user = $rootScope.decodedToken.user.firstname + " " + $rootScope.decodedToken.user.lastname;
+      craft.createdBy = user;
+      $rootScope.showProg = true;
+      CraftService.createCraft(craft.picture, craft).then(function(data) {
+        Materialize.toast('Craft created successfully!', 4000);
+        $rootScope.showProg = false;
+        $location.url("/user/" + data._id);
+      }, function(err) {
+        $rootScope.showProg = false;
+      });
+    };
+
+    $scope.applyAsExpert = function(craftId) {
+      var data = {
+        userId: $rootScope.decodedToken.user._id,
+        craftId: craftId
+      };
+      CraftService.applyAsExpert(data).then(function(userId) {
+        Materialize.toast('You are now an Expert', 4000);
+        $location.url("/user/" + userId + '/profile');
+      }, function(err) {
+        console.log(err);
+      });
+    };
 
     CraftService.getAll().then(function(data) {
-      console.log(data);
       $scope.allCrafts = data;
-      console.log($scope.allCrafts);
-      return $scope.allCrafts;
     });
-
-}])
+    $timeout(function() {
+      CraftService.getExpertCrafts($rootScope.decodedToken.user._id).then(function(data) {
+        $scope.expertCrafts = data;
+      });
+    }, 1000);
+  }]);

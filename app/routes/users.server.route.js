@@ -32,12 +32,25 @@ module.exports = function(app, passport) {
   //Route to get all users in the db.
   router.route('/users')
     .get(ctrl.findAll)
-    .post(ctrl.getImage, ctrl.editImage)
+    .post(ctrl.getImage, ctrl.editImage);
 
   router.route('/users/:id')
     .get(ctrl.findOne)
     .put(ctrl.editProfile)
     .delete(ctrl.deleteOneUser);
+
+
+  //wallet
+  router.route('/wallet/success')
+    .post(function(req, res, next) {
+      console.log(req);
+      return res.redirect('/#/wallet/success?trans_id=' + req.body.transaction_id);
+    });
+  router.route('/wallet/fail')
+    .post(function(req, res, next) {
+      console.log(req.body);
+      return res.redirect('/#/wallet/fail?trans_id=' + req.body.transaction_id);
+    });
   // End of custom route
 
   app.use('/', router);

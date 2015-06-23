@@ -12,11 +12,36 @@ var craftSchema = new Schema({
     type: String,
     required: "Please, enter the description"
   },
+  category: {
+    type: String
+  },
+  smartererlink: {
+    type: String
+  },
+  smartererimagelink: {
+    type: String
+  },
+  createdBy: {
+    type: String
+  },
   picture: {
     type: String
   },
-  experts: [],
+  experts: [{
+    type: Schema.ObjectId,
+    ref: 'Users'
+  }],
   applicants: []
 });
+
+craftSchema.methods.applyAs = function(userId, cb) {
+  var experts = this.experts;
+  if (experts.indexOf(userId) < 0) {
+    this.experts.push(userId);
+    this.save(cb);
+  } else {
+    return cb;
+  }
+};
 
 mongoose.model('Crafts', craftSchema);

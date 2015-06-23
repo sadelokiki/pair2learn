@@ -9,10 +9,11 @@
     "afterEach": false,
     "module": false,
     "inject": false,
-    "jQuery" : false,
+    "jQuery": false,
     "require": false,
     "exports": false,
     "console": false,
+    "Materialize": false,
     "process": false
   }
 }

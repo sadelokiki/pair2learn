@@ -1,43 +1,8 @@
 <div id="slide-out" class="side-nav fixed">
-  <span class="quickAccess">Quick Access</strong></span>
-  <ul class="collapsible" data-collapsible="accordion">
-    <li>
-      <div class="collapsible-header"><a href="#!">View all crafts</a></div>
-    </li>
-    <div class="divider"></div>
-    <li>
-      <div class="collapsible-header"><a>My crafts</a></div>
-      <div class="collapsible-body">
-        <p><a href="#">Completed crafts</a></p>
-      </div>
-      <div class="collapsible-body">
-        <p><a href="#">Ongoing crafts</a></p>
-      </div>
-    </li>
-    <div class="divider"></div>
-    <li>
-      <div class="collapsible-header"><a href="#!">My Wallet</a></div>
-    </li>
-    <div class="divider"></div>
-    <li>
-      <div class="collapsible-header"><a href="#!">Connections</a></div>
-    </li>
-    <div class="divider"></div>
-    <li>
-      <div class="collapsible-header"><a href="#!">Favorites</a></div>
-    </li>
-    <div class="divider"></div>
-    <li>
-      <div class="collapsible-header"><a href="#!">Wish List</a></div>
-    </li>
-    <div class="divider"></div>
-    <li>
-      <div class="collapsible-header"><a ng-href="#/{{decodedToken.user._id}}/pair/craft">Live Pair</a></div>
-    </li>
-    <div class="divider"></div>
-  </ul>
+  <div ng-include="'app/views/sidenav.view.html'"></div>
 </div>
-<div class="parallax-container valign-wrapper" style="min-height: 200px !important;padding-top: 2em !important;">
+<!-- <div class="parallax-container valign-wrapper" 
+    style="min-height: 50px !important;padding-top: 2em !important;background-color: rgba(38, 50, 56, 0.92)">
   <div class="section no-pad-bot">
     <div class="row center container">
       <h5 class="col s12 l10 light offset-l2">
@@ -45,23 +10,25 @@
         </h5> 
     </div>
   </div>
-  <div class="parallax"><img src="assets/images/joshdrewpairing.jpg" alt="Unsplashed background img 2"></div>
-</div>
+  <div class="parallax"><img ng-src="assets/images/joshdrewpairing.jpg" alt="Unsplashed background img 2"></div>
+</div> -->
 <div class="row container offset-custom">
-  <div class="col s12 l4" ng-repeat="item in allCrafts">
+  <div class="col s12 l4" ng-repeat="craft in allCrafts">
     <div class="card">
-      <div class="card-image waves-effect waves-block waves-light">
-        <img class="activator" src="{{item.picture}}">
+      <div class="card-image usercard
+ waves-effect waves-block waves-light">
+        <img class="activator" ng-src="{{craft.picture}}">
       </div>
       <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">{{item.title}}<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#/php/experts">{{item.description}}</a></p>
+        <span class="card-title activator grey-text text-darken-4">{{craft.title}}<i class="mdi-navigation-more-vert right"></i></span>
+        <p><a href="#/{{craft.title | slug}}/{{craft._id}}/experts">Start Learning now!</a></p>
       </div>
       <div class="card-reveal">
-        <span class="card-title grey-text text-darken-4">{{item.craft.title}}<i class="mdi-navigation-close right"></i></span>
-        <p>{{item.craft.description}}</p>
+        <span class="card-title grey-text text-darken-4">{{craft.title}}<i class="mdi-navigation-close right"></i></span>
+        <div ng-show="craft.createdBy" style="border-bottom: 1px solid rgb(226, 226, 226);padding-bottom: 10px;">Added By: <span>{{craft.createdBy}}</span></div>
+        <p>
+          {{craft.description}}</p>
       </div>
     </div>
   </div>
-  
 </div>

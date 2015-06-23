@@ -12,11 +12,11 @@ module.exports = function(passport) {
     clientID:  config.facebook.clientID,
     clientSecret: config.facebook.clientSecret,
     callbackURL: "/auth/facebook/callback",
-    enableProof: false
+    enableProof: false,
+    profileFields: ['id', 'displayName', 'gender', 'email', 'first_name', 'last_name', 'photos'],
   },
   function(accessToken, refreshToken, profile, done) {
     process.nextTick(function() {
-      console.log(profile._json.email);
       Users.findOne({'email': profile._json.email}, function(err, user) {
         if(err) {
           return done(err);
@@ -25,10 +25,11 @@ module.exports = function(passport) {
           return done(null, user);
         }
         else {
+          console.log(profile._json);
           var newUser = new Users();
           newUser.firstname = profile._json.first_name;
           newUser.lastname =  profile._json.last_name;
-          newUser.picture =  profile._json.image.url;
+          newUser.picture =  profile._json.picture.data.url;
           newUser.email = profile._json.email;
           newUser.hashPassword('temp-facebook-password-dfjkdfgjfdghalhj');
           newUser.save(function(err) {

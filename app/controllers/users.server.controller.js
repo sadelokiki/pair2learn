@@ -7,12 +7,12 @@ var passport = require("passport"),
   jwt = require('jsonwebtoken'),
   mongoose = require("mongoose"),
   Users = mongoose.model('Users'),
-  secret = require('../../config/config');
+  config = require('../../config/config');
 
 cloudinary.config({
-  cloud_name: 'dtpf1mle2',
-  api_key: '548953239178178',
-  api_secret: 'JLqmFBkh_rDjvSNJs8rBDm4MSbI'
+  cloud_name: config.cloudinary.cloud_name,
+  api_key: config.cloudinary.api_key,
+  api_secret: config.cloudinary.api_secret
 });
 
 
@@ -24,7 +24,7 @@ var generateJWT = function(user) {
       user: user,
       exp: parseInt(exp.getTime() / 1000),
     },
-    secret.jwtSecret
+    config.jwtSecret
   );
   return token;
 };
@@ -37,6 +37,9 @@ exports.getImage = function(req, res, next) {
     cloudinary.uploader.upload(files.file.path, function(result) {
       req.body.picture = result.url;
       next();
+    }, {
+      width: 300,
+      height: 300
     });
   });
 };
@@ -57,70 +60,45 @@ exports.authCallBack = function(strategy) {
   };
 };
 
-exports.findUser = function(req, res) {
-  Users.find({
-    firstname: req.params.firstname
-  }, function(err, user) {
-    if (err) {
-      return res.json(err);
-    }
-    return res.json(user);
-  });
-};
-
-/**
- * @desc new methods for '/users' route
- * findOne { function }
- * findAll { function }
- */
-
 exports.findOne = function(req, res) {
   var user_id = req.params.id;
-  Users.find({
+  Users.findOne({
     _id: user_id
   }, function(err, user) {
     if (err) {
-      res.send(err);
+      return res.status(400).json(err);
     }
-    res.send(user);
-  })
+    return res.status(200).json(user);
+  });
 };
 
 exports.findAll = function(req, res) {
   Users.find({}, function(err, users) {
     if (err) {
-      res.send({
-        error: {
-          code: 9000,
-          message: 'An error occured, sowie',
-          error: err
-        }
-      });
+      return res.status(400).json(err);
     }
     res.send(users);
   });
 };
-
 // End of custom find methods
 
 exports.editImage = function(req, res) {
   var user_id = req.body._id;
   var new_user = req.body;
   Users.update({
-    _id: user_id
-  }, {
-    picture: req.body.picture
-  }, function(err, user) {
-    if (err) {
-      console.log(1, err);
-      return res.status(400).json(err);
-    }
-    console.log(2, user);
-    res.status(200).json({
-      token: generateJWT(user),
-      user: new_user
+      _id: user_id
+    }, {
+      picture: req.body.picture
+    },
+    function(err, user) {
+      if (err) {
+        return res.status(400).json(err);
+      }
+      res.status(200).json({
+        token: generateJWT(new_user),
+        user: new_user
+      });
     });
-  });
 };
 
 exports.editProfile = function(req, res) {
@@ -129,20 +107,30 @@ exports.editProfile = function(req, res) {
     _id: user_id
   }, req.body, function(err, data) {
     if (err) {
-      res.send({
-        error: {
-          code: 9000,
-          message: 'user not found',
-          error: err
-        }
-      });
+      return res.status(400).json(err);
+    }
+    return res.status(200).json({
+      token: generateJWT(req.body),
+      user: req.body
+    });
+  });
+};
+
+exports.deleteOneUser = function(req, res) {
+  var user_id = req.params.id;
+
+  Users.remove({
+    _id: user_id
+  }, req.body, function(err, data) {
+    if (err) {
+      return res.status(400).json(err);
     }
     return res.status(200).json({
       token: generateJWT(user),
       data: data
     });
   });
-};
+}
 
 exports.deleteOneUser = function(req, res) {
   var user_id = req.params.id;

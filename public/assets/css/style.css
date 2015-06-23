@@ -196,8 +196,8 @@ footer.page-footer {
 
 .SigninSignup input {
   color: white;
-  padding-top: 1em;
-  height: 2.5em;
+  padding-top: .5em;
+  height: 1.5em;
   font-size: .9em;
 }
 
@@ -250,13 +250,13 @@ footer.page-footer {
 }
 
 .offset-custom {
-  margin-left: 20em !important;
-  margin-top: 1em;
+  margin-left: 22em !important;
+  margin-top: 3em;
   /*padding: 0px .5em !important;*/
 }
 
-.card .card-image img {
-  height: 20% !important;
+.card .usercard img {
+  height: 12em !important;
 }
 
 div[ng-message] {
@@ -269,11 +269,12 @@ div[ng-message] {
 
 .signup {
   padding: 0em 0em !important;
+  height: 3em !important;
 }
 
 .nav-user {
   width: 3em !important;
-  margin-top: 0.5em;
+  margin-top: .51em;
   margin-left: 1em;
 }
 
@@ -349,9 +350,16 @@ div[ng-message] {
   margin: 0 auto;
 }
 
-.collection {
+.collect {
   border: none;
   border-left: 2px solid #e0e0e0;
+  border-right: 2px solid #e0e0e0;
+}
+
+.expertlist {
+  border: none;
+  height: 330px;
+  overflow-y: scroll;
 }
 
 .collection .collection-item {
@@ -362,6 +370,34 @@ div[ng-message] {
   width: 700px;
   height: 450px !important;
   background-color: #C9C9C9 !important;
+}
+
+.firepad-userlist-heading {
+  padding: 10px;
+  font-size: 12px;
+  font-weight: bold;
+  border-bottom: 2px solid #c9c9c9;
+  margin: 0px !important;
+}
+
+.firepad-userlist-users {
+  position: relative !important;
+  padding: 5px !important;
+  margin: 10px 2px !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+}
+
+.firepad-userlist-user {
+  margin: 20px 0 !important;
+  height: 50px !important;
+}
+
+.firepad-userlist-name-hint {
+  top: 32px;
 }
 
 .CodeMirror {
@@ -381,9 +417,14 @@ div[ng-message] {
   border-radius: 20px;
 }
 
+.adminpage .row {
+  margin-bottom: 0px !important;
+}
+
 .newCraft {
   color: black;
   text-align: center !important;
+  padding: .5em;
 }
 
 .btn-createCraft {
@@ -395,13 +436,14 @@ div[ng-message] {
   color: white;
   border-radius: .5em;
   border: 0px solid black;
+  margin-bottom: 1em;
 }
 
 #icon_prefix {
   color: black;
 }
 
-.ng-touched{
+.ng-touched {
   color: black;
 }
 
@@ -409,8 +451,9 @@ div[ng-message] {
   color: black;
 }
 
-.no-marign-bottom {
-  margin-bottom: 17px !important;
+.input-field {
+  padding-top: 1.5em !important;
+  margin-top: 0em !important;
 }
 
 .ng-dirty {
@@ -418,5 +461,27 @@ div[ng-message] {
 }
 
 .upload {
-  padding-top: 20px;
+  padding-top: 10px;
+}
+
+textarea {
+  font: initial !important;
+}
+
+.collection .collection-item:nth-child(even) {
+  background-color: rgba(244, 244, 244, 0.32);
+  ;
+}
+
+.wallet-hours {
+  margin-top: 1em;
+  font-size: 9em;
+  margin-bottom: .3em;
+  color: rgb(76, 175, 80);
+}
+
+.wallet-form {
+  border: 2px solid rgba(38, 50, 56, 0.05);
+  padding: 2em !important;
+  border-radius: 14px;
 }

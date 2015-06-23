@@ -10,5 +10,10 @@ module.exports = {
     clientID: '1451643985131503',
     clientSecret: 'ab912e0bc9bf867f39e1c25ab0d1aac4'
   },
-  jwtSecret: 'mySecret'
+  jwtSecret: 'mySecret',
+  cloudinary: {
+    cloud_name: 'dtpf1mle2',
+    api_key: '548953239178178',
+    api_secret: 'JLqmFBkh_rDjvSNJs8rBDm4MSbI'
+  }
 };

@@ -1,26 +1,46 @@
 "use strict";
 
 angular.module('pairToLearnApp')
-  .factory('CraftService', ['$http', function($http) {
-    var baseUrl = "http://localhost:3000";
-    return {
-    post: function(data) {
-      return $http.post(baseUrl + '/crafts/', data).then(function(res) {
+  .factory('CraftService', ['$http', 'Upload', 'baseUrl', function($http, Upload, baseUrl) {
+    var crafts = {
+      oneCraft: []
+    };
+
+    crafts.createCraft = function(file, craft) {
+      return Upload.upload({
+          url: baseUrl + '/crafts',
+          method: "POST",
+          file: file,
+          fields: craft
+        })
+        .then(function(res) {
+          return res.data;
+        });
+    };
+
+    crafts.getOneCraft = function(id) {
+      return $http.get(baseUrl + '/crafts/' + id).then(function(res) {
         return res.data;
       });
-    },
+    };
 
-    getOne: function(id, params) {
-      return $http.get(baseUrl + '/crafts/' + id, data).then(function(res) {
+    crafts.applyAsExpert = function(data) {
+      return $http.put(baseUrl + '/apply/crafts/' + data.craftId, data).then(function(res) {
         return res.data;
       });
-    },
+    };
 
-    getAll: function() {
+    crafts.getExpertCrafts = function(userId) {
+      return $http.get(baseUrl + '/expert/' + userId + '/crafts').then(function(res) {
+        return res.data;
+      });
+    };
+
+    crafts.getAll = function() {
       return $http.get(baseUrl + '/crafts/').then(function(res) {
         return res.data;
-      })
-    }
-  };
-    
-  }])
+      });
+    };
+
+    return crafts;
+  }]);

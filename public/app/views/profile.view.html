@@ -1,43 +1,7 @@
 <div id="slide-out" class="side-nav fixed">
-  <span class="quickAccess">Quick Access</strong></span>
-  <ul class="collapsible" data-collapsible="accordion">
-    <li>
-      <div class="collapsible-header"><a href="#!">View all crafts</a></div>
-    </li>
-    <div class="divider"></div>
-    <li>
-      <div class="collapsible-header"><a>My crafts</a></div>
-      <div class="collapsible-body">
-        <p><a href="#">Completed crafts</a></p>
-      </div>
-      <div class="collapsible-body">
-        <p><a href="#">Ongoing crafts</a></p>
-      </div>
-    </li>
-    <div class="divider"></div>
-    <li>
-      <div class="collapsible-header"><a href="#!">My Wallet</a></div>
-    </li>
-    <div class="divider"></div>
-    <li>
-      <div class="collapsible-header"><a href="#!">Connections</a></div>
-    </li>
-    <div class="divider"></div>
-    <li>
-      <div class="collapsible-header"><a href="#!">Favorites</a></div>
-    </li>
-    <div class="divider"></div>
-    <li>
-      <div class="collapsible-header"><a href="#!">Wish List</a></div>
-    </li>
-    <div class="divider"></div>
-    <li>
-      <div class="collapsible-header"><a ng-href="#/{{decodedToken.user._id}}/pair/craft">Live Pair</a></div>
-    </li>
-    <div class="divider"></div>
-  </ul>
+  <div ng-include="'app/views/sidenav.view.html'"></div>
 </div>
-<div class="parallax-container valign-wrapper" style="min-height: 100px !important;padding-top: 2em !important;">
+<!-- <div class="parallax-container valign-wrapper" style="min-height: 100px !important;padding-top: 2em !important;">
   <div class="section no-pad-bot">
     <div class="row center container">
       <h4 class="col s12 l10 light offset-l2">
@@ -46,44 +10,73 @@
     </div>
   </div>
   <div class="parallax"><img src="assets/images/joshdrewpairing.jpg" alt="Unsplashed background img 2"></div>
-</div>
-<form='profileForm' enctype="multipart/form-data">
-  <div class="row container offset-custom">
-    <div class="col l4 s12 center">
+</div> -->
+<div class="row container offset-custom">
+  <div class="col l4 s12 center">
+    <!-- now working fine -->
+    <form name='profileForm' enctype="multipart/form-data">
       <a ng-href="#/edit/user/{{decodedToken.user._id}}" class="secondary-content"><i class="mdi-action-grade"></i></a>
       <img width="250" ng-hide="decodedToken.user.picture" ng-src="assets/images/placeholder-avatar.png" alt="" class="  circle responsive-img">
       <img width="250" ng-show="decodedToken.user.picture" ng-src="{{decodedToken.user.picture}}" alt="" class=" circle responsive-img">
-      <label>Upload your profile picture. It can be a sample of your work</label>
-      <div>
-        <input type="file" ngf-select="true" ng-model="image" ngf-change="fileSelected($files, $event)" />
+      <label>Upload your profile picture.</label>
+      <div class="row center">
+        <input style="width: 200px" type="file" ngf-select="true" ng-model="image" ngf-change="fileSelected($files, $event)" />
+        <a ng-disabled="profileForm.$invalid" ng-click="addProfilePic(image)" id="submitimage" class="btn waves-effect waves-light green" style="
+          height: 20px;
+          font-size: 10px;
+          line-height: 18px;
+          width: 70px;
+          padding: 2px;
+        " ng-controller="UserCtrl">upload</a>
       </div>
-      <a ng-click="addProfilePic(image)" id="submitimage" class="btn-large waves-effect waves-light" ng-controller="UserCtrl">Submit</a>
-    </div>
-    <div class="col l5 s12 offset-l1">
-      <ul class="collection">
-        <li class="collection-item avatar">
-          <i class="mdi-action-account-circle circle green"></i>
-          <span class="title">First Name:</span>
-          <p>
-            {{decodedToken.user.firstname}}
-          </p>
-        </li>
-        <li class="collection-item avatar">
-          <i class="mdi-action-account-circle circle green"></i>
-          <span class="title">Last Name:</span>
-          <p>
-            {{decodedToken.user.lastname}}
-          </p>
-        </li>
-        <li class="collection-item avatar">
-          <i class="mdi-communication-call circle red"></i>
-          <span class="title">Phone:</span>
-          <p>
-            {{decodedToken.user.phonenumber}}
-          </p>
-        </li>
-      </ul>
-      <a ng-href="#/edit/user/{{decodedToken.user._id}}" id="download-button" class="btn-large waves-effect waves-light">Edit Profile</a>
-    </div>
+    </form>
   </div>
-  </form>
+  <div class="col l4 s12">
+    <ul class="collection collect">
+      <li class="collection-item avatar">
+        <i class="mdi-action-account-circle circle green"></i>
+        <span class="title">First Name:</span>
+        <p>
+          {{decodedToken.user.firstname}}
+        </p>
+      </li>
+      <li class="collection-item avatar">
+        <i class="mdi-action-account-circle circle green"></i>
+        <span class="title">Last Name:</span>
+        <p>
+          {{decodedToken.user.lastname}}
+        </p>
+      </li>
+      <li class="collection-item avatar">
+        <i class="mdi-communication-call circle red"></i>
+        <span class="title">Phone:</span>
+        <p>
+          {{decodedToken.user.phonenumber}}
+        </p>
+      </li>
+      <li class="collection-item avatar">
+        <i class="mdi-communication-email circle red"></i>
+        <span class="title">Email:</span>
+        <p>
+          {{decodedToken.user.email}}
+        </p>
+      </li>
+    </ul>
+  </div>
+  <div class="col l4 s12">
+    <ul class="collection with-header expertlist">
+      <li class="collection-header center">
+        <h5>Expert</h5>
+      </li>
+      <li class="collection-item" ng-repeat="craft in expertCrafts">
+        <div>{{craft.title}}<a ng-href="#/{{craft.title | slug}}/{{craft._id}}/experts" class="secondary-content"><i class="mdi-content-send"></i></a></div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="row center offset-custom">
+  <a ng-href="#/edit/user/{{decodedToken.user._id}}" id="download-button" class="btn waves-effect waves-light">Edit Profile</a>
+  <a ng-href="#/user/{{decodedToken.user._id}}/apply/expert" id="download-button" class="btn waves-effect waves-light">Apply as an Expert</a>
+  <a ng-href="#/admin" id="download-button" class="btn waves-effect waves-light">Add a craft</a>
+</div>
+<ng-timer start-auto='{{timerStarted}}' interval-ms='10000' event-name='angular-timer-tick-handler'></ng-timer>

@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('pairToLearnApp')
-  .controller('NavCtrl', ['UserService', '$rootScope', '$scope', '$location', '$window', '$timeout', 'Upload',
-    function(UserService, $rootScope, $scope, $location, $window, $timeout, Upload) {
+  .controller('NavCtrl', ['UserService', '$rootScope', '$scope', '$location', '$window', '$timeout', '$route',
+    function(UserService, $rootScope, $scope, $location, $window, $timeout, $route) {
       (function($) {
         $(function() {
           $('.dropdown-button')
@@ -10,7 +10,7 @@ angular.module('pairToLearnApp')
               inDuration: 300,
               outDuration: 225,
               constrain_width: false, // Does not change width of dropdown to that of the activator
-              hover: true, // Activate on hover
+              hover: false, // Activate on hover
               gutter: 0, // Spacing from edge
               belowOrigin: true // Displays dropdown below the button
             });
@@ -22,6 +22,8 @@ angular.module('pairToLearnApp')
             closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
           });
       })(jQuery);
+
+      $rootScope.showProg = false;
 
       $rootScope.$on("$routeChangeSuccess", function(event) {
         if ($window.sessionStorage.token) {
@@ -47,39 +49,35 @@ angular.module('pairToLearnApp')
       });
 
       $rootScope.addProfilePic = function(profpic) {
-        console.log(profpic)
-        var localhost = "http://localhost:3000/users";
-        // decodedToken.user.picture = decodedToken.user.picture[0];
-        var upload = Upload.upload({
-            url: localhost,
-            method: "POST",
-            file: profpic,
-            fields: $rootScope.decodedToken.user
-          })
-          .success(function(data) {
-            // $scope.showProfile();
+        console.log(profpic);
+        if (!profpic) {
+          return;
+        }
+        $rootScope.showProg = true;
+        UserService.uploadPic(profpic, $scope.decodedToken.user).then(function(data) {
+            Materialize.toast('Picture updated successfully!', 4000);
+            $window.sessionStorage.token = data.token;
             console.log(data);
-            // $window.sessionStorage.token = data.token;
-            $location.url("/user/" + data.user._id + '/profile');
+            $rootScope.showProg = false;
+            $route.reload();
+          },
+          function(err) {
+            $rootScope.showProg = false;
           });
-
       };
 
       $rootScope.logout = function() {
-        $rootScope.hideOutProg = false;
         $window.sessionStorage.clear();
         $timeout(function() {
           $rootScope.hideOutProg = true;
+          $window.location.href = "#/home";
           Materialize.toast('You are signed out!', 2000);
-          $location.url("/home");
         }, 1500);
       };
 
       $scope.editProfile = function() {
-        UserService.update($scope.decodedToken.user._id, $scope.decodedToken.user).then(function(res) {
-          console.log("profile updated");
+        UserService.updateProfile($scope.decodedToken.user._id, $scope.decodedToken.user).then(function(res) {
           Materialize.toast('Profile updated successfully!', 4000);
-          console.log(res.data);
           $window.sessionStorage.token = res.data.token;
           $location.url("/user/" + res.data.user._id + '/profile');
         });
