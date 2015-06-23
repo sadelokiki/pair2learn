@@ -12,15 +12,17 @@
   <div class="parallax"><img src="assets/images/joshdrewpairing.jpg" alt="Unsplashed background img 2"></div>
 </div>
 <div class="row container center offset-custom">
-  <div class="col s12 l4 center">
-    <div class="card center" ng-repeat="expert in oneCraft
+  <div class="col s12 l4 center" ng-repeat="expert in oneCraft
 .experts">
+    <div class="card center">
       <div class="card-image waves-effect waves-block waves-light">
         <img class="activator" ng-src="{{expert.picture}}">
       </div>
       <div class="card-content">
-        <span class="card-title activator grey-text text-darken-4">{{expert.firstname}}&nbsp;{{expert.lastname}}<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#/wallet/user/{{decodedToken.user._id}}" ng-click="saveCraftExpert(oneCraft._id, expert._id)">Connect..</a></p>
+        <span class="card-title activator grey-text text-darken-4">{{expert.firstname}}&nbsp;{{expert.lastname}}<i class="mdi-navigation-more-vert right"></i>
+</span>
+        <p>
+          <a href="#/wallet/user/{{decodedToken.user._id}}" ng-click="saveCraftExpert(oneCraft._id, expert._id)">Connect..</a></p>
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">{{expert.firstname}}&nbsp;{{expert.lastname}}<i class="mdi-navigation-close right"></i></span>

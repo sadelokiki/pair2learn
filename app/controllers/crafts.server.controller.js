@@ -46,7 +46,9 @@ exports.findCrafts = function(req, res) {
 };
 
 exports.findOneCraft = function(req, res, next) {
-  Crafts.findOne(req.params.id)
+  Crafts.findOne({
+      _id: req.params.id
+    })
     .populate('experts')
     .exec(function(err, craft) {
       if (err) {

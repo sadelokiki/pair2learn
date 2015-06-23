@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module('pairToLearnApp')
-  .controller('ExpertCtrl', ['CraftService', 'expertPromise', '$scope', '$location', '$timeout', '$rootScope', '$window', function(CraftService, expertPromise, $scope, $location, $timeout, $rootScope, $window) {
+  .controller('ExpertCtrl', ['CraftService', '$scope', '$location', '$timeout', '$rootScope', '$window', '$routeParams', function(CraftService, $scope, $location, $timeout, $rootScope, $window, $routeParams) {
     (function($) {
       $(function() {
         $('.parallax').parallax();
@@ -10,8 +10,9 @@ angular.module('pairToLearnApp')
     })(jQuery);
 
     //expert page
-    console.log(expertPromise);
-    $rootScope.oneCraft = expertPromise;
+    CraftService.getOneCraft($routeParams.id).then(function(data) {
+      $rootScope.oneCraft = data;
+    });
 
     $scope.saveCraftExpert = function(craftId, expertId) {
       $window.sessionStorage.craft = craftId;
