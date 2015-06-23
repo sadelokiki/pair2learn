@@ -2,7 +2,7 @@
   <!-- Dropdown Structure -->
   <ul id="user-menu" class="dropdown-content blue-text">
     <li><a ng-href="#/user/{{decodedToken.user._id}}">View Crafts</a></li>
-    <li><a ng-href="#/user/{{decodedToken.user._id}}/profile">My Profile</a></li>
+    <li><a ng-href="#/user/{{decodedToken.user._id}}/dashboard">Dashboard</a></li>
     <li><a ng-href="#/edit/user/{{decodedToken.user._id}}">Edit Profile</a></li>
     <li class="divider"></li>
     <li><a ng-click="logout()">Log Out</a></li>
@@ -48,7 +48,7 @@
           </li>
           <div class="divider"></div>
           <li><a ng-href="#/user/{{decodedToken.user._id}}">View Crafts</a></li>
-          <li><a ng-href="#/user/{{decodedToken.user._id}}/profile">My Profile</a></li>
+          <li><a ng-href="#/user/{{decodedToken.user._id}}/dashboard">Dashboard</a></li>
           <li><a ng-href="#/edit/user/{{decodedToken.user._id}}">Edit Profile</a></li>
           <li class="divider"></li>
           <li><a href="#!">View all crafts</a></li>

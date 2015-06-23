@@ -79,7 +79,7 @@ angular.module('pairToLearnApp')
         UserService.updateProfile($scope.decodedToken.user._id, $scope.decodedToken.user).then(function(res) {
           Materialize.toast('Profile updated successfully!', 4000);
           $window.sessionStorage.token = res.data.token;
-          $location.url("/user/" + res.data.user._id + '/profile');
+          $location.url("/user/" + res.data.user._id + '/dashboard');
         });
       };
     }

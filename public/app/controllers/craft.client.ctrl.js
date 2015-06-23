@@ -35,7 +35,7 @@ angular.module('pairToLearnApp')
       };
       CraftService.applyAsExpert(data).then(function(userId) {
         Materialize.toast('You are now an Expert', 4000);
-        $location.url("/user/" + userId + '/profile');
+        $location.url("/user/" + userId + '/dashboard');
       }, function(err) {
         console.log(err);
       });
@@ -44,6 +44,7 @@ angular.module('pairToLearnApp')
     CraftService.getAll().then(function(data) {
       $scope.allCrafts = data;
     });
+
     $timeout(function() {
       CraftService.getExpertCrafts($rootScope.decodedToken.user._id).then(function(data) {
         $scope.expertCrafts = data;

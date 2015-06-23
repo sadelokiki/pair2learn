@@ -485,3 +485,7 @@ textarea {
   padding: 2em !important;
   border-radius: 14px;
 }
+
+nav ul li {
+  display: inline-block !important;
+}
