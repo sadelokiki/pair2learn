@@ -88,6 +88,14 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
         requiresLogin: true
       }
     })
+    .when('/admin/crafts', {
+      templateUrl: 'app/views/admincraft.view.html',
+      controller: 'CraftCtrl'
+    })
+    .when('/edit/craft/:id', {
+      templateUrl: 'app/views/editcraft.view.html',
+      controller: 'CraftCtrl'
+    })
     .when('/user/pair/expert/:expertId/:craft', {
       templateUrl: 'app/views/pair.view.html',
       controller: 'PairCtrl',

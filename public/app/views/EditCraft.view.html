@@ -3,13 +3,13 @@
     <div id="signUp" class="SigninSignup" style="background-image: none !important; margin-top: 1em;">
       <div style="background-color: rgb(38, 50, 56) !important; border-radius: 20px;">
         <div class="row center">
-          <form name="adminForm" ng-submit="createCraft(craft)">
+          <form name="adminForm">
             <div class="s12 m4 l8">
-              <h5 class="newCraft">Create New Craft</h5></div>
+              <h5 class="newCraft">Edit Craft</h5></div>
             <div class="row no-marign-bottom">
               <div class="input-field col s12">
                 <i class="medium mdi-social-public prefix"></i>
-                <input name="title" id="icon_prefix" type="text" ng-model="craft.title" class="validate" required>
+                <input name="title" id="title" ng-model="craft.title" required type="text" class="validate">
                 <label for="icon_prefix">Craft title</label>
               </div>
             </div>
@@ -27,11 +27,6 @@
                 <label for="icon_prefix">Category</label>
               </div>
             </div>
-             <div class="row l12 center no-margin-bottom">
-              <div class="btn blue-grey darken-1">
-              <a class="viewCrafts" href="/#/admin/crafts">View all crafts</a>
-              </div>
-            </div>
             <div class="row l12 center no-margin-bottom">
               <div class="btn blue-grey darken-1">
                 <input type="file" ngf-select="true" accept="image/*" ng-model="craft.picture" ngf-change="fileSelected($files, $event)" class="validate" required>
@@ -42,7 +37,7 @@
             </div>
             <div class="row center no-margin-bottom">
               <div class="input-field col s12">
-                <input id="create" type="submit" ng-disabled="adminForm.$invalid" value="Create" class="waves-effect waves-light btn-facebook signup">
+                <input id="create" type="submit" ng-disabled="adminForm.$invalid" value="Update" class="waves-effect waves-light btn-facebook signup">
               </div>
             </div>
           </form>

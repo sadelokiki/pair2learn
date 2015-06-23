@@ -9,7 +9,6 @@ angular.module('pairToLearnApp')
       });
     })(jQuery);
 
-
     $scope.applyAsExpert = function(craftId) {
       var data = {
         userId: $rootScope.decodedToken.user._id,
@@ -26,6 +25,17 @@ angular.module('pairToLearnApp')
     CraftService.getAll().then(function(data) {
       $scope.allCrafts = data;
     });
+
+    CraftService.getOneCraft().then(function(data) {
+      $scope.craft = data;
+      console.log($scope.craft);
+    })
+
+    $scope.updateCraft = function() {
+      CraftService.updateCraft($scope.craft._id, $scope.craft).then(function(data) {
+        Materialize.toast('Craft updated successfully!', 4000);
+      })
+    }
 
     $timeout(function() {
       CraftService.getExpertCrafts($rootScope.decodedToken.user._id).then(function(data) {

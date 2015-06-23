@@ -36,6 +36,12 @@ angular.module('pairToLearnApp')
       });
     };
 
+     crafts.updateCraft = function(id, params) {
+      return $http.put(baseUrl + '/crafts/' + id, params).then(function(res) {
+        return res.data;
+      });
+    };
+
     crafts.getAll = function() {
       return $http.get(baseUrl + '/crafts/').then(function(res) {
         return res.data;
