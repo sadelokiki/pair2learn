@@ -83,7 +83,7 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
     })
     .when('/post-craft', {
       templateUrl: 'app/views/admin.view.html',
-      controller: 'CraftCtrl',
+      controller: 'CreateCraftCtrl',
       data: {
         requiresLogin: true
       }
