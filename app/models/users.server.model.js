@@ -26,9 +26,9 @@ var userSchema = new Schema({
   phonenumber: {
     type: String
   },
-  hours: {
+  minutes: {
     type: String,
-    default: 1
+    default: 60
   }
 });
 

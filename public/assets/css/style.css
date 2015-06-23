@@ -484,4 +484,17 @@ textarea {
   border: 2px solid rgba(38, 50, 56, 0.05);
   padding: 2em !important;
   border-radius: 14px;
+  margin-left: 70px;
+}
+
+.row .col.l5 {
+  width: 41.66667%;
+  margin-left: 70px;
+}
+
+.balance {
+  border: 2px solid rgba(38, 50, 56, 0.05);
+  /*padding: 2em !important;*/
+  border-radius: 14px;
+  height: 509.125px;
 }

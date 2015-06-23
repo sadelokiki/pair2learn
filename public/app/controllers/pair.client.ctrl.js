@@ -10,13 +10,10 @@ angular.module('pairToLearnApp')
         });
       });
     })(jQuery);
-    // $timeout(function() {
       UserService.getOneUser($rootScope.decodedToken.user._id).then(function(data) {
-        // $rootScope.hours = data.hours;
-        $scope.counter = data.hours * 60 ;
+        $scope.counter = data.minutes * 60 ;
       });
-    // }, 1000);
-     // $scope.counter = 20;
+   
     var mytimeout = null;
     $scope.onTimeout = function() {
       if ($scope.counter === 0) {
