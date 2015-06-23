@@ -68,11 +68,9 @@ angular.module('pairToLearnApp')
 
       $rootScope.logout = function() {
         $window.sessionStorage.clear();
-        $timeout(function() {
-          $rootScope.hideOutProg = true;
-          $window.location.href = "#/home";
-          Materialize.toast('You are signed out!', 2000);
-        }, 1500);
+        $rootScope.hideOutProg = true;
+        $window.location.href = "#/home";
+        Materialize.toast('You are signed out!', 2000);
       };
 
       $scope.editProfile = function() {

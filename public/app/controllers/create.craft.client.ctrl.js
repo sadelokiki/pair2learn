@@ -1,8 +1,7 @@
 "use strict";
 
 angular.module('pairToLearnApp')
-  .controller('CreateCraftCtrl
-', ['CraftService', '$scope', '$location', '$timeout', '$rootScope', '$window', function(CraftService, $scope, $location, $timeout, $rootScope, $window) {
+  .controller('CreateCraftCtrl', ['CraftService', '$scope', '$location', '$timeout', '$rootScope', '$window', function(CraftService, $scope, $location, $timeout, $rootScope, $window) {
 
     $scope.createCraft = function(craft) {
       if (!craft) {

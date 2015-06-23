@@ -59,8 +59,6 @@ exports.findOneCraft = function(req, res, next) {
 exports.editCraft = function(req, res) {
   var craft_id = req.params.id;
   Crafts.update({
-<<<<<<< HEAD
-=======
       _id: craft_id
     },
     req.body,
@@ -130,4 +128,3 @@ exports.deleteOneCraft = function(req, res) {
     res.status(200).json(craft);
   });
 };
-
