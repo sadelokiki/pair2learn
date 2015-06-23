@@ -14,7 +14,7 @@
         <li><a ng-hide="isLoggedIn" href="#/crafts">Browse Crafts</a></li>
         <li><a ng-hide="hideFeatures" href="#features">Features</a></li>
         <li><a ng-hide="isLoggedIn" href="#/signup">Pair with an Expert</a></li>
-        <li><a ng-hide="isLoggedIn" href="#/login">Login</a></li>
+        <li><a ng-hide="isLoggedIn" href="#/login" class="btn blue-grey darken-1">Login</a></li>
         <div ng-show="isLoggedIn" style="display: inline;">
           <li>
             <span>Welcome {{decodedToken.user.firstname}}</span>
