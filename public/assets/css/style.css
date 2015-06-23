@@ -422,9 +422,11 @@ div[ng-message] {
 }
 
 .newCraft {
-  color: black;
+  color: white;
   text-align: center !important;
-  padding: .5em;
+  padding: 1em .1em;
+  margin-bottom: 1em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .btn-createCraft {
@@ -440,7 +442,7 @@ div[ng-message] {
 }
 
 #icon_prefix {
-  color: black;
+  color: white;
 }
 
 .ng-touched {
@@ -448,7 +450,7 @@ div[ng-message] {
 }
 
 .input-field .prefix {
-  color: black;
+  color: white;
 }
 
 .input-field {
@@ -488,4 +490,8 @@ textarea {
 
 nav ul li {
   display: inline-block !important;
+}
+
+input[type="button"] {
+  background-color: green !important;
 }
