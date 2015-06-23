@@ -68,18 +68,16 @@ angular.module('pairToLearnApp')
 
       $rootScope.logout = function() {
         $window.sessionStorage.clear();
-        $timeout(function() {
-          $rootScope.hideOutProg = true;
-          $window.location.href = "#/home";
-          Materialize.toast('You are signed out!', 2000);
-        }, 1500);
+        $rootScope.hideOutProg = true;
+        $window.location.href = "#/home";
+        Materialize.toast('You are signed out!', 2000);
       };
 
       $scope.editProfile = function() {
         UserService.updateProfile($scope.decodedToken.user._id, $scope.decodedToken.user).then(function(res) {
           Materialize.toast('Profile updated successfully!', 4000);
           $window.sessionStorage.token = res.data.token;
-          $location.url("/user/" + res.data.user._id + '/profile');
+          $location.url("/user/" + res.data.user._id + '/dashboard');
         });
       };
     }

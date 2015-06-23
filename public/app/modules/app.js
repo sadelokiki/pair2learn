@@ -33,7 +33,7 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
       templateUrl: 'app/views/crafts.view.html',
       controller: 'CraftCtrl'
     })
-    .when('/user/:id/profile', {
+    .when('/user/:id/dashboard', {
       templateUrl: 'app/views/profile.view.html',
       controller: 'CraftCtrl',
       data: {
@@ -81,9 +81,9 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
         requiresLogin: true
       }
     })
-    .when('/admin', {
+    .when('/post-craft', {
       templateUrl: 'app/views/admin.view.html',
-      controller: 'CraftCtrl',
+      controller: 'CreateCraftCtrl',
       data: {
         requiresLogin: true
       }

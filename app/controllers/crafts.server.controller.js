@@ -128,4 +128,3 @@ exports.deleteOneCraft = function(req, res) {
     res.status(200).json(craft);
   });
 };
-
