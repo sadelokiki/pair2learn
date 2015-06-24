@@ -23,10 +23,6 @@ angular.module('pairToLearnApp')
       $scope.counter--;
       mytimeout = $timeout($scope.onTimeout, 1000);
     }
-    $scope.startTimer = function() {
-      console.log("time starts now");
-      mytimeout = $timeout($scope.onTimeout, 1000);
-    }
     
     $scope.craftId = $window.sessionStorage.craft;
     $scope.expertId = $window.sessionStorage.expert;
