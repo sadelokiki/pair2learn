@@ -11,10 +11,15 @@
               <h5 class="newCraft">Create New Craft</h5>
             </div>
             <div class="row no-marign-bottom">
-              <div class="input-field col s12">
+              <div class="input-field col l7 s12">
                 <i class="medium mdi-social-public prefix"></i>
                 <input name="title" id="icon_prefix" type="text" ng-model="craft.title" class="validate" required>
                 <label for="icon_prefix">Craft title</label>
+              </div>
+              <div class="input-field col l5 s12">
+                <i class="medium mdi-action-description prefix"></i>
+                <input name="category" id="icon_prefix" type="text" ng-model="craft.category" class="validate" required>
+                <label for="icon_prefix">Category</label>
               </div>
             </div>
             <div class="row no-marign-bottom">
@@ -22,13 +27,6 @@
                 <i class="medium mdi-action-description prefix"></i>
                 <textarea id="icon_prefix" rows="2" class="materialize-textarea validate" max="350" ng-model="craft.description" required></textarea>
                 <label for="icon_prefix">Description</label>
-              </div>
-            </div>
-            <div class="row no-marign-bottom">
-              <div class="input-field col s12">
-                <i class="medium mdi-action-description prefix"></i>
-                <input name="category" id="icon_prefix" type="text" ng-model="craft.category" class="validate" required>
-                <label for="icon_prefix">Category</label>
               </div>
             </div>
             <div class="row l12 center no-margin-bottom">
