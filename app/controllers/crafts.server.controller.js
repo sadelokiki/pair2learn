@@ -37,7 +37,13 @@ exports.postCraft = function(req, res) {
     if (err) {
       return res.status(400).json(err);
     }
-    return res.status(200).json(craft);
+    craft.applyAs(req.body.userId,
+      function(err, acraft) {
+        if (err) {
+          return res.status(400).json(err);
+        }
+        return res.status(200).json(acraft);
+      });
   });
 };
 
