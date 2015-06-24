@@ -7,11 +7,7 @@ angular.module('pairToLearnApp')
       if (!craft) {
         return;
       }
-      if (!$scope.craft.picture) {
-        return;
-      }
-      var user = $scope.decodedToken.user.firstname;
-      console.log(user);
+      var user = $rootScope.decodedToken.user.firstname + " " + $rootScope.decodedToken.user.lastname;
       craft.createdBy = user;
       $rootScope.showProg = true;
       CraftService.createCraft(craft.picture, craft).then(function(data) {
@@ -21,25 +17,25 @@ angular.module('pairToLearnApp')
         $location.url("/admin/" + "crafts");
       }, function(err) {
         $rootScope.showProg = false;
-        return data;
+        return err;
       });
     };
 
     $scope.Businessdashboard = function(craft) {
-      var craftId = $rootScope.decodedToken.craft._id
+      var craftId = $rootScope.decodedToken.craft._id;
       CraftService.getCraftDetails(craftId).then(function(res) {
         $rootScope.craftInformation = res;
         console.log($rootScope.craftInformation, "sleep");
-            $scope.craft = res;
-          });
-      };
-      console.log($scope.craftInformation );
-      console.log($rootScope.craftInformation);
-  
+        $scope.craft = res;
+      });
+    };
+    console.log($scope.craftInformation);
+    console.log($rootScope.craftInformation);
+
 
     $scope.updateCraft = function() {
       CraftService.updateCraft($scope.craft._id, $scope.craft).then(function(data) {
         Materialize.toast('Craft updated successfully!', 4000);
-      })
+      });
     };
   }]);
