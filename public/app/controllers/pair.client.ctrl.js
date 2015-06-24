@@ -23,10 +23,7 @@ angular.module('pairToLearnApp')
       }
       $scope.counter--;
       mytimeout = $timeout($scope.onTimeout, 1000);
-    }
-    $scope.startTimer = function() {
-      mytimeout = $timeout($scope.onTimeout, 1000);
-    }
+    
     $scope.stopTimer = function() {
       $scope.$broadcast('timer-stopped', $scope.counter);
       // $scope.counter= ;
