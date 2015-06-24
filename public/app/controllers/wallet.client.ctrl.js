@@ -19,7 +19,7 @@ angular.module('pairToLearnApp')
         return;
       }
       $scope.counter--;
-      mytimeout = $timeout($scope.onTimeout, 1000);
+     mytimeout = $timeout($scope.onTimeout, 1000);
     };
     $scope.craftId = $window.sessionStorage.craft;
     $scope.expertId = $window.sessionStorage.expert;

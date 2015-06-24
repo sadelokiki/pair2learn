@@ -22,14 +22,15 @@ angular.module('pairToLearnApp')
         return;
       }
       $scope.counter--;
-    }
       mytimeout = $timeout($scope.onTimeout, 1000);
+    }
+    mytimeout = $timeout($scope.onTimeout, 1000);
     $scope.stopTimer = function() {
       $scope.$broadcast('timer-stopped', $scope.counter);
       // $scope.counter= ;
       $timeout.cancel(mytimeout);
     }
-    mytimeout = $timeout($scope.onTimeout, 1000);
+    // mytimeout = $timeout($scope.onTimeout, 1000);
     $scope.$on('timer-stopped', function(event, remaining) {
       if (remaining === 0) {
         alert('your time ran out!');

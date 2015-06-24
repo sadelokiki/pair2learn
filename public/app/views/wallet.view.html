@@ -45,11 +45,7 @@
       <input type='hidden' name='store_id' value='25' />
       <div class="row">
         <div class="input-field col s12">
-<<<<<<< HEAD
-          <label for="minutes">Enter the number of minutes you want buy</label>
-=======
           <label for="minutes">Enter the number of minutes you want buy -&nbsp;<strike>N</strike>50/min</label>
->>>>>>> timeTracker
           <input id="minutes" type="text" ng-model="minute" class="validate" required>
         </div>
       </div>
@@ -57,11 +53,8 @@
       <div class="row">
         <div class="input-field col s12">
           <label for="amount">Amount in Naira</label>
-<<<<<<< HEAD
-          <p><strike>N</strike>{{200 * ((+minute>0) ? hour : 0)}}</p>
-=======
+
           <p><strike>N</strike>{{200 * ((+minute>0) ? minute : 0)}}</p>
->>>>>>> timeTracker
           <div class="divider"></div>
         </div>
       </div>
