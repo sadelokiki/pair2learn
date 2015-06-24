@@ -17,7 +17,7 @@
         <li><a ng-hide="isLoggedIn" href="#/login" class="btn blue-grey darken-1">Login</a></li>
         <div ng-show="isLoggedIn" style="display: inline;">
           <li>
-            <span style="display: inline;">Welcome {{decodedToken.user.firstname}}</span>
+            <span style="display: inline-block;">Welcome {{decodedToken.user.firstname}}</span>
           </li>
           <li>
             <img ng-hide="decodedToken.user.picture" ng-src="http://insight.venturebeat.com/sites/all/modules/features/vb_intel_analysts/assets/images/analyst-placeholder-avatar.png" alt="" class="nav-user circle responsive-img">
