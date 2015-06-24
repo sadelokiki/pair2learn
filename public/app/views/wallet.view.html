@@ -21,9 +21,9 @@
       <div class="divider"></div>
     </div>
     <div class="center" ng-show="minutes">
-      <h1 class="wallet-hours">
-        <span ng-class="(minutes < 1) ? 'red-text' : 'green-text'">{{minutes}}</span>
-      </h1>
+      <h1 class="wallet-minutes">
+    <span ng-class="(minutes < 1) ? 'red-text' : 'green-text'">{{minutes}}</span>
+    </h1>
       <h3>
         <span style=" color: rebeccapurple;">P2L</span>&nbsp;
       </h3>
@@ -33,14 +33,14 @@
     <div class="row center" ng-show="minutes > 0" style="margin-top: 1em;">
       <a ng-href="#/user/pair/expert/{{expertId}}/{{craftId}}" class="btn waves-effect waves-light">Continue with Expert</a>
     </div>
-    <div class="row center red-text" ng-hide="minutes > 0" style="margin-top: 1em;">
-      <h5>Insuffucient credit<br>Buy P2l hours to continue</h5>
+    <div class="row center red-text" ng-hide="minutes ? minutes : -1 > 0 style="margin-top: 1em;>
+      <h5>Insuffucient credit<br>Buy P2l minutes to continue</h5>
     </div>
   </div>
   <div class="col l5 s12 wallet-form">
     <div class="row center">
       <h5>
-        Buy more P2L hours
+        Buy more P2L minutes
       </h5>
       <span><strike
 >N</strike>200/hr</span>
@@ -48,7 +48,7 @@
     <form method='POST' action='https://voguepay.com/pay/' ng-init="hour = 0">
       <input type='hidden' name='v_merchant_id' value='9802-0029872' />
       <input type='hidden' name='merchant_ref' value='' />
-      <input type='hidden' name='memo' value='Pair to Learn Hours Purchase' />
+      <input type='hidden' name='memo' value='Pair to Learn minutes Purchase' />
       <input type='hidden' name='notify_url' value='http://paritolearn.herokuapp.com/notification.php' />
       <input type='hidden' name='success_url' value='http://paritolearn.herokuapp.com/wallet/success' />
       <input type='hidden' name='fail_url' value='http://paritolearn.herokuapp.com/wallet/fail' />
@@ -56,15 +56,15 @@
       <input type='hidden' name='store_id' value='25' />
       <div class="row">
         <div class="input-field col s12">
-          <label for="hours">Enter the number of Hours you want buy</label>
-          <input id="hours" type="text" ng-model="hour" class="validate" required>
+          <label for="minutes">Enter the number of minutes you want buy</label>
+          <input id="minutes" type="text" ng-model="minute" class="validate" required>
         </div>
       </div>
-      <input name='total' id="amount" type="hidden" value="{{hour * 200}}">
+      <input name='total' id="amount" type="hidden" value="{{minute * 50}}">
       <div class="row">
         <div class="input-field col s12">
           <label for="amount">Amount in Naira</label>
-          <p><strike>N</strike>{{200 * ((+hour>0) ? hour : 0)}}</p>
+          <p><strike>N</strike>{{200 * ((+minute>0) ? hour : 0)}}</p>
           <div class="divider"></div>
         </div>
       </div>
