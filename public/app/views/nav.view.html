@@ -13,11 +13,11 @@
       <ul class="right hide-on-med-and-down white-text">
         <li><a ng-hide="isLoggedIn" href="#/crafts">Browse Crafts</a></li>
         <li><a ng-hide="hideFeatures" href="#features">Features</a></li>
-        <li><a ng-hide="isLoggedIn" href="#/signup">Pair with an Expert</a></li>
+        <li><a ng-hide="isLoggedIn" href="#/signup" style="display: inline;">Pair with an Expert</a></li>
         <li><a ng-hide="isLoggedIn" href="#/login" class="btn blue-grey darken-1">Login</a></li>
         <div ng-show="isLoggedIn" style="display: inline;">
           <li>
-            <span>Welcome {{decodedToken.user.firstname}}</span>
+            <span style="display: inline;">Welcome {{decodedToken.user.firstname}}</span>
           </li>
           <li>
             <img ng-hide="decodedToken.user.picture" ng-src="http://insight.venturebeat.com/sites/all/modules/features/vb_intel_analysts/assets/images/analyst-placeholder-avatar.png" alt="" class="nav-user circle responsive-img">
