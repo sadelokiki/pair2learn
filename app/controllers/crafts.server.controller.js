@@ -17,13 +17,18 @@ exports.postImage = function(req, res, next) {
   var forms = new formidable.IncomingForm();
   forms.parse(req, function(err, fields, files) {
     req.body = fields;
-    cloudinary.uploader.upload(files.file.path, function(result) {
-      req.body.picture = result.url;
+    if (files.file) {
+      console.log('jkfdjkjkfg')
+      cloudinary.uploader.upload(files.file.path, function(result) {
+        req.body.picture = result.url;
+        next();
+      }, {
+        width: 300,
+        height: 300
+      });
+    } else {
       next();
-    }, {
-      width: 300,
-      height: 300
-    });
+    }
   });
 };
 
