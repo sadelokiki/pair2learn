@@ -25,7 +25,8 @@ var craftSchema = new Schema({
     type: String
   },
   picture: {
-    type: String
+    type: String,
+    default: 'assets/images/default_learn.jpg'
   },
   experts: [{
     type: Schema.ObjectId,
