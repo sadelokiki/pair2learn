@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pairToLearnApp')
-  .controller('PairCtrl', ['$rootScope', '$scope', '$timeout', '$location', '$window','UserService', function($rootScope, $scope, $timeout, $location, $window, UserService) {
+  .controller('PairCtrl', ['$rootScope', '$scope', '$timeout', '$location', '$window', 'UserService', function($rootScope, $scope, $timeout, $location, $window, UserService) {
     (function($) {
       $(function() {
         $('.parallax').parallax();
@@ -10,10 +10,10 @@ angular.module('pairToLearnApp')
         });
       });
     })(jQuery);
-      UserService.getOneUser($rootScope.decodedToken.user._id).then(function(data) {
-        $scope.counter = data.minutes * 60 ;
-      });
-   
+    UserService.getOneUser($rootScope.decodedToken.user._id).then(function(data) {
+      $scope.counter = data.minutes * 60;
+    });
+
     var mytimeout = null;
     $scope.onTimeout = function() {
       if ($scope.counter === 0) {
@@ -22,13 +22,14 @@ angular.module('pairToLearnApp')
         return;
       }
       $scope.counter--;
+    }
       mytimeout = $timeout($scope.onTimeout, 1000);
-    
     $scope.stopTimer = function() {
       $scope.$broadcast('timer-stopped', $scope.counter);
       // $scope.counter= ;
       $timeout.cancel(mytimeout);
     }
+    mytimeout = $timeout($scope.onTimeout, 1000);
     $scope.$on('timer-stopped', function(event, remaining) {
       if (remaining === 0) {
         alert('your time ran out!');
