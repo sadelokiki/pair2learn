@@ -11,12 +11,12 @@
               <h5 class="newCraft">Create New Craft</h5>
             </div>
             <div class="row no-marign-bottom">
-              <div class="input-field col l7 s12">
+              <div class="input-field col s6">
                 <i class="medium mdi-social-public prefix"></i>
                 <input name="title" id="icon_prefix" type="text" ng-model="craft.title" class="validate" required>
                 <label for="icon_prefix">Craft title</label>
               </div>
-              <div class="input-field col l5 s12">
+              <div class="input-field col s6">
                 <i class="medium mdi-action-description prefix"></i>
                 <input name="category" id="icon_prefix" type="text" ng-model="craft.category" class="validate" required>
                 <label for="icon_prefix">Category</label>
@@ -29,18 +29,25 @@
                 <label for="icon_prefix">Description</label>
               </div>
             </div>
-            <div class="row l12 center no-margin-bottom">
-              <div class="btn blue-grey darken-1">
-                <a class="viewCrafts" href="/#/admin/crafts">View all crafts</a>
+            <div class="row">
+              <div class="input-field col l6 s6">
+                <i class="medium mdi-action-description prefix"></i>
+                <input name="smartererlink" id="icon_prefix" type="text" ng-model="craft.smartererlink">
+                <label for="icon_prefix">Smarterer Link</label>
               </div>
+              <div class="input-field col l6 s6">
+                <i class="medium mdi-action-description prefix"></i>
+                <input name="smartererimgname" id="icon_preffix" type="text" ng-model="craft.smartererimagelink">
+                <label for="icon_preffix">Smarterer Image link</label>
+              </div>
+            </div>
+            <div class="row l12 center">
+              <label>Upload a photo that represents the craft below</label>
             </div>
             <div class="row l12 center no-margin-bottom">
               <div class="btn blue-grey darken-1">
                 <input type="file" ngf-select="true" accept="image/*" ng-model="craft.picture" ngf-change="fileSelected($files, $event)" class="validate">
               </div>
-            </div>
-            <div class="row l12 center">
-              <label>Upload a photo that represents the craft below</label>
             </div>
             <div class="row center no-margin-bottom">
               <div class="input-field col s12">

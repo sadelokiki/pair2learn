@@ -1,4 +1,7 @@
-<div class="row container" style="margin-top: 2em;">
+<div id="slide-out" class="side-nav fixed">
+  <div ng-include="'app/views/sidenav.view.html'"></div>
+</div>
+<div class="row container offset-custom" style="margin-top: 2em;">
   <div class="col s12 l4" ng-repeat="craft in allCrafts">
     <div class="card">
       <div class="card-image usercard
