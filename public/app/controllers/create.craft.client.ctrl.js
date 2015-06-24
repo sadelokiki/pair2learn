@@ -9,6 +9,7 @@ angular.module('pairToLearnApp')
       }
       var user = $rootScope.decodedToken.user.firstname + " " + $rootScope.decodedToken.user.lastname;
       craft.createdBy = user;
+      craft.userId = $rootScope.decodedToken.user._id;
       $rootScope.showProg = true;
       CraftService.createCraft(craft.picture, craft).then(function(data) {
         console.log(data);
