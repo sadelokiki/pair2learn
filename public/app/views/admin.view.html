@@ -1,6 +1,9 @@
-<div id="index-banner" class="parallax-container userParallax" style="background-color: white">
+<div id="slide-out" class="side-nav fixed">
+  <div ng-include="'app/views/sidenav.view.html'"></div>
+</div>
+<div id="index-banner" class="parallax-container userParallax offset-custom" style="background-color: white; margin-top: .51em;">
   <div class="section no-pad-bot">
-    <div id="signUp" class="SigninSignup" style="background-image: none !important; margin-top: 1em;">
+    <div id="signUp" class="SigninSignup" style="background-image: none !important;  width: 70% !important;">
       <div style="background-color: rgb(38, 50, 56) !important; border-radius: 20px;">
         <div class="row center">
           <form name="adminForm" ng-submit="createCraft(craft)">
