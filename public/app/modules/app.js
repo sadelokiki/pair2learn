@@ -93,8 +93,8 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
       controller: 'CraftCtrl'
     })
     .when('/edit/craft/:id', {
-      templateUrl: 'app/views/editcraft.view.html',
-      controller: 'CraftCtrl'
+      templateUrl: 'app/views/EditCraft.view.html',
+      controller: 'CreateCraftCtrl'
     })
     .when('/user/pair/expert/:expertId/:craft', {
       templateUrl: 'app/views/pair.view.html',

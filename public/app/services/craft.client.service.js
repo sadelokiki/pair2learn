@@ -48,5 +48,17 @@ angular.module('pairToLearnApp')
       });
     };
 
+    crafts.uploadPic = function(file, fields) {
+      return Upload.upload({
+          url: baseUrl + '/crafts',
+          method: "POST",
+          file: file,
+          fields: fields
+        })
+        .then(function(res) {
+          return res.data;
+        });
+    };
+
     return crafts;
   }]);

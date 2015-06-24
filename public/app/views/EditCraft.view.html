@@ -35,9 +35,16 @@
             <div class="row l12 center">
               <label>Upload a photo that represents the craft below</label>
             </div>
+            <a ng-disabled="profileForm.$invalid" ng-click="addCraftpic(image)" id="submitimage" class="btn waves-effect waves-light green" style="
+          height: 20px;
+          font-size: 10px;
+          line-height: 18px;
+          width: 70px;
+          padding: 2px;
+        ">upload</a>
             <div class="row center no-margin-bottom">
               <div class="input-field col s12">
-                <input id="create" type="submit" ng-disabled="adminForm.$invalid" value="Update" class="waves-effect waves-light btn-facebook signup">
+                <input id="create" type="submit" ng-disabled="adminForm.$invalid" ng-click="updateCraft(id)" value="Update" class="waves-effect waves-light btn-facebook signup">
               </div>
             </div>
           </form>
