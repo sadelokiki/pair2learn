@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module('pairToLearnApp')
-  .controller('CreateCraftCtrl', ['CraftService', '$scope', '$location', '$timeout', '$rootScope', '$window', function(CraftService, $scope, $location, $timeout, $rootScope, $window) {
+  .controller('CreateCraftCtrl', ['CraftService', '$scope', '$location', '$timeout', '$rootScope', '$window', '$routeParams', function(CraftService, $scope, $location, $timeout, $rootScope, $window, $routeParams) {
 
     $scope.createCraft = function(craft) {
       if (!craft) {
@@ -13,6 +13,8 @@ angular.module('pairToLearnApp')
       $rootScope.showProg = true;
       CraftService.createCraft(craft.picture, craft).then(function(data) {
         console.log(data);
+        console.log($scope.craft);
+        $rootScope.craft = data;
         Materialize.toast('Craft created successfully!', 4000);
         $rootScope.showProg = false;
         $location.url("/admin/" + "crafts");
@@ -22,16 +24,18 @@ angular.module('pairToLearnApp')
       });
     };
 
-    $scope.Businessdashboard = function(craft) {
-      var craftId = $rootScope.decodedToken.craft._id;
-      CraftService.getCraftDetails(craftId).then(function(res) {
-        $rootScope.craftInformation = res;
-        console.log($rootScope.craftInformation, "sleep");
-        $scope.craft = res;
-      });
-    };
-    console.log($scope.craftInformation);
-    console.log($rootScope.craftInformation);
+    // $scope.getPostedCraft = function() {
+
+    // }
+    if ($routeParams.hasOwnProperty("id")) {
+      $scope.craft_id = $routeParams.id
+      CraftService.getOneCraft($scope.craft_id).then(function(data) {
+        $scope.craft = data;
+      }, function(err) {
+        $rootScope.showProg = false;
+        return err;
+      })
+    }
 
 
     $scope.updateCraft = function() {

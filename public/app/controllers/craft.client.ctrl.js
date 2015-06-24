@@ -26,6 +26,8 @@ angular.module('pairToLearnApp')
       $scope.allCrafts = data;
     });
 
+    
+
 
 
     $scope.updateCraft = function() {
