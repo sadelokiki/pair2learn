@@ -6,7 +6,7 @@ angular.module('pairToLearnApp')
     $timeout(function() {
       UserService.getOneUser($rootScope.decodedToken.user._id).then(function(data) {
         console.log(data)
-        $rootScope.minutes = data.minutes;
+        $scope.minutes = data.minutes;
       });
     }, 1000);
     $scope.counter = $scope.minutes * 60;
