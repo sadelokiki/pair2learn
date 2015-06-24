@@ -40,12 +40,12 @@ angular.module('pairToLearnApp')
 
     var firepadRef = new Firebase('https://pairtolearn.firebaseio.com/');
 
-    var userId = $window.sessionStorage.user;
+    var user = $window.sessionStorage.user;
     var expert = $window.sessionStorage.expert;
     console.log(userId);
     //// Create FirepadUserList (with our desired userId).
     var firepadUserList = FirepadUserList.fromDiv(firepadRef.child('users'),
-      document.getElementById('userlist'), userId, expert);
+      document.getElementById('userlist'), 'user', user);
 
     //// Create CodeMirror (with line numbers and the JavaScript mode).
     function javaScript() {
@@ -54,7 +54,7 @@ angular.module('pairToLearnApp')
         mode: 'javascript'
       });
       var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror2, {
-        userId: userId
+        userId: user
       });
     }
 
@@ -65,7 +65,7 @@ angular.module('pairToLearnApp')
         });
 
         var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-          userId: userId,
+          userId: user,
           defaultText: 'Type Live text here',
           richTextShortcuts: true,
           richTextToolbar: true
