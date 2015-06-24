@@ -6,6 +6,7 @@ angular.module('pairToLearnApp')
       $(function() {
         $('.parallax').parallax();
         $('.scrollspy').scrollSpy();
+        $('[data-typer-targets]').typer();
       });
     })(jQuery);
 
