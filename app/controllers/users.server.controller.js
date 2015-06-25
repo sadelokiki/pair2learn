@@ -134,23 +134,22 @@ exports.deleteOneUser = function(req, res) {
 
 exports.pairwithExpert = function(req, res, next) {
   var userId = req.params.userid,
-      craftid = req.params.craftid,
-      sessionId = 'userId' + 'craftId'; 
+    craftid = req.params.craftid,
+    sessionId = 'userId' + 'craftId';
   Users.findOne({
-      '_id': userId
-    },
-    function(err, user) {
-      if (err) {
-        return res.json(err);
-      }
-      user.pair(req.body.userId,
-        function(err, sessionId) { 
-          if (err) {
-            return res.status(400).json(err);
-          }
-          return res.status(200).json(req.body.sessionId);
-        });
-    });
+    '_id': userId
+  }, req.body, function(err, user) {
+    if (err) {
+      return res.json(err);
+    }
+    user.pair(req.body.userId,
+      function(err, sessionId) {
+        if (err) {
+          return res.status(400).json(err);
+        }
+        return res.status(200).json(req.body.sessionId);
+      });
+  });
 };
 
 exports.deleteOneUser = function(req, res) {

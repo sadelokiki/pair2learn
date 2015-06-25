@@ -516,3 +516,8 @@ input[type="button"] {
   margin-bottom: 23px;
 }
 
+
+#icon_prefix {
+  font-style: normal !important;
+}
+
