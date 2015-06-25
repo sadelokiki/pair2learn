@@ -47,8 +47,9 @@
             </div>
             </div>
             <div class="row center no-margin-bottom">
-              <div class="input-field col s12">
-                <input id="update" type="submit" ng-disabled="adminForm.$invalid" ng-click="updateCraft()" value="Update" class="waves-effect waves-light btn-facebook signup">
+              <div class="input-field col s12" id="buttons">
+                <input id="update" type="submit" ng-click="updateCraft()" value="Update" class="waves-effect waves-light btn-facebook signup">
+                <input id="delete" type="submit" ng-click="deleteCraft()" value="Delete Craft" class="waves-effect waves-light btn-facebook signup delete red">
               </div>
             </div>
           </form>
