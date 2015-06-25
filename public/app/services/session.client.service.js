@@ -8,7 +8,7 @@ angular.module('pairToLearnApp')
         return $http.get(baseUrl + '/pair/' + craftId + ' /' + userId).then(function(res) {
         return res.data;
       });
-    }
+    };
 
     Session.sendMail = function (userId, craftId, expertId) {
       var mailDetails = {
@@ -16,11 +16,11 @@ angular.module('pairToLearnApp')
         craftId: craftId,
         expertId: expertId
       }
-      
+
       return $http.post(baseUrl + '/mail', mailDetails).then(function(res) {
         return res.data;
       });
-    }
+    };
     return Session;
 
-  }])
+  }]);
