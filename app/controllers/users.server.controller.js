@@ -7,7 +7,8 @@ var passport = require("passport"),
   jwt = require('jsonwebtoken'),
   mongoose = require("mongoose"),
   Users = mongoose.model('Users'),
-  config = require('../../config/config');
+  config = require('../../config/config'),
+  nodemailer = require('nodemailer');
 
 cloudinary.config({
   cloud_name: config.cloudinary.cloud_name,
@@ -132,30 +133,69 @@ exports.deleteOneUser = function(req, res) {
   });
 }
 
-exports.pairSession = function(req, res, next) {
-  var userId  = req.params.userid,
-      craftId = req.params.craftid,
-      sessionId = userId + craftId;
+exports.sendMail = function(req, res) {
+  var userId = req.body.userId;
+  var craftId = req.body.craftId;
+  var expertId = req.body.expertId;
+
+  console.log(req.body,'request');
+
   Users.findOne({
-    '_id': userId
-  }, req.body, function(err, user) {
+    _id: expertId
+  }, function(err, user) {
     if (err) {
-      return res.json(err);
+      return res.status(400).json(err);
     }
-    // res.send(200);
-    console.log(sessionId);
-    res.status(200).send({
-      sessionId: sessionId
+    console.log(user)
+    var expertMail = user.email;
+    var expertName = user.firstname;
+    var adminMail = 'Andela <1testertest1@gmail.com>';
+    var transporter = nodemailer.createTransport();
+
+
+    var mailBody = {
+      from: adminMail,
+      to: 'susanadelokiki@gmail.com',
+      subject: 'Hello' + expertName,
+      html: "Susan has requested to pair with you" + "To pair follow this link:" + 
+    }
+
+    transporter.sendMail(mailBody, function(err, i) {
+      if (err) {
+        console.log(err, 'error')
+      } else {
+        console.log('Message sent:' + i);
+      }
     })
-      // user.pair(req.body.userId,
-      //   function(err, sessionId) {
-      //     if (err) {
-      //       return res.status(400).json(err);
-      //     }
-      //     return res.status(200).json(req.body.sessionId);
-      //   });
+
+    res.sendStatus(200);
   });
-};
+}
+
+// exports.pairSession = function(req, res, next) {
+//   var userId  = req.params.userid,
+//       craftId = req.params.craftid,
+//       sessionId = userId + craftId;
+//   Users.findOne({
+//     '_id': userId
+//   }, req.body, function(err, user) {
+//     if (err) {
+//       return res.json(err);
+//     }
+//     // res.send(200);
+//     console.log(sessionId);
+//     res.status(200).send({
+//       sessionId: sessionId
+//     })
+//       // user.pair(req.body.userId,
+//       //   function(err, sessionId) {
+//       //     if (err) {
+//       //       return res.status(400).json(err);
+//       //     }
+//       //     return res.status(200).json(req.body.sessionId);
+//       //   });
+//   });
+// };
 
 exports.deleteOneUser = function(req, res) {
   var user_id = req.params.id;
