@@ -20,7 +20,7 @@
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4">{{craft.title}}<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#/{{craft.title | slug}}/{{craft._id}}/experts">Start Learning now!</a></p>
+        <p><a href="" ng-click="startLearning(user._id, craft._id)">Start Learning now!</a></p>
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">{{craft.title}}<i class="mdi-navigation-close right"></i></span>
