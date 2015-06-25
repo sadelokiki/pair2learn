@@ -27,10 +27,10 @@ angular.module('pairToLearnApp')
       $scope.allCrafts = data;
     });
 
-    UserService.getOneUser($routeParams.id).then(function(data) {
-      console.log(data);
-      $rootScope.currentUser = data;
-    })
+    // UserService.getOneUser($routeParams.id).then(function(data) {
+    //   console.log(data);
+    //   $rootScope.currentUser = data;
+    // })
 
     $scope.startLearning = function(userId, craftId) {
       console.log("start learning");
