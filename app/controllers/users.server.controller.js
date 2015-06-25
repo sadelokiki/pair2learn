@@ -157,7 +157,7 @@ exports.sendMail = function(req, res) {
       from: adminMail,
       to: 'susanadelokiki@gmail.com',
       subject: 'Hello' + expertName,
-      html: "Susan has requested to pair with you" + "To pair follow this link:" + 
+      html: "Susan has requested to pair with you" + "To pair follow this link:" 
     }
 
     transporter.sendMail(mailBody, function(err, i) {
@@ -170,7 +170,7 @@ exports.sendMail = function(req, res) {
 
     res.sendStatus(200);
   });
-}
+};
 
 // exports.pairSession = function(req, res, next) {
 //   var userId  = req.params.userid,
