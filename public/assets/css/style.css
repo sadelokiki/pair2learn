@@ -202,7 +202,7 @@ footer.page-footer {
 }
 
 .modal-content {
-  background-color: rgba(58, 56, 56, 0.86) !important;
+  background-color: white;
 }
 
 .signinAlt {
@@ -511,13 +511,16 @@ input[type="button"] {
   color: white;
 }
 
-
 #update {
   margin-bottom: 23px;
 }
 
-
 #icon_prefix {
   font-style: normal !important;
 }
+
+#dashboard {
+  margin-left: 15em !important;
+}
+
 
