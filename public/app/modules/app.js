@@ -41,14 +41,14 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
         requiresLogin: true
       }
     })
-    .when('/wallet/user/:userId', {
+    .when('/wallet/user/:id/craft/:id', {
       templateUrl: 'app/views/wallet.view.html',
       controller: 'WalletCtrl',
       data: {
         requiresLogin: true
       }
     })
-    .when('/:craft/:id/experts', {
+    .when('/user/:id/craft/:id', {
       templateUrl: 'app/views/Expertpage.view.html',
       controller: 'ExpertCtrl',
       data: {
@@ -91,6 +91,10 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
     .when('/edit/craft/:id', {
       templateUrl: 'app/views/EditCraft.view.html',
       controller: 'CreateCraftCtrl'
+    })
+    .when('/bookSession', {
+      templateUrl: 'app/views/Booksession.view.html',
+      controller: 'WalletCtrl'
     })
     .when('/user/pair/expert/:expertId/:craft', {
       templateUrl: 'app/views/pair.view.html',
