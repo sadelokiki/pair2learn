@@ -523,4 +523,8 @@ input[type="button"] {
   margin-left: 15em !important;
 }
 
+#buttons {
+  margin-bottom: 8px;
+}
+
 
