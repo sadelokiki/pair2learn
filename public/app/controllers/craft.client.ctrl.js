@@ -26,19 +26,9 @@ angular.module('pairToLearnApp')
       $scope.allCrafts = data;
     });
 
-    
-
-
-
-    $scope.updateCraft = function() {
-      CraftService.updateCraft($scope.craft._id, $scope.craft).then(function(data) {
-        Materialize.toast('Craft updated successfully!', 4000);
-      });
-    };
-
-    $timeout(function() {
-      CraftService.getExpertCrafts($rootScope.decodedToken.user._id).then(function(data) {
-        $scope.expertCrafts = data;
-      });
-    }, 1000);
+    // //$timeout(function() {
+    //   //CraftService.getExpertCrafts($rootScope.decodedToken.user._id).then(function(data) {
+    //     //$scope.expertCrafts = data;
+    //   });
+    // }, 1000);
   }]);

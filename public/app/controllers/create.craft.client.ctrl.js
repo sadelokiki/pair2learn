@@ -24,9 +24,6 @@ angular.module('pairToLearnApp')
       });
     };
 
-    // $scope.getPostedCraft = function() {
-
-    // }
     if ($routeParams.hasOwnProperty("id")) {
       $scope.craft_id = $routeParams.id
       CraftService.getOneCraft($scope.craft_id).then(function(data) {
@@ -38,9 +35,39 @@ angular.module('pairToLearnApp')
     }
 
 
+    $scope.addCraftpic = function(profpic) {
+      console.log(profpic);
+      if (!profpic) {
+        return;
+      }
+      $rootScope.showProg = true;
+      CraftService.uploadPic(profpic, $scope.craft).then(function(data) {
+        if (data) {
+          Materialize.toast('Picture updated successfully!', 4000);
+          console.log(data);
+          $rootScope.showProg = false;
+        }
+      }, function(err) {
+        Materialize.toast('Picture upload failed');
+        $rootScope.showProg = false;
+      });
+    };
+
+
     $scope.updateCraft = function() {
+      console.log($scope.craft);
+      $rootScope.showProg = true;
       CraftService.updateCraft($scope.craft._id, $scope.craft).then(function(data) {
-        Materialize.toast('Craft updated successfully!', 4000);
+        console.log(data);
+        // console.log($scope.craft);
+        $rootScope.craft = data;
+        console.log($rootScope.craft);
+        Materialize.toast('Craft created successfully!', 4000);
+        $rootScope.showProg = false;
+        $location.url("/admin/" + "crafts");
+      }, function(err) {
+        $rootScope.showProg = false;
+        return err;
       });
     };
   }]);

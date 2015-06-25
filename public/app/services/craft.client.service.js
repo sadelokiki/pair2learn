@@ -18,6 +18,18 @@ angular.module('pairToLearnApp')
         });
     };
 
+    // crafts.updateCraft = function(file, id) {
+    //   return Upload.upload({
+    //       url: baseUrl + '/crafts/' + id,
+    //       method: "PUT",
+    //       file: file,
+    //       fields: id
+    //     })
+    //     .then(function(res) {
+    //       return res.data;
+    //     });
+    // };
+
     crafts.getOneCraft = function(id) {
       return $http.get(baseUrl + '/crafts/' + id).then(function(res) {
         return res.data;
@@ -36,9 +48,9 @@ angular.module('pairToLearnApp')
       });
     };
 
-     crafts.updateCraft = function(id, params) {
+    crafts.updateCraft = function(id, params) {
       return $http.put(baseUrl + '/crafts/' + id, params).then(function(res) {
-        return res.data;
+        return res;
       });
     };
 
@@ -57,6 +69,8 @@ angular.module('pairToLearnApp')
         })
         .then(function(res) {
           return res.data;
+        }, function(err) {
+          console.log(err);
         });
     };
 
