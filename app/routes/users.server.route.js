@@ -39,9 +39,9 @@ module.exports = function(app, passport) {
     .put(ctrl.editProfile)
     .delete(ctrl.deleteOneUser);
 
-  //pair
-  router.route('/pair/:craftid/:userid')
-    .get(ctrl.pairSession);
+  //mail
+  router.route('/mail')
+    .post(ctrl.sendMail);
 
   //wallet
   router.route('/wallet/success')
