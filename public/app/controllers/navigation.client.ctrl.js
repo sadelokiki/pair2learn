@@ -80,5 +80,8 @@ angular.module('pairToLearnApp')
           $location.url("/user/" + res.data.user._id + '/dashboard');
         });
       };
+
+     
+
     }
   ]);
