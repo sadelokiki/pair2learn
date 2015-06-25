@@ -13,6 +13,11 @@ angular.module('pairToLearnApp')
         return res.data;
       });
     };
+    User.deleteUser = function(id) {
+      return $http.delete(baseUrl + '/users/' + id).then(function(res) {
+        return res.data;
+      });
+    };
     User.uploadPic = function(file, fields) {
       return Upload.upload({
           url: baseUrl + '/users',
