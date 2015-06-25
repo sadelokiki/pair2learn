@@ -41,7 +41,7 @@ module.exports = function(app, passport) {
 
   //pair
   router.route('/pair/:craftid/:userid')
-    .get(ctrl.pairwithExpert);
+    .get(ctrl.pairSession);
 
   //wallet
   router.route('/wallet/success')

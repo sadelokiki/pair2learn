@@ -21,6 +21,11 @@ angular.module('pairToLearnApp')
       $scope.counter--;
      mytimeout = $timeout($scope.onTimeout, 1000);
     };
+
+    $scope.bookSession = function () {
+      console.log('called');
+    }
+
     $scope.craftId = $window.sessionStorage.craft;
     $scope.expertId = $window.sessionStorage.expert;
   }]);
