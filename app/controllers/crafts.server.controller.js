@@ -57,11 +57,12 @@ exports.postCraft = function(req, res) {
       return res.status(400).json(err);
     }
     craft.applyAs(req.body.userId,
-      function(err, acraft) {
+      function(err, craft) {
         if (err) {
           return res.status(400).json(err);
         }
-        return res.status(200).json(acraft);
+        console.log("you are now an expert in");
+        return res.status(200).json(craft);
       });
   });
 };

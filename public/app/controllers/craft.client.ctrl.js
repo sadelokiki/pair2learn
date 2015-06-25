@@ -52,9 +52,9 @@ angular.module('pairToLearnApp')
 
 
 
-    // //$timeout(function() {
-    //   //CraftService.getExpertCrafts($rootScope.decodedToken.user._id).then(function(data) {
-    //     //$scope.expertCrafts = data;
-    //   });
-    // }, 1000);
+    $timeout(function() {
+      CraftService.getExpertCrafts($rootScope.decodedToken.user._id).then(function(data) {
+        $scope.expertCrafts = data;
+      });
+    }, 1000);
   }]);
