@@ -10,7 +10,11 @@ angular.module('pairToLearnApp')
         });
       });
     })(jQuery);
+
+    $scope.userId = $window.sessionStorage.user;
+
     UserService.getOneUser($rootScope.decodedToken.user._id).then(function(data) {
+      console.log(data);
       $scope.counter = data.minutes * 60;
     });
 
@@ -27,11 +31,11 @@ angular.module('pairToLearnApp')
     mytimeout = $timeout($scope.onTimeout, 1000);
 
     $scope.stopTimer = function() {
-      $scope.$broadcast('timer-stopped', $scope.counter);
-      // $scope.counter= ;
-      $timeout.cancel(mytimeout);
-    }
-    // mytimeout = $timeout($scope.onTimeout, 1000);
+        $scope.$broadcast('timer-stopped', $scope.counter);
+        // $scope.counter= ;
+        $timeout.cancel(mytimeout);
+      }
+      // mytimeout = $timeout($scope.onTimeout, 1000);
     $scope.$on('timer-stopped', function(event, remaining) {
       if (remaining === 0) {
         alert('your time ran out!');
@@ -42,7 +46,7 @@ angular.module('pairToLearnApp')
 
     var user = $window.sessionStorage.user;
     var expert = $window.sessionStorage.expert;
-    console.log(userId);
+    // console.log(userId);
     //// Create FirepadUserList (with our desired userId).
     var firepadUserList = FirepadUserList.fromDiv(firepadRef.child('users'),
       document.getElementById('userlist'), 'user', user);
