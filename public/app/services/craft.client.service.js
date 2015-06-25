@@ -60,6 +60,12 @@ angular.module('pairToLearnApp')
       });
     };
 
+    crafts.deleteCraft = function(id) {
+      return $http.delete(baseUrl + '/crafts/' + id).then(function(res) {
+        return res.data;
+      })
+    };
+
     crafts.uploadPic = function(file, fields) {
       return Upload.upload({
           url: baseUrl + '/crafts',
