@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module('pairToLearnApp')
-  .controller('ExpertCtrl', ['CraftService', '$scope', '$location', '$timeout', '$rootScope', '$window', '$routeParams', function(CraftService, $scope, $location, $timeout, $rootScope, $window, $routeParams) {
+  .controller('ExpertCtrl', ['CraftService', 'UserService', '$scope', '$location', '$timeout', '$rootScope', '$window', '$routeParams', function(CraftService, UserService, $scope, $location, $timeout, $rootScope, $window, $routeParams) {
     (function($) {
       $(function() {
         $('.parallax').parallax();
@@ -15,8 +15,11 @@ angular.module('pairToLearnApp')
     });
 
     $scope.saveCraftExpert = function(craftId, expertId) {
+      console.log("connected");
+      $window.sessionStorage.user = $rootScope.decodedToken.user._id;
+      var userId = $window.sessionStorage.user
       $window.sessionStorage.craft = craftId;
-      $window.sessionStorage.expert = expertId;
-      $window.sessionStorage.user = $rootScope.decodedToken.user.firstname;
+      $location.url('/wallet' + '/user/' + userId + '/craft/' + craftId);
     };
+
   }]);
