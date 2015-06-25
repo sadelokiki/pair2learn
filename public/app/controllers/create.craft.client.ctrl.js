@@ -53,7 +53,6 @@ angular.module('pairToLearnApp')
       });
     };
 
-
     $scope.updateCraft = function() {
       console.log($scope.craft);
       $rootScope.showProg = true;
@@ -70,4 +69,15 @@ angular.module('pairToLearnApp')
         return err;
       });
     };
+
+    $scope.deleteCraft = function(craftId) {
+      // console.log("time to go yo!")
+      $window.sessionStorage.craft = $scope.craft._id;
+      CraftService.deleteCraft($scope.craft._id).then(function(data) {
+        // console.log("bye craft", data);
+        Materialize.toast('Craft deleted!', 4000);
+        $location.url("/admin/" + "crafts");
+      })
+    };
+
   }]);
