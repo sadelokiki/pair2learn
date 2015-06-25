@@ -17,7 +17,8 @@ angular.module('pairToLearnApp')
     $scope.saveCraftExpert = function(craftId, expertId) {
       console.log("connected");
       $window.sessionStorage.user = $rootScope.decodedToken.user._id;
-      var userId = $window.sessionStorage.user
+      var userId = $window.sessionStorage.user;
+      $window.sessionStorage.expert = expertId;
       $window.sessionStorage.craft = craftId;
       $location.url('/wallet' + '/user/' + userId + '/craft/' + craftId);
     };
