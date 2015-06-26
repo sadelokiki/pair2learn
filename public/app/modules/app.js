@@ -148,12 +148,16 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
 }])
 
 .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window) {
-
   $rootScope.$on("$routeChangeStart", function(event, to) {
+    if ($window.sessionStorage.refUrl && $window.sessionStorage.token) {
+      var ref = $window.sessionStorage.refUrl;
+      $window.sessionStorage.removeItem('refUrl');
+      $location.url(ref);
+    }
     if (to.data && to.data.requiresLogin) {
       if (!($window.sessionStorage.token || $location.search().token)) {
         event.preventDefault();
-        console.log(to);
+        $window.sessionStorage.refUrl = $location.url();
         $location.url('/login'); //redirect to login if user is not authenitcated
       }
     }

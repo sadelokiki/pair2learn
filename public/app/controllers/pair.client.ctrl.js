@@ -13,7 +13,7 @@ angular.module('pairToLearnApp')
 
     var userId = $window.sessionStorage.user;
     var sessionId = $routeParams.sessionId;
-
+    console.log(userId)
     UserService.getOneUser(userId).then(function(data) {
       console.log(data);
       $scope.firstname = data.firstname;
