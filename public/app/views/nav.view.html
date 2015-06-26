@@ -1,3 +1,4 @@
+
 <div class="navbar-fixed">
   <!-- Dropdown Structure -->
   <ul id="user-menu" class="dropdown-content blue-text">
@@ -20,7 +21,7 @@
             <span style="display: inline-block;">Welcome {{decodedToken.user.firstname}}</span>
           </li>
           <li>
-            <img ng-hide="decodedToken.user.picture" ng-src="http://insight.venturebeat.com/sites/all/modules/features/vb_intel_analysts/assets/images/analyst-placeholder-avatar.png" alt="" class="nav-user circle responsive-img">
+            <img ng-hide="decodedToken.user.picture" ng-src="../assets/images/UserImage.png" alt="" class="nav-user circle responsive-img">
             <img ng-show="decodedToken.user.picture" ng-src="{{decodedToken.user.picture}}" alt="" class="nav-user circle responsive-img">
           </li>
           <li>

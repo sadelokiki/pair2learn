@@ -179,14 +179,14 @@ footer.page-footer {
 }
 
 .modal {
-  background-image: url('http://www.ideasnw.com/images/background-city.jpg') !important;
+  background-image: url('../images/backgroundImage.jpg') !important;
   background-size: cover !important;
   width: 63% !important;
   max-height: 90% !important;
 }
 
 .SigninSignup {
-  background-image: url('http://www.ideasnw.com/images/background-city.jpg') !important;
+  background-image: url('../images/backgroundImage.jpg') !important;
   background-size: cover !important;
   width: 53% !important;
   max-height: 90% !important;
