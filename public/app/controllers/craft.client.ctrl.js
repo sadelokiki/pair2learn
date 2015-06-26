@@ -27,12 +27,7 @@ angular.module('pairToLearnApp')
       $scope.allCrafts = data;
     });
 
-    // UserService.getOneUser($routeParams.id).then(function(data) {
-    //   console.log(data);
-    //   $rootScope.currentUser = data;
-    // })
-
-    $scope.startLearning = function(userId, craftId) {
+    $scope.startLearning = function(craftId) {
       console.log("start learning");
       $window.sessionStorage.user = $rootScope.decodedToken.user._id;
       var userId = $window.sessionStorage.user;
@@ -47,10 +42,8 @@ angular.module('pairToLearnApp')
         Materialize.toast('Profile deleted!', 4000);
         $window.sessionStorage.clear();
         $location.url('/home');
-      })
+      });
     };
-
-
 
     $timeout(function() {
       CraftService.getExpertCrafts($rootScope.decodedToken.user._id).then(function(data) {
