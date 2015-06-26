@@ -2,25 +2,19 @@
 
 angular.module('pairToLearnApp')
   .factory('SessionService', ['$http', 'baseUrl', function($http, baseUrl) {
-    var Session = {}
+    var Session = {};
 
-    Session.bookSession = function () {
-        return $http.get(baseUrl + '/pair/' + craftId + ' /' + userId).then(function(res) {
-        return res.data;
-      });
-    };
-
-    Session.sendMail = function (userId, craftId, expertId) {
+    Session.sendMail = function(userId, craftId, expertId, sessionData) {
       var mailDetails = {
         userId: userId,
         craftId: craftId,
-        expertId: expertId
-      }
-
+        expertId: expertId,
+        sessionData: sessionData
+      };
       return $http.post(baseUrl + '/mail', mailDetails).then(function(res) {
         return res.data;
       });
     };
-    return Session;
 
+    return Session;
   }]);
