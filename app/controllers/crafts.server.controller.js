@@ -18,7 +18,6 @@ exports.postImage = function(req, res, next) {
   forms.parse(req, function(err, fields, files) {
     req.body = fields;
     if (files.file) {
-      console.log('jkfdjkjkfg')
       cloudinary.uploader.upload(files.file.path, function(result) {
         req.body.picture = result.url;
         next();
