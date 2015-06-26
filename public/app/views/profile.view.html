@@ -68,7 +68,7 @@
         <h5>Expert</h5>
       </li>
       <li class="collection-item" ng-repeat="craft in expertCrafts">
-        <div>{{craft.title}}<a ng-href="#/{{craft.title | slug}}/{{craft._id}}/experts" class="secondary-content"><i class="mdi-content-send"></i></a></div>
+        <div>{{craft.title}}<a ng-href="#/user/{{decodedToken.user._id}}/craft/{{craft._id}}" class="secondary-content"><i class="mdi-content-send"></i></a></div>
       </li>
     </ul>
   </div>
