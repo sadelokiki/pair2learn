@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pairToLearnApp')
-  .controller('PairCtrl', ['$rootScope', '$scope', '$timeout', '$location', '$window', 'UserService', function($rootScope, $scope, $timeout, $location, $window, UserService) {
+  .controller('PairCtrl', ['$rootScope', '$scope', '$timeout', '$location', '$window', 'UserService', '$routeParams', function($rootScope, $scope, $timeout, $location, $window, UserService, $routeParams) {
     (function($) {
       $(function() {
         $('.parallax').parallax();
@@ -11,10 +11,12 @@ angular.module('pairToLearnApp')
       });
     })(jQuery);
 
-    $scope.userId = $window.sessionStorage.user;
+    var userId = $window.sessionStorage.user;
+    var sessionId = $routeParams.sessionId;
 
-    UserService.getOneUser($rootScope.decodedToken.user._id).then(function(data) {
+    UserService.getOneUser(userId).then(function(data) {
       console.log(data);
+      $scope.firstname = data.firstname;
       $scope.counter = data.minutes * 60;
     });
 
@@ -27,57 +29,55 @@ angular.module('pairToLearnApp')
       }
       $scope.counter--;
       mytimeout = $timeout($scope.onTimeout, 1000);
-    }
+    };
     mytimeout = $timeout($scope.onTimeout, 1000);
 
     $scope.stopTimer = function() {
-        $scope.$broadcast('timer-stopped', $scope.counter);
-        // $scope.counter= ;
-        $timeout.cancel(mytimeout);
-      }
-      // mytimeout = $timeout($scope.onTimeout, 1000);
+      $scope.$broadcast('timer-stopped', $scope.counter);
+      // $scope.counter= ;
+      $timeout.cancel(mytimeout);
+    };
+    // mytimeout = $timeout($scope.onTimeout, 1000);
     $scope.$on('timer-stopped', function(event, remaining) {
       if (remaining === 0) {
         alert('your time ran out!');
       }
     });
 
-    var firepadRef = new Firebase('https://pairtolearn.firebaseio.com/');
+    var firepadRef = new Firebase('https://pairtolearn.firebaseio.com/' + sessionId);
+    $timeout(function() {
+      var user = $scope.firstname;
+      var expert = $window.sessionStorage.expert;
 
-    var user = $window.sessionStorage.user;
-    var expert = $window.sessionStorage.expert;
-    // console.log(userId);
-    //// Create FirepadUserList (with our desired userId).
-    var firepadUserList = FirepadUserList.fromDiv(firepadRef.child('users'),
-      document.getElementById('userlist'), 'user', user);
+      //// Create FirepadUserList (with our desired userId).
+      var firepadUserList = FirepadUserList.fromDiv(firepadRef.child('users'),
+        document.getElementById('userlist'), user, user);
 
-    //// Create CodeMirror (with line numbers and the JavaScript mode).
-    function javaScript() {
-      var codeMirror2 = CodeMirror(document.getElementById('firepad'), {
-        lineNumbers: true,
-        mode: 'javascript'
-      });
-      var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror2, {
-        userId: user
-      });
-    }
-
-    function richText() {
-        //RichText
-        var codeMirror = CodeMirror(document.getElementById('firepad'), {
-          lineWrapping: true
+      //// Create CodeMirror (with line numbers and the JavaScript mode).
+      function javaScript() {
+        var codeMirror2 = CodeMirror(document.getElementById('firepad'), {
+          lineNumbers: true,
+          mode: 'javascript'
         });
-
-        var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
-          userId: user,
-          defaultText: 'Type Live text here',
-          richTextShortcuts: true,
-          richTextToolbar: true
+        var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror2, {
+          userId: user
         });
       }
-      //javaScript();
-    richText();
 
+      function richText() {
+          //RichText
+          var codeMirror = CodeMirror(document.getElementById('firepad'), {
+            lineWrapping: true
+          });
 
-
+          var firepad = Firepad.fromCodeMirror(firepadRef, codeMirror, {
+            userId: user,
+            defaultText: 'Type Live text here',
+            richTextShortcuts: true,
+            richTextToolbar: true
+          });
+        }
+        //javaScript();
+      richText();
+    }, 1000);
   }]);
