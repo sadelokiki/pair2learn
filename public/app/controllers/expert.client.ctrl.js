@@ -10,17 +10,15 @@ angular.module('pairToLearnApp')
     })(jQuery);
 
     //expert page
-    CraftService.getOneCraft($routeParams.id).then(function(data) {
+    CraftService.getOneCraft($routeParams.craftId).then(function(data) {
       $rootScope.oneCraft = data;
     });
 
     $scope.saveCraftExpert = function(craftId, expertId) {
-      console.log("connected");
-      $window.sessionStorage.user = $rootScope.decodedToken.user._id;
       var userId = $window.sessionStorage.user;
       $window.sessionStorage.expert = expertId;
       $window.sessionStorage.craft = craftId;
-      $location.url('/wallet' + '/user/' + userId + '/craft/' + craftId);
+      $location.url('/wallet' + '/user/' + userId);
     };
 
   }]);
