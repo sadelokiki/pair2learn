@@ -34,6 +34,7 @@ angular.module('pairToLearnApp')
           };
           var decodedToken = parseJwt($window.sessionStorage.token);
           $rootScope.decodedToken = decodedToken;
+          $window.sessionStorage.user = $rootScope.decodedToken.user._id;
           console.log($rootScope.decodedToken);
           $rootScope.isLoggedIn = true;
         } else {
