@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module('pairToLearnApp', ['ngRoute', 'ngMessages', 'ngFileUpload', 'angular-loading-bar', 'timer']);
+var app = angular.module('pairToLearnApp', ['ngRoute', 'ngMessages', 'ngFileUpload', 'angular-loading-bar', 'timer', 'ui.timepicker']);
 
 app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingBarProvider', function($routeProvider, $httpProvider, $locationProvider, cfpLoadingBarProvider) {
 
@@ -41,14 +41,14 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
         requiresLogin: true
       }
     })
-    .when('/wallet/user/:id/craft/:id', {
+    .when('/wallet/user/:id', {
       templateUrl: 'app/views/wallet.view.html',
       controller: 'WalletCtrl',
       data: {
         requiresLogin: true
       }
     })
-    .when('/user/:id/craft/:id', {
+    .when('/user/:id/craft/:craftId', {
       templateUrl: 'app/views/Expertpage.view.html',
       controller: 'ExpertCtrl',
       data: {
@@ -96,7 +96,11 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
       templateUrl: 'app/views/Booksession.view.html',
       controller: 'WalletCtrl'
     })
-    .when('/user/pair/expert/:expertId/:craft', {
+    .when('/mycrafts', {
+      templateUrl: 'app/views/mycrafts.view.html',
+      controller: 'myCraftsCtrl'
+    })
+    .when('/user/pair/:sessionId', {
       templateUrl: 'app/views/pair.view.html',
       controller: 'PairCtrl',
       data: {
@@ -149,6 +153,7 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
     if (to.data && to.data.requiresLogin) {
       if (!($window.sessionStorage.token || $location.search().token)) {
         event.preventDefault();
+        console.log(to);
         $location.url('/login'); //redirect to login if user is not authenitcated
       }
     }
