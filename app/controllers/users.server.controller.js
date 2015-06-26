@@ -153,7 +153,7 @@ exports.sendMail = function(req, res) {
         from: adminMail,
         to: expertMail,
         subject: 'Pairing Session',
-        html: "<div style='text-align:justify'>Hi " + expertName + ", \n A user has requested to pair with you \n Pairing details is as follows: \n Date: " + sessionData.date + " \nTime: " + sessionData.time + "\nDescription: " + sessionData.description + " \nPlease, click on this link anytime to pair:</div>" + "http://pairtolearn.herokuapp.com/user/pair/" + sessionId
+        html: "<div style='text-align:justify'>Hi " + expertName + ", \n A user has requested to pair with you \n Pairing details is as follows: \n Date: " + sessionData.date + " \nTime: " + sessionData.time + "\nDescription: " + sessionData.description + " \nPlease, click on this link anytime to pair:</div>" + "http://pairtolearn.herokuapp.com/#/user/pair/" + sessionId
       };
 
       transporter.sendMail(mailBody, function(err, i) {
