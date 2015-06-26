@@ -13,6 +13,4 @@ angular.module('pairToLearnApp')
       });
     })(jQuery);
 
-
-
   }]);
