@@ -25,13 +25,12 @@ angular.module('pairToLearnApp')
     };
 
     if ($routeParams.hasOwnProperty("id")) {
-      $scope.craft_id = $routeParams.id
+      $scope.craft_id = $routeParams.id;
       CraftService.getOneCraft($scope.craft_id).then(function(data) {
         $scope.craft = data;
       }, function(err) {
-        $rootScope.showProg = false;
         return err;
-      })
+      });
     }
 
 
