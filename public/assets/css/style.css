@@ -270,6 +270,7 @@ div[ng-message] {
 .signup {
   padding: 0em 0em !important;
   height: 3em !important;
+  margin-bottom: 1em;
 }
 
 .nav-user {
@@ -527,4 +528,7 @@ input[type="button"] {
   margin-bottom: 8px;
 }
 
-
+.ui-timepicker-wrapper {
+  line-height: 20px !important;
+  width: 80%;
+}
