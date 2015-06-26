@@ -51,7 +51,7 @@ userSchema.methods.saveSession = function(sessionId, cb) {
       });
       this.save(cb);
     } else {
-      return cb;
+      return this.save(cb);
     }
   }
 };
