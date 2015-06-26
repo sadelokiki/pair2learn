@@ -532,3 +532,9 @@ input[type="button"] {
   line-height: 20px !important;
   width: 80%;
 }
+
+.search {
+  height: 40px;
+  margin-bottom: 1em;
+  background-color: #263238;
+}
