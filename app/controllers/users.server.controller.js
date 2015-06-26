@@ -165,7 +165,7 @@ exports.sendMail = function(req, res) {
         Users.findOne({
           _id: userId
         }, function(err, user) {
-          user.saveSession(sessionId, function(err, user, next) {
+          user.saveSession(sessionId, function(err, user) {
             return res.status(200).json({
               user: user,
               i: i

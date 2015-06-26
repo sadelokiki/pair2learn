@@ -31,24 +31,24 @@ exports.postImage = function(req, res, next) {
   });
 };
 
-exports.editImage = function(req, res) {
-  var craft_id = req.body._id;
-  var new_craft = req.body;
-  Crafts.update({
-      _id: craft_id
-    }, {
-      picture: req.body.picture
-    },
-    function(err, user) {
-      if (err) {
-        return res.status(400).json(err);
-      }
-      res.status(200).json({
-        // token: generateJWT(new_user),
-        craft: new_craft
-      });
-    });
-};
+// exports.editImage = function(req, res) {
+//   var craft_id = req.body._id;
+//   var new_craft = req.body;
+//   Crafts.update({
+//       _id: craft_id
+//     }, {
+//       picture: req.body.picture
+//     },
+//     function(err, user) {
+//       if (err) {
+//         return res.status(400).json(err);
+//       }
+//       res.status(200).json({
+//         // token: generateJWT(new_user),
+//         craft: new_craft
+//       });
+//     });
+// };
 
 exports.postCraft = function(req, res) {
   Crafts.create(req.body, function(err, craft) {
@@ -96,8 +96,10 @@ exports.editCraft = function(req, res) {
     req.body,
     function(err, craft) {
       if (err) {
+        console.log(err);
         return res.status(400).json(err);
       }
+      console.log(craft);
       return res.status(200).json(craft);
     });
 };

@@ -43,16 +43,10 @@ userSchema.methods.comparePassword = function(password) {
 
 userSchema.methods.saveSession = function(sessionId, cb) {
   var crafts = this.crafts;
-  for (var i in crafts) {
-    if (crafts[i].sessionId !== sessionId) {
-      this.crafts.push({
-        sessionId: sessionId,
-        status: "OG"
-      });
-      this.save(cb);
-    } else {
-      return this.save(cb);
-    }
-  }
+  this.crafts.push({
+    sessionId: sessionId,
+    status: "OG"
+  });
+  this.save(cb);
 };
 mongoose.model('Users', userSchema);

@@ -23,7 +23,7 @@
                 <label for="icon_prefix">Description</label>
               </div>
             </div>
-          <!--   <div class="row no-marign-bottom">
+            <!--   <div class="row no-marign-bottom">
               <div class="input-field col s12">
                 <i class="medium mdi-action-description prefix"></i>
                 <input name="category" id="icon_prefix" type="text" ng-model="craft.category" class="validate" required>
@@ -33,28 +33,28 @@
             <div class="row l12 center no-margin-bottom">
               <div class="btn blue-grey darken-1">
                 <input type="file" ngf-select="true" accept="image/*" ng-model="craft.picture" ngf-change="fileSelected($files, $event)" class="validate" required>
-                <a ng-disabled="adminForm.$invalid" ng-click="addCraftpic(craft.picture)" id="submitimage" class="btn waves-effect waves-light green" style="
+                <!--  <a ng-disabled="adminForm.$invalid" ng-click="addCraftpic(craft.picture)" id="submitimage" class="btn waves-effect waves-light green" style="
           height: 20px;
           font-size: 10px;
           line-height: 18px;
           width: 70px;
           padding: 2px;
-       ">upload</a>
+       ">upload</a> -->
               </div>
             </div>
             <div class="row l12 center">
               <label>Change the craft picture</label>
             </div>
-            </div>
-            <div class="row center no-margin-bottom">
-              <div class="input-field col s12" id="buttons">
-                <input id="update" type="submit" ng-click="updateCraft()" value="Update" class="waves-effect waves-light btn-facebook signup">
-                <input id="delete" type="submit" ng-click="deleteCraft()" value="Delete Craft" class="waves-effect waves-light btn-facebook signup delete red">
-              </div>
-            </div>
-          </form>
         </div>
+        <div class="row center no-margin-bottom">
+          <div class="input-field col s12" id="buttons">
+            <input id="update" type="submit" ng-click="updateCraft(craft)" value="Update" class="waves-effect waves-light btn-facebook signup">
+            <input id="delete" type="submit" ng-click="deleteCraft()" value="Delete Craft" class="waves-effect waves-light btn-facebook signup delete red">
+          </div>
+        </div>
+        </form>
       </div>
     </div>
   </div>
+</div>
 </div>

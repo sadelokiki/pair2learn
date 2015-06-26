@@ -10,6 +10,11 @@ angular.module('pairToLearnApp')
       });
     })(jQuery);
 
+    UserService.getOneUser($window.sessionStorage.user).then(function(data) {
+      console.log(data);
+      $scope.currentUser = data;
+    });
+
     $scope.applyAsExpert = function(craftId) {
       var data = {
         userId: $rootScope.decodedToken.user._id,

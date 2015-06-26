@@ -533,8 +533,14 @@ input[type="button"] {
   width: 80%;
 }
 
+<<<<<<< HEAD
 .search {
   height: 40px;
   margin-bottom: 1em;
   background-color: #263238;
+=======
+input,
+textarea {
+  font-family: monospace !important;
+>>>>>>> update
 }

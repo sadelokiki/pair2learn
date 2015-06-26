@@ -52,12 +52,10 @@ angular.module('pairToLearnApp')
       });
     };
 
-    $scope.updateCraft = function() {
-      console.log($scope.craft);
-      $rootScope.showProg = true;
-      CraftService.updateCraft($scope.craft._id, $scope.craft).then(function(data) {
+    $scope.updateCraft = function(craft) {
+      console.log(craft);
+      CraftService.updateCraft($scope.craft._id, craft).then(function(data) {
         console.log(data);
-        // console.log($scope.craft);
         $rootScope.craft = data;
         console.log($rootScope.craft);
         Materialize.toast('Craft created successfully!', 4000);

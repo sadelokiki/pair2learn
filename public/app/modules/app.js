@@ -102,10 +102,7 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
     })
     .when('/user/pair/:sessionId', {
       templateUrl: 'app/views/pair.view.html',
-      controller: 'PairCtrl',
-      data: {
-        requiresLogin: true
-      }
+      controller: 'PairCtrl'
     })
     .otherwise({
       redirectTo: '/home'
