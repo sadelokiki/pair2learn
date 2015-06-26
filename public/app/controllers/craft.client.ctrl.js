@@ -28,7 +28,6 @@ angular.module('pairToLearnApp')
     });
 
     $scope.startLearning = function(craftId) {
-      console.log("start learning");
       $window.sessionStorage.user = $rootScope.decodedToken.user._id;
       var userId = $window.sessionStorage.user;
       $window.sessionStorage.craft = craftId;
