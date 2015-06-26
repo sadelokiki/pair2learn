@@ -1,17 +1,6 @@
 <div id="slide-out" class="side-nav fixed">
   <div ng-include="'app/views/sidenav.view.html'"></div>
 </div>
-<!-- <div class="parallax-container valign-wrapper" 
-    style="min-height: 50px !important;padding-top: 2em !important;background-color: rgba(38, 50, 56, 0.92)">
-  <div class="section no-pad-bot">
-    <div class="row center container">
-      <h5 class="col s12 l10 light offset-l2">
-          Learn anything...
-        </h5> 
-    </div>
-  </div>
-  <div class="parallax"><img ng-src="assets/images/joshdrewpairing.jpg" alt="Unsplashed background img 2"></div>
-</div> -->
 <div class="row container offset-custom">
   <div class="col s12 l4" ng-repeat="craft in allCrafts">
     <div class="card">
@@ -20,7 +9,7 @@
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4">{{craft.title}}<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="" ng-click="startLearning(user._id, craft._id)">Start Learning now!</a></p>
+        <p><a ng-click="startLearning(craft._id)">Start Learning now!</a></p>
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">{{craft.title}}<i class="mdi-navigation-close right"></i></span>
