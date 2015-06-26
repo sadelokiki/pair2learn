@@ -29,7 +29,8 @@ var userSchema = new Schema({
   minutes: {
     type: String,
     default: 60
-  }
+  },
+  crafts: []
 });
 
 userSchema.methods.hashPassword = function(password) {
@@ -40,4 +41,16 @@ userSchema.methods.comparePassword = function(password) {
   return bcrypt.compareSync(password, this.password);
 };
 
+userSchema.methods.saveSession = function(sessionId, cb) {
+  var crafts = this.crafts;
+  for (var i in crafts) {
+    if (crafts[i].sessionId !== sessionId) {
+      this.crafts.push({
+        sessionId: sessionId,
+        status: "OG"
+      });
+      this.save(cb);
+    }
+  }
+};
 mongoose.model('Users', userSchema);
