@@ -20,7 +20,7 @@
       <h4 style="color: darkolivegreen;">minutes</h4>
     </div>
     <div class="divider"></div>
-    <div class="row center" ng-show="minutes > 0" style="margin-top: 1em;">
+    <div class="row center" ng-show="minutes > 0 && showBookSession" style="margin-top: 1em;">
       <a ng-href="/#/bookSession" class="btn waves-effect waves-light">Book a session</a>
     </div>
     <div class="row center red-text" ng-hide="minutes > 0" style="margin-top: 1em;">
@@ -53,7 +53,6 @@
       <div class="row">
         <div class="input-field col s12">
           <label for="amount">Amount in Naira</label>
-
           <p><strike>N</strike>{{200 * ((+minute>0) ? minute : 0)}}</p>
           <div class="divider"></div>
         </div>
