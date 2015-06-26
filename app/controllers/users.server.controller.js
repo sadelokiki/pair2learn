@@ -126,50 +126,54 @@ exports.deleteOneUser = function(req, res) {
     if (err) {
       return res.status(400).json(err);
     }
-    return res.status(200).json({
-      token: generateJWT(user),
-      data: data
-    });
+    return res.status(200).json(data);
   });
-}
+};
 
 exports.sendMail = function(req, res) {
-  var userId = req.body.userId;
-  var craftId = req.body.craftId;
-  var expertId = req.body.expertId;
-
-  console.log(req.body,'request');
-
+  var userId = req.body.userId,
+    craftId = req.body.craftId,
+    expertId = req.body.expertId,
+    sessionId = userId + '-' + craftId,
+    sessionData = req.body.sessionData;
+  console.log(sessionData, 'request');
   Users.findOne({
-    _id: expertId
-  }, function(err, user) {
-    if (err) {
-      return res.status(400).json(err);
-    }
-    console.log(user)
-    var expertMail = user.email;
-    var expertName = user.firstname;
-    var adminMail = 'Andela <1testertest1@gmail.com>';
-    var transporter = nodemailer.createTransport();
-
-
-    var mailBody = {
-      from: adminMail,
-      to: 'susanadelokiki@gmail.com',
-      subject: 'Hello' + expertName,
-      html: "Susan has requested to pair with you" + "To pair follow this link:" 
-    }
-
-    transporter.sendMail(mailBody, function(err, i) {
+      _id: expertId
+    },
+    function(err, expert) {
       if (err) {
-        console.log(err, 'error')
-      } else {
-        console.log('Message sent:' + i);
+        return res.status(400).json(err);
       }
-    })
+      var expertMail = expert.email;
+      var expertName = expert.firstname;
+      var adminMail = 'Andela <admin@p2l.com>';
+      var transporter = nodemailer.createTransport();
 
-    res.sendStatus(200);
-  });
+      var mailBody = {
+        from: adminMail,
+        to: expertMail,
+        subject: 'Pairing Session',
+        html: "<div style='text-align:justify'>Hi " + expertName + ", \n A user has requested to pair with you \n Pairing details is as follows: \n Date: " + sessionData.date + " \nTime: " + sessionData.time + "\nDescription: " + sessionData.description + " \nPlease, click on this link anytime to pair:</div>" + "http://pairtolearn.herokuapp.com/user/pair/" + sessionId
+      };
+
+      transporter.sendMail(mailBody, function(err, i) {
+        if (err) {
+          console.log(err, 'error');
+        } else {
+          console.log('Message sent:' + i);
+        }
+        Users.findOne({
+          _id: userId
+        }, function(err, user) {
+          user.saveSession(sessionId, function(err, user, next) {
+            return res.status(200).json({
+              user: user,
+              i: i
+            });
+          });
+        });
+      });
+    }); >>> >>> > Finish node mailer processing
 };
 
 // exports.pairSession = function(req, res, next) {
