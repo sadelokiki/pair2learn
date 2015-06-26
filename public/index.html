@@ -9,6 +9,7 @@
   <link href="assets/css/animate.css" type="text/css" rel="stylesheet" />
   <link rel="stylesheet" href="assets/css/firepad-user-list.css" />
   <link rel='stylesheet' href='libs/angular-loading-bar/build/loading-bar.min.css' type='text/css' media='all' />
+  <link rel='stylesheet' href='libs/jquery-timepicker-jt/jquery.timepicker.css' type='text/css' media='all' />
   <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen, projection" />
   <!-- <base href="/"> -->
   <!-- Firebase -->
@@ -30,12 +31,14 @@
   <div ng-view></div>
   <div ng-include="'app/views/footer.view.html'"></div>
   <!-- Scripts -->
-  <script src="libs/jquery/jquery.js"></script>
+  <script src="libs/jquery/dist/jquery.js"></script>
   <script src="libs/typer/jquery.typer.js"></script>
   <script src="libs/materialize/materialize.js"></script>
   <script src="libs/materialize/init.js"></script>
+  <script src="libs/jquery-timepicker-jt/jquery.timepicker.js"></script>
   <script type="text/javascript" src="libs/angular/angular.js"></script>
   <!-- loading bar -->
+  <script type='text/javascript' src="libs/angular-jquery-timepicker/src/timepickerdirective.js"></script>
   <script type='text/javascript' src='libs/angular-loading-bar/build/loading-bar.min.js'></script>
   <script type="text/javascript" src="libs/angular-route/angular-route.min.js"></script>
   <script type="text/javascript" src="libs/ng-file-upload/ng-file-upload.min.js"></script>
@@ -56,6 +59,7 @@
   <script type="text/javascript" src="app/controllers/pair.client.ctrl.js"></script>
   <script type="text/javascript" src="app/controllers/user.client.ctrl.js"></script>
   <script type="text/javascript" src="app/controllers/craft.client.ctrl.js"></script>
+  <script type="text/javascript" src="app/controllers/mycrafts.client.ctrl.js"></script>
   <script type="text/javascript" src="app/controllers/create.craft.client.ctrl.js"></script>
   <script type="text/javascript" src="app/controllers/wallet.client.ctrl.js"></script>
   <script type="text/javascript" src="app/controllers/expert.client.ctrl.js"></script>
