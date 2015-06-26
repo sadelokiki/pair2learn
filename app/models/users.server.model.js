@@ -50,6 +50,8 @@ userSchema.methods.saveSession = function(sessionId, cb) {
         status: "OG"
       });
       this.save(cb);
+    } else {
+      return cb;
     }
   }
 };

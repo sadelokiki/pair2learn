@@ -10,12 +10,14 @@ angular.module('pairToLearnApp')
         });
       });
     })(jQuery);
+
     var craftId = $window.sessionStorage.craft;
     var expertId = $window.sessionStorage.expert;
     $scope.showBookSession = true;
     if (!craftId && !expertId) {
       $scope.showBookSession = false;
     }
+
     $timeout(function() {
       UserService.getOneUser($rootScope.decodedToken.user._id).then(function(data) {
         console.log(data);

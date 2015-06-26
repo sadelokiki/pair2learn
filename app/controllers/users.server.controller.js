@@ -173,7 +173,7 @@ exports.sendMail = function(req, res) {
           });
         });
       });
-    }); >>> >>> > Finish node mailer processing
+    });
 };
 
 // exports.pairSession = function(req, res, next) {
