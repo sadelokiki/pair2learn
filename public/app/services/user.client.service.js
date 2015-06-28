@@ -10,7 +10,6 @@ angular.module('pairToLearnApp')
     };
     User.getOneUser = function(id) {
       return $http.get(baseUrl + '/users/' + id).then(function(res) {
-        console.log(res);
         return res.data;
       });
     };

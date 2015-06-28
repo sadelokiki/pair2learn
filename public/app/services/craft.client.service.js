@@ -18,18 +18,6 @@ angular.module('pairToLearnApp')
         });
     };
 
-    // crafts.updateCraft = function(file, id) {
-    //   return Upload.upload({
-    //       url: baseUrl + '/crafts/' + id,
-    //       method: "PUT",
-    //       file: file,
-    //       fields: id
-    //     })
-    //     .then(function(res) {
-    //       return res.data;
-    //     });
-    // };
-
     crafts.getOneCraft = function(id) {
       return $http.get(baseUrl + '/crafts/' + id).then(function(res) {
         return res.data;

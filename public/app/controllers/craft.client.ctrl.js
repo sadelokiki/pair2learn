@@ -11,7 +11,6 @@ angular.module('pairToLearnApp')
     })(jQuery);
 
     UserService.getOneUser($window.sessionStorage.user).then(function(data) {
-      console.log(data);
       $scope.currentUser = data;
     });
 
@@ -50,7 +49,7 @@ angular.module('pairToLearnApp')
     };
 
     $timeout(function() {
-      CraftService.getExpertCrafts($rootScope.decodedToken.user._id).then(function(data) {
+      CraftService.getExpertCrafts($window.sessionStorage.user).then(function(data) {
         $scope.expertCrafts = data;
       });
     }, 1000);

@@ -31,25 +31,6 @@ exports.postImage = function(req, res, next) {
   });
 };
 
-// exports.editImage = function(req, res) {
-//   var craft_id = req.body._id;
-//   var new_craft = req.body;
-//   Crafts.update({
-//       _id: craft_id
-//     }, {
-//       picture: req.body.picture
-//     },
-//     function(err, user) {
-//       if (err) {
-//         return res.status(400).json(err);
-//       }
-//       res.status(200).json({
-//         // token: generateJWT(new_user),
-//         craft: new_craft
-//       });
-//     });
-// };
-
 exports.postCraft = function(req, res) {
   Crafts.create(req.body, function(err, craft) {
     if (err) {
@@ -89,11 +70,15 @@ exports.findOneCraft = function(req, res, next) {
 };
 
 exports.editCraft = function(req, res) {
+  console.log(req.body);
   var craft_id = req.params.id;
   Crafts.update({
       _id: craft_id
+    }, {
+      title: req.body.title,
+      description: req.body.description,
+      picture: req.body.picture
     },
-    req.body,
     function(err, craft) {
       if (err) {
         console.log(err);

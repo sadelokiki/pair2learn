@@ -79,7 +79,7 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
     })
     .when('/post-craft', {
       templateUrl: 'app/views/admin.view.html',
-      controller: 'CreateCraftCtrl',
+      controller: 'CRUDCraftCtrl',
       data: {
         requiresLogin: true
       }
@@ -90,7 +90,7 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
     })
     .when('/edit/craft/:id', {
       templateUrl: 'app/views/EditCraft.view.html',
-      controller: 'CreateCraftCtrl'
+      controller: 'CRUDCraftCtrl'
     })
     .when('/bookSession', {
       templateUrl: 'app/views/Booksession.view.html',
