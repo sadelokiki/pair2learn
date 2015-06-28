@@ -30,7 +30,7 @@ var userSchema = new Schema({
     type: String,
     default: 60
   },
-  crafts: []
+  sessions: []
 });
 
 userSchema.methods.hashPassword = function(password) {
@@ -42,10 +42,9 @@ userSchema.methods.comparePassword = function(password) {
 };
 
 userSchema.methods.saveSession = function(sessionId, cb) {
-  var crafts = this.crafts;
-  this.crafts.push({
+  this.sessions.push({
     sessionId: sessionId,
-    status: "OG"
+    status: "On Going"
   });
   this.save(cb);
 };

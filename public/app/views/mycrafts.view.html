@@ -1,24 +1,30 @@
 <div id="slide-out" class="side-nav fixed">
   <div ng-include="'app/views/sidenav.view.html'"></div>
 </div>
-<!-- <div class="parallax-container valign-wrapper" style="min-height: 200px !important;padding-top: 2em !important;">
-  <div class="section no-pad-bot">
-    <div class="row center container">
-      <h5 class="col s12 l10 light offset-l2">
-          Apply to be an Expert of any Craft that you can coach others on.
-        </h5> 
-    </div>
-  </div>
-  <div class="parallax"><img src="assets/images/joshdrewpairing.jpg" alt="Unsplashed background img 2"></div>
-</div> -->
-{{userSessions}}
 <div class="row container offset-custom">
-  <div class="col s12 l12">
-    <ul class="collection">
-      <li class="collection-item avatar" ng-repeat="session in sessions">
-        <span class="title">Session Id: &nbsp;{{session.sessionId}}</span>
-        <p>Status: &nbsp;{{session.status}}</p>
-        <a href="#/user/pair/{{session.sessionId}}" class="secondary-content"><i class="material-icons">Continue pairing</i></a>
-      </li>
+  <div class="row">
+    <div class="col s12">
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active black-text" href="#ongoing">Ongoing Crafts</a></li>
+        <li class="tab col s3"><a class="black-text" href="#completed">Completed Crafts</a></li>
+      </ul>
+    </div>
+    <div id="ongoing" class="col s12">
+      <div class="col s12 l12">
+        <ul class="collection">
+          <li class="collection-item avatar" ng-repeat="session in sessions" style="height: 8em;">
+            <img ng-src="{{session.craftData.picture}}" class="circle">
+            <span class="title">Session Id: &nbsp;{{session.sessionId}}</span>
+            <p>
+              Craft: &nbsp;{{session.craftData.title}}
+              <br> Description: &nbsp;{{session.craftData.description | limitTo: 10}}
+              <br> Status: &nbsp;{{session.status}}
+            </p>
+            <a href="#/user/pair/{{session.sessionId}}" class="secondary-content">Continue pairing</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div id="completed" class="col s12">No Completed Pairing Session</div>
   </div>
 </div>

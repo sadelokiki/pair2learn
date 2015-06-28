@@ -73,21 +73,22 @@
     </ul>
   </div>
 </div>
-<div class="row center offset-custom" id="dashboard">
-  <a ng-href="#/edit/user/{{currentUser._id}}" id="download-button" class="btn waves-effect waves-light">Edit Profile</a>
-  <a ng-href="#/user/{{currentUser._id}}/apply/expert" id="download-button" class="btn waves-effect waves-light">Apply as an Expert</a>
-  <a ng-href="#/post-craft" id="download-button" class="btn waves-effect waves-light">Add a craft</a>
-  <a ng-href="#/admin/crafts" id="download-button" class="btn waves-effect waves-light">View my posted crafts</a>
-  <a id="download-button" class="btn waves-effect waves-light red modal-trigger" href="#modal1">Delete profile</a>
-</div>
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <h4>Confirm Delete</h4>
-    <p>Are you sure you want to delete your account?</p>
+<div class="row">
+  <div class="row center" id="dashboard">
+    <a ng-href="#/edit/user/{{currentUser._id}}" id="download-button" class="btn waves-effect waves-light">Edit Profile</a>
+    <a ng-href="#/user/{{currentUser._id}}/apply/expert" id="download-button" class="btn waves-effect waves-light">Apply as an Expert</a>
+    <a ng-href="#/post-craft" id="download-button" class="btn waves-effect waves-light">Add a craft</a>
+    <a ng-href="#/admin/crafts" id="download-button" class="btn waves-effect waves-light">View my posted crafts</a>
+    <a id="download-button" class="btn waves-effect waves-light red modal-trigger" href="#modal1">Delete profile</a>
   </div>
-  <div class="modal-footer">
-    <a ng-click="deleteProfile()" class=" modal-action modal-close waves-effect waves-red btn-flat">Delete</a>
-    <a ng-click="$('#modal1').closeModal()" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Confirm Delete</h4>
+      <p>Are you sure you want to delete your account?</p>
+    </div>
+    <div class="modal-footer">
+      <a ng-click="deleteProfile()" class=" modal-action modal-close waves-effect waves-red btn-flat">Delete</a>
+      <a ng-click="$('#modal1').closeModal()" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
   </div>
-</div>
 </div>

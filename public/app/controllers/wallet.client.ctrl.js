@@ -48,8 +48,4 @@ angular.module('pairToLearnApp')
         $location.path('/mycrafts');
       });
     };
-    // $scope.userId = $window.sessionStorage.user;
-    // $scope.craftId = $window.sessionStorage.craft;
-    // $scope.expertId = $window.sessionStorage.expert;
-
   }]);

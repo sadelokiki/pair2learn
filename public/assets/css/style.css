@@ -252,6 +252,7 @@ footer.page-footer {
 .offset-custom {
   margin-left: 22em !important;
   margin-top: 3em;
+  min-height: 25em;
   /*padding: 0px .5em !important;*/
 }
 
