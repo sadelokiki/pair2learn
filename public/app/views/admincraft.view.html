@@ -1,13 +1,13 @@
 <div id="slide-out" class="side-nav fixed">
   <div ng-include="'app/views/sidenav.view.html'"></div>
 </div>
-<div class="row container offset-custom" style="margin-top: 2em;">
-   <nav class="search">
-    <div class="nav-wrapper">
+<div class="row container offset-custom" style="margin-top: 2em; min-height: 200px">
+  <nav class="search">
+    <div class="nav-wrapper blue-grey">
       <form>
-        <div class="input-field">
+        <div class="input-field search-bar">
           <input id="search" ng-model="search" type="search" required>
-          <label for="search" ><i class="material-icons"></i></label>
+          <label for="search"><i class="material-icons">search</i></label>
           <i class="material-icons"></i>
         </div>
       </form>
@@ -21,7 +21,7 @@
       </div>
       <div class="card-content">
         <span class="card-title activator grey-text text-darken-4">{{craft.title}}<i class="mdi-navigation-more-vert right"></i></span>
-        <p><a href="#/edit/craft/{{craft._id}}" ng-cl>Edit Craft</a></p>
+        <p><a href="#/edit/craft/{{craft._id}}" ng-cl>Edit Craft</a>&nbsp;<a class="right red-text" ng-controller="CRUDCraftCtrl" ng-click="deleteCraft()" href="" ng-cl>Delete Craft</a></p>
       </div>
       <div class="card-reveal">
         <span class="card-title grey-text text-darken-4">{{craft.title}}<i class="mdi-navigation-close right"></i></span>
