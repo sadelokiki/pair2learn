@@ -1,5 +1,16 @@
 <div class="row container" style="margin-top: 2em;">
-  <div class="col s12 l4" ng-repeat="craft in allCrafts">
+  <nav class="search">
+    <div class="nav-wrapper white">
+      <form>
+        <div class="input-field search-bar">
+          <input id="search" ng-model="search" type="search" required>
+          <label for="search"><i class="material-icons grey-text ">search</i></label>
+          <i class="material-icons"></i>
+        </div>
+      </form>
+    </div>
+  </nav>
+  <div class="col s12 l4" ng-repeat="craft in allCrafts | filter: search">
     <div class="card">
       <div class="card-image usercard
  waves-effect waves-block waves-light">

@@ -538,7 +538,11 @@ textarea {
   font-family: monospace !important;
 }
 
+.search {
+  margin-bottom: 2em;
+}
+
 .search-bar {
   padding-top: 0em !important;
-  margin-top: 0em !important;
+  margin-top: -1em !important;
 }
