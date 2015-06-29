@@ -19,7 +19,7 @@ angular.module('pairToLearnApp')
     }
 
     $timeout(function() {
-      UserService.getOneUser($rootScope.decodedToken.user._id).then(function(data) {
+      UserService.getOneUser($window.sessionStorage.user).then(function(data) {
         console.log(data);
         $scope.minutes = data.minutes;
       });
