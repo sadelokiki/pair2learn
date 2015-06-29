@@ -25,20 +25,7 @@ angular.module('pairToLearnApp')
 
 
       $rootScope.$on("$routeChangeSuccess", function(event) {
-        if ($window.sessionStorage.token) {
-          var parseJwt = function(token) {
-            var base64Url = token.split('.')[1];
-            var base64 = base64Url.replace('-', '+').replace('_', '/');
-            return JSON.parse($window.atob(base64));
-          };
-          var decodedToken = parseJwt($window.sessionStorage.token);
-          $rootScope.decodedToken = decodedToken;
-          $window.sessionStorage.user = $rootScope.decodedToken.user._id;
-          console.log($rootScope.decodedToken);
-          $rootScope.isLoggedIn = true;
-        } else {
-          $rootScope.isLoggedIn = false;
-        }
+
 
         //show features link only on homepage
         if ($location.path() === '/home') {

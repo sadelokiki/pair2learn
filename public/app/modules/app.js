@@ -133,12 +133,24 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
         'request': function(config) {
           var querytoken = $location.search().token;
           $location.search('token', null);
+          // $location.search('userId', null);
           if (!$window.sessionStorage.token && querytoken) {
             Materialize.toast('You are signed in!', 4000);
             $window.sessionStorage.token = querytoken;
+            var parseJwt = function(token) {
+              var base64Url = token.split('.')[1];
+              var base64 = base64Url.replace('-', '+').replace('_', '/');
+              return JSON.parse($window.atob(base64));
+            };
+            var decodedToken = parseJwt(querytoken);
+            $window.sessionStorage.user = decodedToken.user._id;
+            $rootScope.decodedToken = decodedToken;
           }
           if ($window.sessionStorage.token || querytoken) {
             config.headers.Authorization = $window.sessionStorage.token || querytoken;
+            $rootScope.isLoggedIn = true;
+          } else {
+            $rootScope.isLoggedIn = false;
           }
           return config;
         },
