@@ -84,5 +84,5 @@ angular.module('pairToLearnApp')
         }
         //javaScript();
       richText();
-    }, 1000);
+    }, 2000);
   }]);
