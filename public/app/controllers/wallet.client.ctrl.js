@@ -45,6 +45,8 @@ angular.module('pairToLearnApp')
       SessionService.sendMail(userId, craftId, expertId, sessionData).then(function(data) {
         Materialize.toast('Session Booked successfully!', 4000);
         console.log(data);
+        $window.sessionStorage.removeItem('expert');
+        $window.sessionStorage.removeItem('craft');
         $location.path('/mycrafts');
       });
     };

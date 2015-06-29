@@ -86,19 +86,31 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
     })
     .when('/admin/crafts', {
       templateUrl: 'app/views/admincraft.view.html',
-      controller: 'CraftCtrl'
+      controller: 'CraftCtrl',
+      data: {
+        requiresLogin: true
+      }
     })
     .when('/edit/craft/:id', {
       templateUrl: 'app/views/EditCraft.view.html',
-      controller: 'CRUDCraftCtrl'
+      controller: 'CRUDCraftCtrl',
+      data: {
+        requiresLogin: true
+      }
     })
     .when('/bookSession', {
       templateUrl: 'app/views/Booksession.view.html',
-      controller: 'WalletCtrl'
+      controller: 'WalletCtrl',
+      data: {
+        requiresLogin: true
+      }
     })
     .when('/mycrafts', {
       templateUrl: 'app/views/mycrafts.view.html',
-      controller: 'myCraftsCtrl'
+      controller: 'myCraftsCtrl',
+      data: {
+        requiresLogin: true
+      }
     })
     .when('/user/pair/:sessionId', {
       templateUrl: 'app/views/pair.view.html',
