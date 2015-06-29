@@ -16,6 +16,7 @@ angular.module('pairToLearnApp')
     //get user information
     UserService.getOneUser(userId).then(function(data) {
       $scope.firstname = data.firstname;
+      editor();
       $scope.counter = data.minutes * 60;
     });
     //get craft information
@@ -50,7 +51,8 @@ angular.module('pairToLearnApp')
     });
 
     var firepadRef = new Firebase('https://pairtolearn.firebaseio.com/' + sessionId);
-    $timeout(function() {
+
+    function editor() {
       var user = $scope.firstname;
       var expert = $window.sessionStorage.expert;
 
@@ -84,5 +86,5 @@ angular.module('pairToLearnApp')
         }
         //javaScript();
       richText();
-    }, 2000);
+    }
   }]);
