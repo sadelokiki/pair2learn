@@ -12,9 +12,11 @@ angular.module('pairToLearnApp')
     })(jQuery);
 
     var userId = $window.sessionStorage.user;
+    console.log(userId)
     var sessionId = $routeParams.sessionId;
     //get user information
     UserService.getOneUser(userId).then(function(data) {
+      console.log(data)
       $scope.firstname = data.firstname;
       editor();
       $scope.counter = data.minutes * 60;
@@ -43,6 +45,7 @@ angular.module('pairToLearnApp')
       $scope.$broadcast('timer-stopped', $scope.counter);
       // $scope.counter= ;
       $timeout.cancel(mytimeout);
+      $location.url('/mycrafts');
     };
     $scope.$on('timer-stopped', function(event, remaining) {
       if (remaining === 0) {
