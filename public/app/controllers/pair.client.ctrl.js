@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pairToLearnApp')
-  .controller('PairCtrl', ['$rootScope', '$scope', '$timeout', '$location', '$window', 'UserService', '$routeParams', function($rootScope, $scope, $timeout, $location, $window, UserService, $routeParams) {
+  .controller('PairCtrl', ['$rootScope', '$scope', '$timeout', '$location', '$window', 'UserService', 'CraftService', '$routeParams', function($rootScope, $scope, $timeout, $location, $window, UserService, CraftService, $routeParams) {
     (function($) {
       $(function() {
         $('.parallax').parallax();
@@ -13,11 +13,17 @@ angular.module('pairToLearnApp')
 
     var userId = $window.sessionStorage.user;
     var sessionId = $routeParams.sessionId;
-    console.log(userId)
+    //get user information
     UserService.getOneUser(userId).then(function(data) {
-      console.log(data);
       $scope.firstname = data.firstname;
       $scope.counter = data.minutes * 60;
+    });
+    //get craft information
+    var craftId = sessionId.split('-')[1];
+    CraftService.getOneCraft(craftId).then(function(data) {
+      $scope.craftData = data;
+    }, function(err) {
+      return err;
     });
 
     var mytimeout = null;
@@ -37,7 +43,6 @@ angular.module('pairToLearnApp')
       // $scope.counter= ;
       $timeout.cancel(mytimeout);
     };
-    // mytimeout = $timeout($scope.onTimeout, 1000);
     $scope.$on('timer-stopped', function(event, remaining) {
       if (remaining === 0) {
         alert('your time ran out!');

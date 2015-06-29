@@ -23,7 +23,6 @@ angular.module('pairToLearnApp')
           });
       })(jQuery);
 
-      $rootScope.showProg = false;
 
       $rootScope.$on("$routeChangeSuccess", function(event) {
         if ($window.sessionStorage.token) {
@@ -54,16 +53,14 @@ angular.module('pairToLearnApp')
         if (!profpic) {
           return;
         }
-        $rootScope.showProg = true;
         UserService.uploadPic(profpic, $scope.decodedToken.user).then(function(data) {
             Materialize.toast('Picture updated successfully!', 4000);
             $window.sessionStorage.token = data.token;
             console.log(data);
-            $rootScope.showProg = false;
             $route.reload();
           },
           function(err) {
-            $rootScope.showProg = false;
+            console.log(err);
           });
       };
 
@@ -81,8 +78,5 @@ angular.module('pairToLearnApp')
           $location.url("/user/" + res.data.user._id + '/dashboard');
         });
       };
-
-     
-
     }
   ]);

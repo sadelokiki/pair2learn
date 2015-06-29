@@ -1,7 +1,6 @@
 "use strict";
 
 require('../models/users.server.model.js');
-require('../models/crafts.server.model.js');
 var passport = require("passport"),
   formidable = require("formidable"),
   cloudinary = require("cloudinary"),
@@ -119,9 +118,30 @@ exports.editProfile = function(req, res) {
   });
 };
 
+exports.editSession = function(req, res) {
+  var user_id = req.params.id;
+  var sessionId = req.body.sessionId;
+  console.log(sessionId);
+  Users.update({
+      'sessions.sessionId': sessionId
+    }, {
+      '$set': {
+        'sessions.$.status': 'completed'
+      }
+    }, {
+      multi: true
+    },
+    function(err, numAffected) {
+      if (err) {
+        return res.status(400).json(err);
+      }
+      console.log(numAffected);
+      return res.status(200).json(numAffected);
+    });
+};
+
 exports.deleteOneUser = function(req, res) {
   var user_id = req.params.id;
-
   Users.remove({
     _id: user_id
   }, req.body, function(err, data) {
