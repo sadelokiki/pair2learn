@@ -79,26 +79,38 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
     })
     .when('/post-craft', {
       templateUrl: 'app/views/admin.view.html',
-      controller: 'CreateCraftCtrl',
+      controller: 'CRUDCraftCtrl',
       data: {
         requiresLogin: true
       }
     })
     .when('/admin/crafts', {
       templateUrl: 'app/views/admincraft.view.html',
-      controller: 'CraftCtrl'
+      controller: 'CraftCtrl',
+      data: {
+        requiresLogin: true
+      }
     })
     .when('/edit/craft/:id', {
       templateUrl: 'app/views/EditCraft.view.html',
-      controller: 'CreateCraftCtrl'
+      controller: 'CRUDCraftCtrl',
+      data: {
+        requiresLogin: true
+      }
     })
     .when('/bookSession', {
       templateUrl: 'app/views/Booksession.view.html',
-      controller: 'WalletCtrl'
+      controller: 'WalletCtrl',
+      data: {
+        requiresLogin: true
+      }
     })
     .when('/mycrafts', {
       templateUrl: 'app/views/mycrafts.view.html',
-      controller: 'myCraftsCtrl'
+      controller: 'myCraftsCtrl',
+      data: {
+        requiresLogin: true
+      }
     })
     .when('/user/pair/:sessionId', {
       templateUrl: 'app/views/pair.view.html',
@@ -121,12 +133,24 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
         'request': function(config) {
           var querytoken = $location.search().token;
           $location.search('token', null);
+          // $location.search('userId', null);
           if (!$window.sessionStorage.token && querytoken) {
             Materialize.toast('You are signed in!', 4000);
             $window.sessionStorage.token = querytoken;
+            var parseJwt = function(token) {
+              var base64Url = token.split('.')[1];
+              var base64 = base64Url.replace('-', '+').replace('_', '/');
+              return JSON.parse($window.atob(base64));
+            };
+            var decodedToken = parseJwt(querytoken);
+            $window.sessionStorage.user = decodedToken.user._id;
+            $rootScope.decodedToken = decodedToken;
           }
           if ($window.sessionStorage.token || querytoken) {
             config.headers.Authorization = $window.sessionStorage.token || querytoken;
+            $rootScope.isLoggedIn = true;
+          } else {
+            $rootScope.isLoggedIn = false;
           }
           return config;
         },
@@ -148,12 +172,16 @@ app.config(['$routeProvider', '$httpProvider', '$locationProvider', 'cfpLoadingB
 }])
 
 .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window) {
-
   $rootScope.$on("$routeChangeStart", function(event, to) {
+    if ($window.sessionStorage.refUrl && $window.sessionStorage.token) {
+      var ref = $window.sessionStorage.refUrl;
+      $window.sessionStorage.removeItem('refUrl');
+      $location.url(ref);
+    }
     if (to.data && to.data.requiresLogin) {
       if (!($window.sessionStorage.token || $location.search().token)) {
         event.preventDefault();
-        console.log(to);
+        $window.sessionStorage.refUrl = $location.url();
         $location.url('/login'); //redirect to login if user is not authenitcated
       }
     }

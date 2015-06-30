@@ -250,8 +250,10 @@ footer.page-footer {
 }
 
 .offset-custom {
-  margin-left: 22em !important;
+  margin-left: 17em !important;
+  width: 80%;
   margin-top: 3em;
+  min-height: 25em;
   /*padding: 0px .5em !important;*/
 }
 
@@ -533,8 +535,17 @@ input[type="button"] {
   width: 80%;
 }
 
+input,
+textarea {
+  font-family: monospace !important;
+}
+
 .search {
-  height: 40px;
-  margin-bottom: 1em;
-  background-color: #263238;
+  margin-bottom: 2em;
+}
+
+.search-bar {
+  padding-top: 0em !important;
+  margin-top: -1em !important;
+/*>>>>>> done*/
 }

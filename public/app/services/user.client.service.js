@@ -13,6 +13,11 @@ angular.module('pairToLearnApp')
         return res.data;
       });
     };
+    User.markAsComplete = function(id, params) {
+      return $http.put(baseUrl + '/users/sessions/' + id, params).then(function(res) {
+        return res.data;
+      });
+    };
     User.deleteUser = function(id) {
       return $http.delete(baseUrl + '/users/' + id).then(function(res) {
         return res.data;

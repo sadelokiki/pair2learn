@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('pairToLearnApp')
-  .controller('PairCtrl', ['$rootScope', '$scope', '$timeout', '$location', '$window', 'UserService', '$routeParams', function($rootScope, $scope, $timeout, $location, $window, UserService, $routeParams) {
+  .controller('PairCtrl', ['$rootScope', '$scope', '$timeout', '$location', '$window', 'UserService', 'CraftService', '$routeParams', function($rootScope, $scope, $timeout, $location, $window, UserService, CraftService, $routeParams) {
     (function($) {
       $(function() {
         $('.parallax').parallax();
@@ -12,12 +12,21 @@ angular.module('pairToLearnApp')
     })(jQuery);
 
     var userId = $window.sessionStorage.user;
+    console.log(userId)
     var sessionId = $routeParams.sessionId;
-
+    //get user information
     UserService.getOneUser(userId).then(function(data) {
-      console.log(data);
+      console.log(data)
       $scope.firstname = data.firstname;
+      editor();
       $scope.counter = data.minutes * 60;
+    });
+    //get craft information
+    var craftId = sessionId.split('-')[1];
+    CraftService.getOneCraft(craftId).then(function(data) {
+      $scope.craftData = data;
+    }, function(err) {
+      return err;
     });
 
     var mytimeout = null;
@@ -36,8 +45,8 @@ angular.module('pairToLearnApp')
       $scope.$broadcast('timer-stopped', $scope.counter);
       // $scope.counter= ;
       $timeout.cancel(mytimeout);
+      $location.url('/mycrafts');
     };
-    // mytimeout = $timeout($scope.onTimeout, 1000);
     $scope.$on('timer-stopped', function(event, remaining) {
       if (remaining === 0) {
         alert('your time ran out!');
@@ -45,7 +54,8 @@ angular.module('pairToLearnApp')
     });
 
     var firepadRef = new Firebase('https://pairtolearn.firebaseio.com/' + sessionId);
-    $timeout(function() {
+
+    function editor() {
       var user = $scope.firstname;
       var expert = $window.sessionStorage.expert;
 
@@ -79,5 +89,5 @@ angular.module('pairToLearnApp')
         }
         //javaScript();
       richText();
-    }, 1000);
+    }
   }]);

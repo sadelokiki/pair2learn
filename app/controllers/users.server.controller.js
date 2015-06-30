@@ -7,6 +7,7 @@ var passport = require("passport"),
   jwt = require('jsonwebtoken'),
   mongoose = require("mongoose"),
   Users = mongoose.model('Users'),
+  Crafts = mongoose.model('Crafts'),
   config = require('../../config/config'),
   nodemailer = require('nodemailer');
 
@@ -117,9 +118,30 @@ exports.editProfile = function(req, res) {
   });
 };
 
+exports.editSession = function(req, res) {
+  var user_id = req.params.id;
+  var sessionId = req.body.sessionId;
+  console.log(sessionId);
+  Users.update({
+      'sessions.sessionId': sessionId
+    }, {
+      '$set': {
+        'sessions.$.status': 'completed'
+      }
+    }, {
+      multi: true
+    },
+    function(err, numAffected) {
+      if (err) {
+        return res.status(400).json(err);
+      }
+      console.log(numAffected);
+      return res.status(200).json(numAffected);
+    });
+};
+
 exports.deleteOneUser = function(req, res) {
   var user_id = req.params.id;
-
   Users.remove({
     _id: user_id
   }, req.body, function(err, data) {
@@ -156,50 +178,27 @@ exports.sendMail = function(req, res) {
         html: "<div style='text-align:justify'>Hi " + expertName + ", \n A user has requested to pair with you \n Pairing details is as follows: \n Date: " + sessionData.date + " \nTime: " + sessionData.time + "\nDescription: " + sessionData.description + " \nPlease, click on this link anytime to pair:</div>" + "http://pairtolearn.herokuapp.com/#/user/pair/" + sessionId
       };
 
-      transporter.sendMail(mailBody, function(err, i) {
+      transporter.sendMail(mailBody, function(err, message) {
         if (err) {
           console.log(err, 'error');
         } else {
-          console.log('Message sent:' + i);
-        }
-        Users.findOne({
-          _id: userId
-        }, function(err, user) {
-          user.saveSession(sessionId, function(err, user, next) {
-            return res.status(200).json({
-              user: user,
-              i: i
+          console.log('Message sent:' + message);
+          Users.findOne({
+            _id: userId
+          }, function(err, user) {
+            console.log('this is user:', user, 'and session', sessionId);
+            user.saveSession(sessionId, function(err, userData) {
+              console.log(userData);
+              return res.status(200).json({
+                user: user,
+                i: message
+              });
             });
           });
-        });
+        }
       });
     });
 };
-
-// exports.pairSession = function(req, res, next) {
-//   var userId  = req.params.userid,
-//       craftId = req.params.craftid,
-//       sessionId = userId + craftId;
-//   Users.findOne({
-//     '_id': userId
-//   }, req.body, function(err, user) {
-//     if (err) {
-//       return res.json(err);
-//     }
-//     // res.send(200);
-//     console.log(sessionId);
-//     res.status(200).send({
-//       sessionId: sessionId
-//     })
-//       // user.pair(req.body.userId,
-//       //   function(err, sessionId) {
-//       //     if (err) {
-//       //       return res.status(400).json(err);
-//       //     }
-//       //     return res.status(200).json(req.body.sessionId);
-//       //   });
-//   });
-// };
 
 exports.deleteOneUser = function(req, res) {
   var user_id = req.params.id;

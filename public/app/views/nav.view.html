@@ -1,4 +1,3 @@
-
 <div class="navbar-fixed">
   <!-- Dropdown Structure -->
   <ul id="user-menu" class="dropdown-content blue-text">
@@ -10,7 +9,7 @@
   </ul>
   <nav class="blue-grey darken-4" role="navigation" ng-controller="NavCtrl">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="#/" class="brand-logo">p2L</a>
+      <a id="logo-container" href="#/" class="brand-logo" style="display: inline-flex;"><img src="assets/images/p2l_logo.png" style="height: 2em;">&nbsp;p2L</a>
       <ul class="right hide-on-med-and-down white-text">
         <li><a ng-hide="isLoggedIn" href="#/crafts">Browse Crafts</a></li>
         <li><a ng-hide="hideFeatures" href="#features">Features</a></li>
@@ -38,7 +37,7 @@
         <div ng-show="isLoggedIn">
           <li>
             <a class="center" ng-show="isLoggedIn">
-              <span>chitech</span>
+              <span>{{decodedToken.user.firstname}}</span>
             </a>
           </li>
           <li>

@@ -5,7 +5,7 @@
   <div class="section no-pad-bot">
     <div class="row center container">
       <h4 class="col s12 l10 light offset-l2">
-         {{decodedToken.user.firstname}}&nbsp;{{decodedToken.user.lastname}}'s Dashboard
+         {{currentUser.firstname}}&nbsp;{{currentUser.lastname}}'s Dashboard
         </h4>
     </div>
   </div>
@@ -14,9 +14,9 @@
 <div class="row container offset-custom">
   <div class="col l4 s12 center">
     <form name='profileForm' enctype="multipart/form-data">
-      <a ng-href="#/edit/user/{{decodedToken.user._id}}" class="secondary-content"><i class="mdi-action-grade"></i></a>
-      <img width="250" ng-hide="decodedToken.user.picture" ng-src="assets/images/placeholder-avatar.png" alt="" class="  circle responsive-img">
-      <img width="250" ng-show="decodedToken.user.picture" ng-src="{{decodedToken.user.picture}}" alt="" class=" circle responsive-img">
+      <a ng-href="#/edit/user/{{currentUser._id}}" class="secondary-content"><i class="mdi-action-grade"></i></a>
+      <img width="250" ng-hide="currentUser.picture" ng-src="assets/images/placeholder-avatar.png" alt="" class="  circle responsive-img">
+      <img width="250" ng-show="currentUser.picture" ng-src="{{currentUser.picture}}" alt="" class=" circle responsive-img">
       <label>Upload your profile picture.</label>
       <div class="row center">
         <input style="width: 200px" type="file" ngf-select="true" ng-model="image" ngf-change="fileSelected($files, $event)" />
@@ -36,28 +36,28 @@
         <i class="mdi-action-account-circle circle green"></i>
         <span class="title">First Name:</span>
         <p>
-          {{decodedToken.user.firstname}}
+          {{currentUser.firstname}}
         </p>
       </li>
       <li class="collection-item avatar">
         <i class="mdi-action-account-circle circle green"></i>
         <span class="title">Last Name:</span>
         <p>
-          {{decodedToken.user.lastname}}
+          {{currentUser.lastname}}
         </p>
       </li>
       <li class="collection-item avatar">
         <i class="mdi-communication-call circle red"></i>
         <span class="title">Phone:</span>
         <p>
-          {{decodedToken.user.phonenumber}}
+          {{currentUser.phonenumber}}
         </p>
       </li>
       <li class="collection-item avatar">
         <i class="mdi-communication-email circle red"></i>
         <span class="title">Email:</span>
         <p>
-          {{decodedToken.user.email}}
+          {{currentUser.email}}
         </p>
       </li>
     </ul>
@@ -68,26 +68,27 @@
         <h5>Expert</h5>
       </li>
       <li class="collection-item" ng-repeat="craft in expertCrafts">
-        <div>{{craft.title}}<a ng-href="#/user/{{decodedToken.user._id}}/craft/{{craft._id}}" class="secondary-content"><i class="mdi-content-send"></i></a></div>
+        <div>{{craft.title}}<a ng-href="#/user/{{currentUser._id}}/craft/{{craft._id}}" class="secondary-content"><i class="mdi-content-send"></i></a></div>
       </li>
     </ul>
   </div>
 </div>
-<div class="row center offset-custom" id="dashboard">
-  <a ng-href="#/edit/user/{{decodedToken.user._id}}" id="download-button" class="btn waves-effect waves-light">Edit Profile</a>
-  <a ng-href="#/user/{{decodedToken.user._id}}/apply/expert" id="download-button" class="btn waves-effect waves-light">Apply as an Expert</a>
-  <a ng-href="#/post-craft" id="download-button" class="btn waves-effect waves-light">Add a craft</a>
-  <a ng-href="#/admin/crafts" id="download-button" class="btn waves-effect waves-light">View my posted crafts</a>
-  <a id="download-button" class="btn waves-effect waves-light red modal-trigger" href="#modal1">Delete profile</a>
-</div>
-<div id="modal1" class="modal">
-  <div class="modal-content">
-    <h4>Confirm Delete</h4>
-    <p>Are you sure you want to delete your account?</p>
+<div class="row">
+  <div class="row center" id="dashboard">
+    <a ng-href="#/edit/user/{{currentUser._id}}" id="download-button" class="btn waves-effect waves-light">Edit Profile</a>
+    <a ng-href="#/user/{{currentUser._id}}/apply/expert" id="download-button" class="btn waves-effect waves-light">Apply as an Expert</a>
+    <a ng-href="#/post-craft" id="download-button" class="btn waves-effect waves-light">Add a craft</a>
+    <a ng-href="#/admin/crafts" id="download-button" class="btn waves-effect waves-light">View my posted crafts</a>
+    <a id="download-button" class="btn waves-effect waves-light red modal-trigger" href="#modal1">Delete profile</a>
   </div>
-  <div class="modal-footer">
-    <a ng-click="deleteProfile()" class=" modal-action modal-close waves-effect waves-red btn-flat">Delete</a>
-    <a ng-click="$('#modal1').closeModal()" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Confirm Delete</h4>
+      <p>Are you sure you want to delete your account?</p>
+    </div>
+    <div class="modal-footer">
+      <a ng-click="deleteProfile()" class=" modal-action modal-close waves-effect waves-red btn-flat">Delete</a>
+      <a ng-click="$('#modal1').closeModal()" class=" modal-action modal-close waves-effect waves-green btn-flat">Cancel</a>
+    </div>
   </div>
-</div>
 </div>

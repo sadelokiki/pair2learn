@@ -39,6 +39,10 @@ module.exports = function(app, passport) {
     .put(ctrl.editProfile)
     .delete(ctrl.deleteOneUser);
 
+  //session complete
+  router.route('/users/sessions/:id')
+    .put(ctrl.editSession);
+
   //mail
   router.route('/mail')
     .post(ctrl.sendMail);

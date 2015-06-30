@@ -7,7 +7,7 @@ var express = require("express"),
 module.exports = function(app) {
   router.route('/crafts')
     .get(ctrl.findCrafts)
-    .post(ctrl.postImage, ctrl.postCraft, ctrl.editImage);
+    .post(ctrl.postImage, ctrl.postCraft);
 
 
   router.route('/expert/:id/crafts')
@@ -15,7 +15,7 @@ module.exports = function(app) {
 
   router.route('/crafts/:id')
     .get(ctrl.findOneCraft)
-    .put(ctrl.editCraft)
+    .put(ctrl.postImage, ctrl.editCraft)
     .delete(ctrl.deleteOneCraft);
 
   router.route('/apply/crafts/:id')

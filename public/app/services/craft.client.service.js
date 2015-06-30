@@ -18,18 +18,6 @@ angular.module('pairToLearnApp')
         });
     };
 
-    // crafts.updateCraft = function(file, id) {
-    //   return Upload.upload({
-    //       url: baseUrl + '/crafts/' + id,
-    //       method: "PUT",
-    //       file: file,
-    //       fields: id
-    //     })
-    //     .then(function(res) {
-    //       return res.data;
-    //     });
-    // };
-
     crafts.getOneCraft = function(id) {
       return $http.get(baseUrl + '/crafts/' + id).then(function(res) {
         return res.data;
@@ -48,10 +36,16 @@ angular.module('pairToLearnApp')
       });
     };
 
-    crafts.updateCraft = function(id, params) {
-      return $http.put(baseUrl + '/crafts/' + id, params).then(function(res) {
-        return res;
-      });
+    crafts.updateCraft = function(id, craft) {
+      return Upload.upload({
+          url: baseUrl + '/crafts/' + id,
+          method: "PUT",
+          file: craft.picture,
+          fields: craft
+        })
+        .then(function(res) {
+          return res.data;
+        });
     };
 
     crafts.getAll = function() {
@@ -63,7 +57,7 @@ angular.module('pairToLearnApp')
     crafts.deleteCraft = function(id) {
       return $http.delete(baseUrl + '/crafts/' + id).then(function(res) {
         return res.data;
-      })
+      });
     };
 
     crafts.uploadPic = function(file, fields) {

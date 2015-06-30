@@ -19,7 +19,7 @@ angular.module('pairToLearnApp')
     }
 
     $timeout(function() {
-      UserService.getOneUser($rootScope.decodedToken.user._id).then(function(data) {
+      UserService.getOneUser($window.sessionStorage.user).then(function(data) {
         console.log(data);
         $scope.minutes = data.minutes;
       });
@@ -45,11 +45,9 @@ angular.module('pairToLearnApp')
       SessionService.sendMail(userId, craftId, expertId, sessionData).then(function(data) {
         Materialize.toast('Session Booked successfully!', 4000);
         console.log(data);
+        $window.sessionStorage.removeItem('expert');
+        $window.sessionStorage.removeItem('craft');
         $location.path('/mycrafts');
       });
     };
-    // $scope.userId = $window.sessionStorage.user;
-    // $scope.craftId = $window.sessionStorage.craft;
-    // $scope.expertId = $window.sessionStorage.expert;
-
   }]);

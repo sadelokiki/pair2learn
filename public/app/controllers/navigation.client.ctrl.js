@@ -23,9 +23,9 @@ angular.module('pairToLearnApp')
           });
       })(jQuery);
 
-      $rootScope.showProg = false;
 
       $rootScope.$on("$routeChangeSuccess", function(event) {
+
         if ($window.sessionStorage.token) {
           var parseJwt = function(token) {
             var base64Url = token.split('.')[1];
@@ -33,14 +33,9 @@ angular.module('pairToLearnApp')
             return JSON.parse($window.atob(base64));
           };
           var decodedToken = parseJwt($window.sessionStorage.token);
+          $window.sessionStorage.user = decodedToken.user._id;
           $rootScope.decodedToken = decodedToken;
-          $window.sessionStorage.user = $rootScope.decodedToken.user._id;
-          console.log($rootScope.decodedToken);
-          $rootScope.isLoggedIn = true;
-        } else {
-          $rootScope.isLoggedIn = false;
         }
-
         //show features link only on homepage
         if ($location.path() === '/home') {
           $rootScope.hideFeatures = false;
@@ -54,16 +49,14 @@ angular.module('pairToLearnApp')
         if (!profpic) {
           return;
         }
-        $rootScope.showProg = true;
         UserService.uploadPic(profpic, $scope.decodedToken.user).then(function(data) {
             Materialize.toast('Picture updated successfully!', 4000);
             $window.sessionStorage.token = data.token;
             console.log(data);
-            $rootScope.showProg = false;
             $route.reload();
           },
           function(err) {
-            $rootScope.showProg = false;
+            console.log(err);
           });
       };
 
@@ -81,8 +74,5 @@ angular.module('pairToLearnApp')
           $location.url("/user/" + res.data.user._id + '/dashboard');
         });
       };
-
-     
-
     }
   ]);

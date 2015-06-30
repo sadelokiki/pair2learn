@@ -30,7 +30,7 @@ var userSchema = new Schema({
     type: String,
     default: 60
   },
-  crafts: []
+  sessions: []
 });
 
 userSchema.methods.hashPassword = function(password) {
@@ -42,17 +42,10 @@ userSchema.methods.comparePassword = function(password) {
 };
 
 userSchema.methods.saveSession = function(sessionId, cb) {
-  var crafts = this.crafts;
-  for (var i in crafts) {
-    if (crafts[i].sessionId !== sessionId) {
-      this.crafts.push({
-        sessionId: sessionId,
-        status: "OG"
-      });
-      this.save(cb);
-    } else {
-      return this.save(cb);
-    }
-  }
+  this.sessions.push({
+    sessionId: sessionId,
+    status: "On Going"
+  });
+  this.save(cb);
 };
 mongoose.model('Users', userSchema);
