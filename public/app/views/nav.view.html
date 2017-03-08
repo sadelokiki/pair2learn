@@ -7,15 +7,23 @@
     <li class="divider"></li>
     <li><a ng-click="logout()">Log Out</a></li>
   </ul>
-  <nav class="blue-grey darken-4" role="navigation" ng-controller="NavCtrl">
-    <div class="nav-wrapper container">
-      <a id="logo-container" href="#/" class="brand-logo" style="display: inline-flex;"><img src="assets/images/p2l_logo.png" style="height: 2em;">&nbsp;p2L</a>
-      <ul class="right hide-on-med-and-down white-text">
-        <li><a ng-hide="isLoggedIn" href="#/crafts">Browse Crafts</a></li>
-        <li><a ng-hide="hideFeatures" href="#features">Features</a></li>
-        <li><a ng-hide="isLoggedIn" href="#/signup" style="display: inline;">Pair with an Expert</a></li>
-        <li><a ng-hide="isLoggedIn" href="#/login" class="btn blue-grey darken-1">Login</a></li>
-        <div ng-show="isLoggedIn" style="display: inline;">
+  <nav role="navigation" ng-controller="NavCtrl">
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Logo</a>
+      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right header-links hide-on-med-and-down">
+        <li><a href="#/crafts">Browse Crafts</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#/signup">Pair with an Expert</a></li>
+        <a ng-hide="isLoggedIn" href="#/login" class="btn blue-grey darken-1">Login</a>
+      </ul>
+       <ul class="side-nav" id="mobile-demo">
+        <li><a href="#/crafts">Browse Crafts</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#/signup">Pair with an Expert</a></li>
+      </ul>
+        <!--<li><a ng-hide="isLoggedIn" href="#/login" class="btn blue-grey darken-1">Login</a></li>-->
+        <!--<div ng-show="isLoggedIn" style="display: inline;">
           <li>
             <span style="display: inline-block;">Welcome {{decodedToken.user.firstname}}</span>
           </li>
@@ -28,9 +36,8 @@
               <i class="mdi-navigation-more-vert"></i>
             </a>
           </li>
-        </div>
-      </ul>
-      <ul id="nav-mobile" class="side-nav">
+        </div>-->
+      <!--<ul id="nav-mobile" class="side-nav">
         <li><a ng-hide="hideFeatures" href="#features">Features</a></li>
         <li><a ng-hide="isLoggedIn" href="#/signup">Pair with an Expert</a></li>
         <li><a ng-hide="isLoggedIn" href="#/login">Login</a></li>
@@ -59,8 +66,12 @@
           <li><a ng-click="logout()">Log Out</a></li>
           <li class="divider"></li>
         </div>
-      </ul>
-      <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
+      </ul>-->
+      <!--<ul id="nav-mobile">
+        <li>Browse Crafts</li>
+        <li>Features</li>
+        <li>Pair with an expert</li>
+      </ul>-->
     </div>
   </nav>
 </div>
